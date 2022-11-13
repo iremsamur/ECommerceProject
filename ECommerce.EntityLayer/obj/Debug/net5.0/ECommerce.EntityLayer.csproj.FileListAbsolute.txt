@@ -1,0 +1,15 @@
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\bin\Debug\net5.0\ECommerce.EntityLayer.deps.json
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\bin\Debug\net5.0\ECommerce.EntityLayer.runtimeconfig.json
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\bin\Debug\net5.0\ECommerce.EntityLayer.runtimeconfig.dev.json
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\bin\Debug\net5.0\ECommerce.EntityLayer.dll
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\bin\Debug\net5.0\ECommerce.EntityLayer.pdb
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\obj\Debug\net5.0\ECommerce.EntityLayer.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\obj\Debug\net5.0\ECommerce.EntityLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\obj\Debug\net5.0\ECommerce.EntityLayer.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\obj\Debug\net5.0\ECommerce.EntityLayer.AssemblyInfo.cs
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\obj\Debug\net5.0\ECommerce.EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\obj\Debug\net5.0\ECommerce.EntityLayer.dll
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\obj\Debug\net5.0\refint\ECommerce.EntityLayer.dll
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\obj\Debug\net5.0\ECommerce.EntityLayer.pdb
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\obj\Debug\net5.0\ECommerce.EntityLayer.genruntimeconfig.cache
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.EntityLayer\obj\Debug\net5.0\ref\ECommerce.EntityLayer.dll

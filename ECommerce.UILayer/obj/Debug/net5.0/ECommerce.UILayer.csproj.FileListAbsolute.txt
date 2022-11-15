@@ -155,3 +155,4 @@ C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\bin\D
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Shared\_ECommerceLayout.cshtml.g.cs
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Home\Deneme.cshtml.g.cs
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Item\GetItemsInTheShowcaseWithImage.cshtml.g.cs

@@ -6,9 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Concrete\" />
-    <Folder Include="Abstract\" />
-    <Folder Include="EntityFramework\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
 
   <ItemGroup>

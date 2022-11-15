@@ -1,3 +1,7 @@
+using ECommerce.BusinessLayer.Abstract;
+using ECommerce.BusinessLayer.Concrete;
+using ECommerce.DataAccessLayer.Abstract;
+using ECommerce.DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +27,9 @@ namespace ECommerce.UILayer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //soyut ve somut sýnýflarla yapýlan dependency injeksiyonu kullanabilmek için burada bunlarý tanýmlarýz
+            services.AddScoped<IItemService, ItemManager>();
+            services.AddScoped<IItemDal, EfItemDal>();
             services.AddControllersWithViews();
         }
 

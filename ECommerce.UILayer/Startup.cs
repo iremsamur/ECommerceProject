@@ -30,6 +30,8 @@ namespace ECommerce.UILayer
             //soyut ve somut sýnýflarla yapýlan dependency injeksiyonu kullanabilmek için burada bunlarý tanýmlarýz
             services.AddScoped<IItemService, ItemManager>();
             services.AddScoped<IItemDal, EfItemDal>();
+            services.AddScoped<ISubCategoryService, SubCategoryManager>();
+            services.AddScoped<ISubCategoryDal, EfSubCategoryDal>();
             services.AddControllersWithViews();
         }
 

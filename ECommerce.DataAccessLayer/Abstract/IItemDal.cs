@@ -10,5 +10,8 @@ namespace ECommerce.DataAccessLayer.Abstract
     public interface IItemDal : IGenericDal<Item>
     {
         List<Item> GetItemWithImage();
+        List<Item> GetItemWithImageAndCategoryAndDetail();
+        Item GetItemWithImageAndCategoryByCategory(int CategoryID);
+
     }
 }

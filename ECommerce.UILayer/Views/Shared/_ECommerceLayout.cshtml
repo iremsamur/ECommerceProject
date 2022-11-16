@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Item>
 @{
     Layout = null;
 }
@@ -805,22 +805,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- banner -->
 
 	<!-- //banner -->
+	@await Component.InvokeAsync("_HighlightsPage")
 
 	<!-- top Products -->
 	<div class="ads-grid py-sm-5 py-4">
 		<div class="container py-xl-4 py-lg-2">
 			<!-- tittle heading -->
+			@RenderBody()<!--Değişen içerik buraya geliyor-->
 			
 			<!-- //tittle heading -->
-			<div class="row">
-				<!-- product left -->
-				@RenderBody()<!--Değişen içerik buraya geliyor-->
-				
-				<!-- //product left -->
-
-				<!-- product right -->
-				
-			</div>
+		
 		</div>
 	</div>
 	<!-- //top products -->
@@ -828,7 +822,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- middle section -->
 	
 	<!-- middle section -->
-
+	@await Component.InvokeAsync("_AdvertisementPage")
 	<!-- footer -->
 	<footer>
 		<div class="footer-top-first">

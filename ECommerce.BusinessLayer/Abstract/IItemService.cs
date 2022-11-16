@@ -1,4 +1,5 @@
-﻿using ECommerce.EntityLayer.Concrete;
+﻿using ECommerce.DataAccessLayer.Concrete;
+using ECommerce.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,10 @@ namespace ECommerce.BusinessLayer.Abstract
     public interface IItemService : IGenericService<Item>
     {
         List<Item> TGetItemWithImage();
+       List<Item> TGetItemWithImageAndCategoryAndDetail();
+
+
+       Item TGetItemWithImageAndCategoryByCategory(int CategoryID);
+        
     }
 }

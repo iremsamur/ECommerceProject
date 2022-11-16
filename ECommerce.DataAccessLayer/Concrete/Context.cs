@@ -21,5 +21,7 @@ namespace ECommerce.DataAccessLayer.Concrete
         public DbSet<Category> Categories{ get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<ItemImage> ItemImages { get; set; }
+        public DbSet<ItemDiscountScore> ItemDiscountScores { get; set; }
+        public DbSet<ItemRatings> ItemRatings { get; set; }
     }
 }

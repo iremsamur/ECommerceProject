@@ -18,6 +18,16 @@ namespace ECommerce.BusinessLayer.Concrete
             _itemDal = itemDal;
         }
 
+        public List<Item> TGetItemWithImageAndCategoryAndDetail()
+        {
+            return _itemDal.GetItemWithImageAndCategoryAndDetail();
+        }
+
+        public Item TGetItemWithImageAndCategoryByCategory(int CategoryID)
+        {
+            return _itemDal.GetItemWithImageAndCategoryByCategory(CategoryID);
+        }
+
         public void TDelete(Item t)
         {
             _itemDal.Delete(t);

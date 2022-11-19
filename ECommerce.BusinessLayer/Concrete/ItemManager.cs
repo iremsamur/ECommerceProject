@@ -40,6 +40,7 @@ namespace ECommerce.BusinessLayer.Concrete
 
         public List<Item> TGetItemWithImage()
         {
+        
             return _itemDal.GetItemWithImage();
         }
 

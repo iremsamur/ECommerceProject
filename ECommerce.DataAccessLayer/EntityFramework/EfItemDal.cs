@@ -42,5 +42,12 @@ namespace ECommerce.DataAccessLayer.EntityFramework
                 return value;
             }
         }
+
+      
+
+        List<Item> IItemDal.GetMostLikedItemsWithImageAndCategoryByCategory(int CategoryID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

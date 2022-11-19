@@ -1,5 +1,8 @@
 ﻿using ECommerce.BusinessLayer.Abstract;
+using ECommerce.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ECommerce.UILayer.Controllers
 {
@@ -14,8 +17,25 @@ namespace ECommerce.UILayer.Controllers
 
         public IActionResult GetItemsInTheShowcaseWithImage()
         {
+            //sadece 3 veri gelsin
+            List<Item> items = new List<Item>();
             var values = _itemService.TGetItemWithImage();
-            return View(values);
+            var count = values.Count();
+            for(int i = 0;i < count;i++)
+            {
+                
+                if (i < 3)
+                {
+                    items.Add(values[i]);
+
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            return View(items);
         }
     }
 }

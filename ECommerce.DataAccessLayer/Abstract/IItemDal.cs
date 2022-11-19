@@ -12,6 +12,7 @@ namespace ECommerce.DataAccessLayer.Abstract
         List<Item> GetItemWithImage();
         List<Item> GetItemWithImageAndCategoryAndDetail();
         Item GetItemWithImageAndCategoryByCategory(int CategoryID);
+        List<Item> GetMostLikedItemsWithImageAndCategoryByCategory(int CategoryID);
 
     }
 }

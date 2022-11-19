@@ -24,38 +24,51 @@ namespace ECommerce.UILayer.ViewComponents.HighlightsPage
             var count = _subCategoryService.TGetCountOfSubCategories();
             int randomCategoryID = 0;
             List<Item> items = new List<Item>();
-
-            /*
-             * orjinal
-            for (int j = 1;j <=4 ;j++)
-            {
-                randomCategoryID = rnd.Next(1, count + 1);
-                var item = _itemService.TGetItemWithImageAndCategoryByCategory(randomCategoryID);
-                items.Add(item);
-
-                
-
-            }
-            */
-            //geçici veriden dolayı
-            int previousValue = 0;
+            List<int> randomCategoryIDList = new List<int>();
             for (int j = 1;j <= 2;j++)
             {
-                randomCategoryID = rnd.Next(3,5);
-                previousValue = randomCategoryID;
-                if (previousValue == randomCategoryID)
+                randomCategoryID = rnd.Next(3, 5);
+
+                if (!randomCategoryIDList.Contains(randomCategoryID))
+                    randomCategoryIDList.Add(randomCategoryID);
+                else
                 {
-                    randomCategoryID = rnd.Next(3, 5);
+                    while (randomCategoryIDList.Contains(randomCategoryID))
+                    {
+                        randomCategoryID = rnd.Next(3, 5);
+                    }
+                    randomCategoryIDList.Add(randomCategoryID);
+                }
+            }
+            for(int i = 0;i < randomCategoryIDList.Count;i++)
+            {
+                var item = _itemService.TGetItemWithImageAndCategoryByCategory(randomCategoryIDList[i]);
+                items.Add(item);
+            }
+
+
+
+
+
+                /*
+                 * orjinal
+                for (int j = 1;j <=4 ;j++)
+                {
+                    randomCategoryID = rnd.Next(1, count + 1);
+                    var item = _itemService.TGetItemWithImageAndCategoryByCategory(randomCategoryID);
+                    items.Add(item);
+                //o kategori id'si var mı kontrol eklenecek
+
+
 
                 }
-                var item = _itemService.TGetItemWithImageAndCategoryByCategory(randomCategoryID);
-                items.Add(item);
-
-
-
-            }
+                */
+                
+            
             ViewBag.slide1 = items.ElementAt(0);
             ViewBag.slide2 = items.ElementAt(1);
+            ViewBag.slide3 = items.ElementAt(0);
+            ViewBag.slide4 = items.ElementAt(1);
             //ViewBag.slide3 = items.ElementAt(2);
             //ViewBag.slide4 = items.ElementAt(3);
 

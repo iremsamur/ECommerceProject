@@ -58,5 +58,15 @@ namespace ECommerce.BusinessLayer.Concrete
         {
             _itemDal.Update(t);
         }
+
+        public ItemRatingsSpModel TGetMostLikedItemAllDetails(int CategoryID)
+        {
+            return _itemDal.GetMostLikedItemAllDetails(CategoryID);
+        }
+
+        public ItemDiscountScoresSpModel TGetMostDiscountedItemAllDetails(int CategoryID)
+        {
+            return _itemDal.GetMostDiscountedItemAllDetails(CategoryID);
+        }
     }
 }

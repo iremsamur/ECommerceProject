@@ -139,6 +139,42 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.ToTable("ItemDiscountScores");
                 });
 
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemDiscountScoresSpModel", b =>
+                {
+                    b.Property<int>("ItemID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("ItemDiscount")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ItemDiscountScoreID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ItemName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("ItemNewPrice")
+                        .HasColumnType("float");
+
+                    b.Property<double>("ItemOldPrice")
+                        .HasColumnType("float");
+
+                    b.Property<string>("ItemShowcaseImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("ItemTotalDiscountScore")
+                        .HasColumnType("float");
+
+                    b.HasKey("ItemID");
+
+                    b.ToTable("ItemDiscountScoresSpModels");
+                });
+
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemImage", b =>
                 {
                     b.Property<int>("ItemImageID")
@@ -181,7 +217,36 @@ namespace ECommerce.DataAccessLayer.Migrations
 
                     b.HasKey("ItemRatingID");
 
+                    b.HasIndex("ItemID");
+
                     b.ToTable("ItemRatings");
+                });
+
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemRatingsSpModel", b =>
+                {
+                    b.Property<int>("ItemID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ItemName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ItemRatingID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ItemShowcaseImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ItemTotalRatingScore")
+                        .HasColumnType("int");
+
+                    b.HasKey("ItemID");
+
+                    b.ToTable("ItemRatingsSpModels");
                 });
 
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.SubCategory", b =>
@@ -238,6 +303,17 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.Navigation("ItemImage");
 
                     b.Navigation("SubCategory");
+                });
+
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemRatings", b =>
+                {
+                    b.HasOne("ECommerce.EntityLayer.Concrete.Item", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Item");
                 });
 
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.SubCategory", b =>

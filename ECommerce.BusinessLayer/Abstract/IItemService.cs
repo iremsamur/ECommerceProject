@@ -15,6 +15,12 @@ namespace ECommerce.BusinessLayer.Abstract
 
 
        Item TGetItemWithImageAndCategoryByCategory(int CategoryID);
-        
+
+        ItemRatingsSpModel TGetMostLikedItemAllDetails(int CategoryID);
+        ItemDiscountScoresSpModel TGetMostDiscountedItemAllDetails(int CategoryID);
+
+
+
+
     }
 }

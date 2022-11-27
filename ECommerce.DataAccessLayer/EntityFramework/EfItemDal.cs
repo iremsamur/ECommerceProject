@@ -1,13 +1,16 @@
 ﻿using ECommerce.DataAccessLayer.Abstract;
 using ECommerce.DataAccessLayer.Concrete;
+using ECommerce.DataAccessLayer.Migrations;
 using ECommerce.DataAccessLayer.Repository;
 using ECommerce.EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ECommerce.DataAccessLayer.EntityFramework
 {
@@ -43,11 +46,29 @@ namespace ECommerce.DataAccessLayer.EntityFramework
             }
         }
 
-      
-
-        List<Item> IItemDal.GetMostLikedItemsWithImageAndCategoryByCategory(int CategoryID)
+        public ItemDiscountScoresSpModel GetMostDiscountedItemAllDetails(int CategoryID)
         {
-            throw new NotImplementedException();
+            Context context = new Context();
+
+
+
+            string sql = $"SpGetMostDiscountedItemsByCategory {CategoryID}";
+            return context.ItemDiscountScoresSpModels.FromSqlRaw<ItemDiscountScoresSpModel>(sql).AsEnumerable().FirstOrDefault();
         }
+
+        public ItemRatingsSpModel GetMostLikedItemAllDetails(int CategoryID)
+        {
+            Context context = new Context();
+
+           
+            
+            string sql = $"SpGetMostLikedItemsByCategory {CategoryID}";
+            return  context.ItemRatingsSpModels.FromSqlRaw<ItemRatingsSpModel>(sql).AsEnumerable().FirstOrDefault();
+
+        }
+
+       
+
+        
     }
 }

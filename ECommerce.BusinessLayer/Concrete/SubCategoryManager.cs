@@ -38,6 +38,11 @@ namespace ECommerce.BusinessLayer.Concrete
 			throw new NotImplementedException();
 		}
 
+		public List<SubCategory> TGetSubCategoriesByCategoryID(int CategoryID)
+		{
+			return _subCategoryDal.GetSubCategoriesByCategoryID(CategoryID);
+		}
+
 		public void TInsert(SubCategory t)
 		{
 			throw new NotImplementedException();

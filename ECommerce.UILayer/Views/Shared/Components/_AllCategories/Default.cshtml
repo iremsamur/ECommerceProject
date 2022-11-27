@@ -1,0 +1,10 @@
+﻿@model List<Category>
+<select id="agileinfo-nav_search" name="agileinfo_search" class="border" required="">
+	<option value="">Bütün Kategoriler</option>
+	@foreach(var item in Model){
+		<option value="">@item.CategoryName</option>
+
+	}
+	
+
+</select>

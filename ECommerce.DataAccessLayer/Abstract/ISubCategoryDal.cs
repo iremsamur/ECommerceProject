@@ -10,5 +10,6 @@ namespace ECommerce.DataAccessLayer.Abstract
     public interface ISubCategoryDal :IGenericDal<SubCategory>
     {
         int GetCountOfSubCategories();
+        List<SubCategory> GetSubCategoriesByCategoryID(int CategoryID);
     }
 }

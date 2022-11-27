@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ECommerce.BusinessLayer.Abstract
 {
-	public interface ISubCategoryService : IGenericService<SubCategory>
-	{
-		int TGetCountOfSubCategories();
-		public List<SubCategory> TGetSubCategoriesByCategoryID(int CategoryID);
+	public interface ICategoryService:IGenericService<Category>
+    {
 
-    }
+	}
 }

@@ -9,5 +9,6 @@ namespace ECommerce.DataAccessLayer.Abstract
 {
     public interface ICategoryDal : IGenericDal<Category>
     {
+
     }
 }

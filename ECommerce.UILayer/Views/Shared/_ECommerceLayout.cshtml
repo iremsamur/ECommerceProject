@@ -604,18 +604,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="agileits-navi_search">
 					<form action="#" method="post">
-						<select id="agileinfo-nav_search" name="agileinfo_search" class="border" required="">
-							<option value="">All Categories</option>
-							<option value="Televisions">Televisions</option>
-							<option value="Headphones">Headphones</option>
-							<option value="Computers">Computers</option>
-							<option value="Appliances">Appliances</option>
-							<option value="Mobiles">Mobiles</option>
-							<option value="Fruits &amp; Vegetables">Tv &amp; Video</option>
-							<option value="iPad & Tablets">iPad & Tablets</option>
-							<option value="Cameras & Camcorders">Cameras & Camcorders</option>
-							<option value="Home Audio & Theater">Home Audio & Theater</option>
-						</select>
+							@await Component.InvokeAsync("_AllCategories")
+						
 					</form>
 				</div>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -625,11 +615,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto text-center mr-xl-5">
 						<li class="nav-item active mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="index.html">Home
+							<a class="nav-link" href="/Item/GetItemsInTheShowcaseWithImage">
+								Ana Sayfa
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
+					@*	<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Electronics
 							</a>
@@ -696,8 +687,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</div>
 								</div>
 							</div>
-						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
+						</li>*@
+						@await Component.InvokeAsync("_CategoriesNavbar")
+					@*	<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Appliances
 							</a>
@@ -770,14 +762,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</div>
 								</div>
 							</div>
-						</li>
-						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+						</li>*@
+					@*	<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="about.html">About Us</a>
-						</li>
-						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+						</li>*@
+					@*	<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="product.html">New Arrivals</a>
-						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
+						</li>*@
+						@*<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Pages
 							</a>
@@ -791,10 +783,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<a class="dropdown-item" href="checkout.html">Checkout Page</a>
 								<a class="dropdown-item" href="payment.html">Payment Page</a>
 							</div>
-						</li>
-						<li class="nav-item">
+						</li>*@
+					@*	<li class="nav-item">
 							<a class="nav-link" href="contact.html">Contact Us</a>
-						</li>
+						</li>*@
 					</ul>
 				</div>
 			</nav>

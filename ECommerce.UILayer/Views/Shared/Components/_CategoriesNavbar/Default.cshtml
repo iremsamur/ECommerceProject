@@ -1,0 +1,50 @@
+﻿@model List<SubCategory>
+@{
+	int count = 0;
+	List<String> list = new List<String>();
+}
+@foreach(var item in Model){
+	<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
+		@if (list.Contains(item.Category.CategoryName.ToString()) == false)
+		{
+			list.Add(item.Category.CategoryName)
+			;
+			<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				
+				@item.Category.CategoryName
+			</a>
+		}
+	
+		<div class="dropdown-menu">
+			<div class="agile_inner_drop_nav_info p-4">
+				<h5 class="mb-3">Mobiles, Computers</h5>
+				<div class="row">
+					<div class="col-sm-6 multi-gd-img">
+						
+						<ul class="multi-column-dropdown">
+							@foreach(var subCategory in Model){
+								
+								if(subCategory.CategoryID==item.CategoryID){
+									<!--gezindiği kategori id'si o alt kategorinin id'si ile aynı ise yazdır-->
+
+									<li>
+										<a href="product.html">@subCategory.CategoryName</a>
+									</li>
+									
+
+								}
+							
+
+							}
+						
+						
+						</ul>
+					</div>
+	
+				</div>
+			</div>
+		</div>
+	</li>
+
+}
+

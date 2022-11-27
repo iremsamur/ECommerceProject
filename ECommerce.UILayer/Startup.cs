@@ -32,6 +32,8 @@ namespace ECommerce.UILayer
             services.AddScoped<IItemDal, EfItemDal>();
             services.AddScoped<ISubCategoryService, SubCategoryManager>();
             services.AddScoped<ISubCategoryDal, EfSubCategoryDal>();
+            services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<ICategoryDal, EfCategoryDal>();
             services.AddControllersWithViews();
         }
 

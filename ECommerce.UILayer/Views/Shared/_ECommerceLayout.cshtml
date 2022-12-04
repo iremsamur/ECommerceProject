@@ -77,11 +77,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<i class="fas fa-phone mr-2"></i> 001 234 5678
 						</li>
 						<li class="text-center border-right text-white">
-							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
+							<a href="/Login/SignIn" class="text-white">
 								<i class="fas fa-sign-in-alt mr-2"></i> Giriş Yap </a>
 						</li>
 						<li class="text-center text-white">
-							<a href="#" data-toggle="modal" data-target="#exampleModal2" class="text-white">
+							<a href="/Register/SignUp" class="text-white">
 								<i class="fas fa-sign-out-alt mr-2"></i>Kayıt Ol </a>
 						</li>
 					</ul>
@@ -468,11 +468,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="clearfix"></div>
 		</div>
 	</div>
+@*	@await Html.PartialAsync("/Views/Login/SignIn.cshtml")*@
 	<!-- //shop locator (popup) -->
 
 	<!-- modals -->
 	<!-- log in -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+	@*<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -508,9 +509,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>*@
+@*	@await Html.PartialAsync("SignIn")
+	@await Html.PartialAsync("SignUp")*@
+@*	@await Html.PartialAsync("~/Views/Register/SignUp2.cshtml")*@
 	<!-- register -->
-	<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true">
+@*	<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -550,7 +554,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>*@
 	<!-- //modal -->
 	<!-- //top-header -->
 

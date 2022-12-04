@@ -1,7 +1,9 @@
 using ECommerce.BusinessLayer.Abstract;
 using ECommerce.BusinessLayer.Concrete;
 using ECommerce.DataAccessLayer.Abstract;
+using ECommerce.DataAccessLayer.Concrete;
 using ECommerce.DataAccessLayer.EntityFramework;
+using ECommerce.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +36,9 @@ namespace ECommerce.UILayer
             services.AddScoped<ISubCategoryDal, EfSubCategoryDal>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<ICategoryDal, EfCategoryDal>();
+            services.AddDbContext<Context>();
+            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+
             services.AddControllersWithViews();
         }
 

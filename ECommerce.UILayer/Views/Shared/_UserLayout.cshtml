@@ -1302,6 +1302,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     
 		});
 		//function visibilityElement(){
+		//Buradaki bu hata düzeltilecek
+		//giriş yapınca giriş yapan kişinin ad soyad bilgileri profil resimi ile sign in butonu yerinde görünecek. Register ve sign in gizlenecek
+		//giriş yapmadığında sadece register ve login butonları görünecek
 			//console.log("value");
 			//var check = @(ViewBag.checkLogging)
 			//var check2=@ViewData["check"]
@@ -1318,8 +1321,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			}*/
 		
 	</script>
+
 	@if(ViewBag.checkLogging==true){
 		<script>
+			
 
 			$(document).ready(function () {
 				element = document.querySelector('#loginButton');

@@ -172,3 +172,5 @@ C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\D
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Login\SignIn.cshtml.g.cs
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Shared\_UserLayout.cshtml.g.cs
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\ItemAds\GetAllItemAds.cshtml.g.cs
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Shared\PartialViews\_NavbarwithProfilePartial.cshtml.g.cs
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Item\GetItemDetails.cshtml.g.cs

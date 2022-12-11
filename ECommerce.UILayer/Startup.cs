@@ -36,6 +36,8 @@ namespace ECommerce.UILayer
             services.AddScoped<ISubCategoryDal, EfSubCategoryDal>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<ICategoryDal, EfCategoryDal>();
+            services.AddScoped<IUserService, UserManager>();
+            services.AddScoped<IUserDal, EfUserDal>();
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 

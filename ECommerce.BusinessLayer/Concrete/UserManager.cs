@@ -1,4 +1,5 @@
 ﻿using ECommerce.BusinessLayer.Abstract;
+using ECommerce.DataAccessLayer.Abstract;
 using ECommerce.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,18 @@ namespace ECommerce.BusinessLayer.Concrete
 {
 	public class UserManager : IUserService
 	{
+        private readonly IUserDal _userDal;
+
+        public UserManager(IUserDal userDal)
+        {
+            _userDal = userDal;
+        }
+        public AppUser TgetLoggedUserID(string username)
+		{
+			return _userDal.getLoggedUserID(username);
+			
+		}
+
 		public void TDelete(AppUser t)
 		{
 			throw new NotImplementedException();

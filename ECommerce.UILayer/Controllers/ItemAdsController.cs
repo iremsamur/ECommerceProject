@@ -9,14 +9,18 @@ namespace ECommerce.UILayer.Controllers
     public class ItemAdsController : Controller
     {
         private readonly IItemService _itemService;
+        private readonly IUserService _userService;
 
-        public ItemAdsController(IItemService itemService)
+        public ItemAdsController(IItemService itemService, IUserService userService)
         {
             _itemService = itemService;
+            _userService = userService;
         }
 
         public IActionResult GetAllItemAds()
         {
+            
+     
             List<Item> items = new List<Item>();
             var values = _itemService.TGetItemWithImage();
             var count = values.Count();

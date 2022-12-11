@@ -46,12 +46,51 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<link href="~/electro_store-web_Free28-08-2018_1414020280/web/css/menu.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- menu style -->
 	<!-- //Custom-Files -->
-
 	<!-- web fonts -->
 	<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
-	    rel="stylesheet">
+		  rel="stylesheet">
 	<!-- //web fonts -->
+	<!---navbar css styles->
+	 <!-- plugins:css -->
+    <link rel="stylesheet" href="~/Stellar-master/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="~/Stellar-master/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/Stellar-master/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Stellar-master/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="~/Stellar-master/vendors/chartist/chartist.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="~/Stellar-master/css/style.css">
+    <!-- End layout styles -->
+	<link rel="shortcut icon" href="~/Stellar-master/images/favicon.png" />
+	<!---navbar->
+
+	<!--for smart shop css files-->
+	<!-- //for-mobile-apps -->
+	<link href="~/smart_shop/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="~/smart_shop/css/flexslider.css" type="text/css" media="screen" />
+	<link href="~/smart_shop/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!-- js -->
+	<script type="text/javascript" src="~/smart_shop/js/jquery-2.1.4.min.js"></script>
+	<!-- //js -->
+	<!-- single -->
+	<script src="~/smart_shop/js/imagezoom.js"></script>
+	<script src="~/smart_shop/js/jquery.flexslider.js"></script>
+	<!-- single -->
+	<!-- cart -->
+	<script src="~/smart_shop/js/simpleCart.min.js"></script>
+	<!-- cart -->
+	<!-- for bootstrap working -->
+	<script type="text/javascript" src="~/smart_shop/js/bootstrap-3.1.1.min.js"></script>
+	<!-- //for bootstrap working -->
+	<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
+	<script src="~/smart_shop/js/jquery.easing.min.js"></script>
+	
 
 </head>
 
@@ -81,14 +120,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<i class="fas fa-phone mr-2"></i> 001 234 5678
 						</li>
 					
-						<li class="text-center border-right text-white" id="loginButton" onload="visibilityElement()">
-								<a href="/Login/SignIn" class="text-white">
-									<i class="fas fa-sign-in-alt mr-2"></i> Giriş Yap </a>
-						</li>
-						<li class="text-center text-white">
-								<a href="/Register/SignUp" class="text-white" id="registerButton" onload="visibilityElement()">
-									<i class="fas fa-sign-out-alt mr-2"></i>Kayıt Ol </a>
-						</li>
+						@if(ViewBag.checkLogging==false){
+							<li class="text-center border-right text-white" id="loginButton">
+									<a href="/Login/SignIn" class="text-white">
+										<i class="fas fa-sign-in-alt mr-2"></i> Giriş Yap </a>
+							</li>
+							<li class="text-center text-white">
+									<a href="/Register/SignUp" class="text-white" id="registerButton" >
+										<i class="fas fa-sign-out-alt mr-2"></i>Kayıt Ol </a>
+							</li>
+								
+
+						}
+						else{
+							@await Html.PartialAsync("/Views/Shared/PartialViews/_NavbarwithProfilePartial.cshtml")
+							
+							  
+							
+
+
+							
+
+						}
+
+					
 					
 						
 					</ul>
@@ -1301,45 +1356,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     
 		});
-		//function visibilityElement(){
-		//Buradaki bu hata düzeltilecek
-		//giriş yapınca giriş yapan kişinin ad soyad bilgileri profil resimi ile sign in butonu yerinde görünecek. Register ve sign in gizlenecek
-		//giriş yapmadığında sadece register ve login butonları görünecek
-			//console.log("value");
-			//var check = @(ViewBag.checkLogging)
-			//var check2=@ViewData["check"]
-			//console.log("value2");
-			//console.log(check);
-			//console.log("value3");
-			//console.log(check2);
-			/*
-			if(check==true){
-				element = document.querySelector('#loginButton');
-				element.style.visibility = 'hidden';
-				element = document.querySelector('#registerButton');
-				element.style.visibility = 'hidden';
-			}*/
+	
 		
 	</script>
 
-	@if(ViewBag.checkLogging==true){
-		<script>
-			
 
-			$(document).ready(function () {
-				element = document.querySelector('#loginButton');
-				element.style.visibility = 'hidden';
-				element = document.querySelector('#registerButton');
-				element.style.visibility = 'hidden';
-
-
-
-			});
-        </script>
-
-		
-
-	}
+	
 	<!-- //smooth-scrolling-of-move-up -->
 
 	<!-- for bootstrap working -->

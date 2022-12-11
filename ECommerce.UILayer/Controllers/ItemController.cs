@@ -37,5 +37,9 @@ namespace ECommerce.UILayer.Controllers
 
             return View(items);
         }
+        public IActionResult GetItemDetails()
+        {
+            return View();
+        }
     }
 }

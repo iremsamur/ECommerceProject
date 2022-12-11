@@ -9,7 +9,8 @@ namespace ECommerce.DataAccessLayer.Abstract
 {
 	public interface IUserDal : IGenericDal<AppUser>
     {
-        
+
+        AppUser getLoggedUserID(string username);
 
     }
 }

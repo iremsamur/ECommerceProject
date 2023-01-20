@@ -1,6 +1,8 @@
 ﻿using ECommerce.DataAccessLayer.Abstract;
+using ECommerce.DataAccessLayer.Concrete;
 using ECommerce.DataAccessLayer.Repository;
 using ECommerce.EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +13,6 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 {
     public class EfItemDetailDal : GenericRepository<ItemDetail>, IItemDetailDal
     {
+        
     }
 }

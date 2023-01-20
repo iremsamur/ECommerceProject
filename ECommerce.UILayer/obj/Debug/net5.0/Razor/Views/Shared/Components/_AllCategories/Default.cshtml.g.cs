@@ -33,8 +33,15 @@ using ECommerce.EntityLayer.Concrete;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\Views\_ViewImports.cshtml"
+using ECommerce.DTOLayer.ItemDTOs;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8c517523d769b0e148103f9590ede6c50a0a691e", @"/Views/Shared/Components/_AllCategories/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"99d9d7a47dd5532529991275d7b640be551b5c0b", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"19d71d852a3cc54a4795c394a994face75ed4622", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Components__AllCategories_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Category>>
     #nullable disable
@@ -68,7 +75,7 @@ using ECommerce.EntityLayer.Concrete;
             BeginWriteAttribute("required", " required=\"", 95, "\"", 106, 0);
             EndWriteAttribute();
             WriteLiteral(">\r\n\t");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c517523d769b0e148103f9590ede6c50a0a691e4077", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c517523d769b0e148103f9590ede6c50a0a691e4294", async() => {
                 WriteLiteral("Bütün Kategoriler");
             }
             );
@@ -92,7 +99,7 @@ using ECommerce.EntityLayer.Concrete;
 #line hidden
 #nullable disable
             WriteLiteral("\t\t");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c517523d769b0e148103f9590ede6c50a0a691e5525", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8c517523d769b0e148103f9590ede6c50a0a691e5742", async() => {
 #nullable restore
 #line 5 "C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\Views\Shared\Components\_AllCategories\Default.cshtml"
                     Write(item.CategoryName);

@@ -67,8 +67,14 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 
         }
 
-       
+        public Item GetSelectedItemAllDetails(int itemID)
+        {
+            using (var context = new Context())
+            {
+                var value = context.Items.Include(x => x.ItemImage).Include(x => x.SubCategory).ThenInclude(x => x.Category).Include(x => x.ItemDetail).Where(x => x.ItemID == itemID).FirstOrDefault();
 
-        
+                return value;
+            }
+        }
     }
 }

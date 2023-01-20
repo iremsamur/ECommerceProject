@@ -19,6 +19,8 @@ namespace ECommerce.BusinessLayer.Abstract
         ItemRatingsSpModel TGetMostLikedItemAllDetails(int CategoryID);
         ItemDiscountScoresSpModel TGetMostDiscountedItemAllDetails(int CategoryID);
 
+        Item TGetSelectedItemAllDetails(int itemID);
+
 
 
 

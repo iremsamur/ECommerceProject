@@ -33,8 +33,15 @@ using ECommerce.EntityLayer.Concrete;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\Views\_ViewImports.cshtml"
+using ECommerce.DTOLayer.ItemDTOs;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"280fac4ac3a71df65717c8590c897356f45ea996", @"/Views/Shared/Components/_MostDiscountedItemsPage/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"99d9d7a47dd5532529991275d7b640be551b5c0b", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"19d71d852a3cc54a4795c394a994face75ed4622", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Components__MostDiscountedItemsPage_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<ItemDiscountScoresSpModel>>
     #nullable disable
@@ -144,7 +151,7 @@ WriteAttributeValue("", 455, item.ItemName, 455, 14, false);
 #line hidden
 #nullable disable
             WriteLiteral("</span>\r\n\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t<div class=\"snipcart-details top_brand_home_details item_add single-item hvr-outline-out\">\r\n\t\t\t\t\t\t\t");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "280fac4ac3a71df65717c8590c897356f45ea9968582", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "280fac4ac3a71df65717c8590c897356f45ea9968799", async() => {
                 WriteLiteral(@"
 								<fieldset>
 									<input type=""hidden"" name=""cmd"" value=""_cart"" />

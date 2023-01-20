@@ -1,5 +1,6 @@
 using ECommerce.BusinessLayer.Abstract;
 using ECommerce.BusinessLayer.Concrete;
+using ECommerce.BusinessLayer.DIContainer;
 using ECommerce.DataAccessLayer.Abstract;
 using ECommerce.DataAccessLayer.Concrete;
 using ECommerce.DataAccessLayer.EntityFramework;
@@ -29,19 +30,14 @@ namespace ECommerce.UILayer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //soyut ve somut sýnýflarla yapýlan dependency injeksiyonu kullanabilmek için burada bunlarý tanýmlarýz
-            services.AddScoped<IItemService, ItemManager>();
-            services.AddScoped<IItemDal, EfItemDal>();
-            services.AddScoped<ISubCategoryService, SubCategoryManager>();
-            services.AddScoped<ISubCategoryDal, EfSubCategoryDal>();
-            services.AddScoped<ICategoryService, CategoryManager>();
-            services.AddScoped<ICategoryDal, EfCategoryDal>();
-            services.AddScoped<IUserService, UserManager>();
-            services.AddScoped<IUserDal, EfUserDal>();
+
+            services.Containerdependencies();
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

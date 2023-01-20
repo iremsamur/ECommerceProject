@@ -68,5 +68,10 @@ namespace ECommerce.BusinessLayer.Concrete
         {
             return _itemDal.GetMostDiscountedItemAllDetails(CategoryID);
         }
+
+        public Item TGetSelectedItemAllDetails(int itemID)
+        {
+            return _itemDal.GetSelectedItemAllDetails(itemID);
+        }
     }
 }

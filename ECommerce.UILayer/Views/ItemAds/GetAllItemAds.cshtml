@@ -21,7 +21,7 @@
 									<img src="@item.ItemShowcaseImage" alt="@item.ItemName" style="width:200px;height:200px;">
 									<div class="men-cart-pro">
 										<div class="inner-men-cart-pro">
-											<a href="single.html" class="link-product-add-cart">Hemen İncele!</a>
+											<a href="/ItemUI/GetSelectedItemDetails/@item.ItemID" class="link-product-add-cart">Hemen İncele!</a>
 										</div>
 									</div>
 								</div>
@@ -30,8 +30,8 @@
 										<a href="single.html">@item.ItemName</a>
 									</h4>
 									<div class="info-product-price my-2">
-										<span class="item_price">$200.00</span>
-										<del>$280.00</del>
+										<span class="item_price">@item.ItemDetail.ItemNewPrice</span>
+										<del>@item.ItemDetail.ItemNewPrice</del>
 									</div>
 									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
 										<form action="#" method="post">

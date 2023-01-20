@@ -16,6 +16,8 @@ namespace ECommerce.DataAccessLayer.Abstract
         ItemRatingsSpModel GetMostLikedItemAllDetails(int CategoryID);
         ItemDiscountScoresSpModel GetMostDiscountedItemAllDetails(int CategoryID);
 
+        Item GetSelectedItemAllDetails(int itemID);
+
 
 
     }

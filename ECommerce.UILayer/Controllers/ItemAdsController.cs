@@ -22,7 +22,7 @@ namespace ECommerce.UILayer.Controllers
             
      
             List<Item> items = new List<Item>();
-            var values = _itemService.TGetItemWithImage();
+            var values = _itemService.TGetItemWithImageAndCategoryAndDetail();
             var count = values.Count();
             for (int i = 0;i < count;i++)
             {

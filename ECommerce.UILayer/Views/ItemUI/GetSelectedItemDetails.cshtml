@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
+<link href="~/customizecss/previewitempage.css" rel="stylesheet" />
+
+
 <div class="banner-bootom-w3-agileits py-5">
 	<div class="container py-xl-4 py-lg-2">
 		<!-- tittle heading -->
@@ -14,24 +17,19 @@
 		<!-- //tittle heading -->
 		<div class="row">
 			<div class="col-lg-5 col-md-8 single-right-left ">
+				
 				<div class="grid images_3_of_2">
 					<div class="flexslider">
-						<ul class="slides">
-							<li data-thumb="images/si1.jpg">
-								<div class="thumb-image">
-									<img src="@Model.Picture" data-imagezoom="true" class="img-fluid" alt="">
+						<ul >
+							<li >
+								
+								<div class="img-zoom-container">
+									<img id="myimage" src="@Model.ItemShowcaseImage" width="300" height="240" alt="Girl">
+									<div id="myresult" class="img-zoom-result" ></div>
 								</div>
+
 							</li>
-							<li data-thumb="images/si2.jpg">
-								<div class="thumb-image">
-									<img src="images/si2.jpg" data-imagezoom="true" class="img-fluid" alt="">
-								</div>
-							</li>
-							<li data-thumb="images/si3.jpg">
-								<div class="thumb-image">
-									<img src="images/si3.jpg" data-imagezoom="true" class="img-fluid" alt="">
-								</div>
-							</li>
+							
 						</ul>
 						<div class="clearfix"></div>
 					</div>
@@ -39,11 +37,11 @@
 			</div>
 
 			<div class="col-lg-7 single-right-left simpleCart_shelfItem">
-				<h3 class="mb-3">@Model.Name</h3>
+				<h3 class="mb-3">@Model.ItemName</h3>
 				<p class="mb-3">
-					<span class="item_price">$200.00</span>
-					<del class="mx-2 font-weight-light">$280.00</del>
-					<label>Free delivery</label>
+					<span class="item_price">@Model.ItemOldPrice</span>
+					<del class="mx-2 font-weight-light">@Model.ItemNewPrice</del>
+					<label>@Model.ItemNo</label>
 				</p>
 				<div class="single-infoagile">
 					<ul>
@@ -54,33 +52,41 @@
 							Shipping Speed to Delivery.
 						</li>
 						<li class="mb-3">
-							EMIs from $655/month.
+							EMI starts at $958.
 						</li>
 						<li class="mb-3">
-							Bank OfferExtra 5% off* with Axis Bank Buzz Credit CardT&C
+							3 offers from
+							<span class="item_price">$220.00</span>
 						</li>
 					</ul>
 				</div>
 				<div class="product-single-w3l">
 					<p class="my-3">
 						<i class="far fa-hand-point-right mr-2"></i>
-						<label>1 Year</label>Manufacturer Warranty
+						Free standard installation within
+						<label>48 hours</label> of delivery
 					</p>
 					<ul>
 						<li class="mb-1">
-							3 GB RAM | 16 GB ROM | Expandable Upto 256 GB
+							Frost Free Double Door: Auto defrost to stop ice-build up
 						</li>
 						<li class="mb-1">
-							5.5 inch Full HD Display
+							Capacity 260 L: Suitable for families with 2 to 3 members
 						</li>
 						<li class="mb-1">
-							13MP Rear Camera | 8MP Front Camera
+							Energy Rating: 3 Star
 						</li>
 						<li class="mb-1">
-							3300 mAh Battery
+							Warranty: 1 year warranty on product and 10 years warranty on compressor
 						</li>
 						<li class="mb-1">
-							Exynos 7870 Octa Core 1.6GHz Processor
+							Shelf Type: Toughened Glass to withstand the weight of heaviest vessels
+						</li>
+						<li class="mb-1">
+							Inverter Compressor: Energy efficient, less noise & more durable
+						</li>
+						<li class="mb-1">
+							Also included in the box: User manual, Warranty card
 						</li>
 					</ul>
 					<p class="my-sm-4 my-3">
@@ -94,8 +100,8 @@
 								<input type="hidden" name="cmd" value="_cart" />
 								<input type="hidden" name="add" value="1" />
 								<input type="hidden" name="business" value=" " />
-								<input type="hidden" name="item_name" value="Samsung Galaxy J7 Prime" />
-								<input type="hidden" name="amount" value="200.00" />
+								<input type="hidden" name="item_name" value="Double-Door Refrigerator" />
+								<input type="hidden" name="amount" value="220.00" />
 								<input type="hidden" name="discount_amount" value="1.00" />
 								<input type="hidden" name="currency_code" value="USD" />
 								<input type="hidden" name="return" value=" " />
@@ -104,9 +110,96 @@
 							</fieldset>
 						</form>
 					</div>
+
 				</div>
+
 			</div>
 		</div>
 	</div>
 </div>
+
+
+
+
+<script>
+	function imageZoom(imgID, resultID) {
+		var img, lens, result, cx, cy;
+		img = document.getElementById(imgID);
+		result = document.getElementById(resultID);
+		/* Create lens: */
+		lens = document.createElement("DIV");
+		lens.setAttribute("class", "img-zoom-lens");
+		/* Insert lens: */
+		img.parentElement.insertBefore(lens, img);
+		/* Calculate the ratio between result DIV and lens: */
+		cx = result.offsetWidth / lens.offsetWidth;
+		cy = result.offsetHeight / lens.offsetHeight;
+		/* Set background properties for the result DIV */
+		result.style.backgroundImage = "url('" + img.src + "')";
+		result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+		/* Execute a function when someone moves the cursor over the image, or the lens: */
+		lens.addEventListener("mousemove", moveLens);
+		img.addEventListener("mousemove", moveLens);
+		/* And also for touch screens: */
+		lens.addEventListener("touchmove", moveLens);
+		img.addEventListener("touchmove", moveLens);
+		function moveLens(e) {
+			var pos, x, y;
+			/* Prevent any other actions that may occur when moving over the image */
+			e.preventDefault();
+			/* Get the cursor's x and y positions: */
+			pos = getCursorPos(e);
+			/* Calculate the position of the lens: */
+			x = pos.x - (lens.offsetWidth / 2);
+			y = pos.y - (lens.offsetHeight / 2);
+			/* Prevent the lens from being positioned outside the image: */
+			if (x > img.width - lens.offsetWidth) { x = img.width - lens.offsetWidth; }
+			if (x < 0) { x = 0; }
+			if (y > img.height - lens.offsetHeight) { y = img.height - lens.offsetHeight; }
+			if (y < 0) { y = 0; }
+			/* Set the position of the lens: */
+			lens.style.left = x + "px";
+			lens.style.top = y + "px";
+			/* Display what the lens "sees": */
+			result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+		}
+		function getCursorPos(e) {
+			var a, x = 0, y = 0;
+			e = e || window.event;
+			/* Get the x and y positions of the image: */
+			a = img.getBoundingClientRect();
+			/* Calculate the cursor's x and y coordinates, relative to the image: */
+			x = e.pageX - a.left;
+			y = e.pageY - a.top;
+			/* Consider any page scrolling: */
+			x = x - window.pageXOffset;
+			y = y - window.pageYOffset;
+			return { x: x, y: y };
+		}
+	}
+	imageZoom("myimage", "myresult");
+	
+	
+
+</script>
+
+<!-- //password-script -->
+<!-- imagezoom -->
+<script src="~/electro_store-web_Free28-08-2018_1414020280/web/js/imagezoom.js"></script>
+<!-- //imagezoom -->
+<!-- flexslider -->
+<link rel="stylesheet" href="~/electro_store-web_Free28-08-2018_1414020280/web/css/flexslider.css" type="text/css" media="screen" />
+
+<script src="~/electro_store-web_Free28-08-2018_1414020280/web/js/jquery.flexslider.js"></script>
+<script>
+	// Can also be used with $(document).ready()
+	$(window).load(function () {
+		$('.flexslider').flexslider({
+			animation: "slide",
+			controlNav: "thumbnails"
+		});
+	});
+</script>
+
+<!-- //single page -->
 

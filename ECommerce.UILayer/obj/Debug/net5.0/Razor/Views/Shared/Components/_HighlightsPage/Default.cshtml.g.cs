@@ -41,7 +41,7 @@ using ECommerce.DTOLayer.ItemDTOs;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"666d28afadbfe96bddf24574ef131028896ef243", @"/Views/Shared/Components/_HighlightsPage/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"19d71d852a3cc54a4795c394a994face75ed4622", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"392f56ef63a12791a3e88b48615554db70b84e42", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Components__HighlightsPage_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Item>>
     #nullable disable

@@ -51,11 +51,24 @@ namespace ECommerce.UILayer.Controllers
             //bana güncellenecek kullanıcı verilerini getirir.
             var httpClient = new HttpClient();
             var responseMessage = await httpClient.GetAsync("https://localhost:44362/api/Item/GetSelectedItemDetail/" + id);//id değerine göre veriyi alıyor
+            ItemDetailListDTO detailListDto = new ItemDetailListDTO();
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonItem = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<ItemDetailListDTO>(jsonItem);
-                return View(values);
+                var values = JsonConvert.DeserializeObject<Item>(jsonItem);
+                //ilişkili tablodan gelen verilerileride dto'ya da gösterebilmek için bu böyle eklendi
+                detailListDto.ItemNo = values.ItemDetail.ItemNo;
+                detailListDto.ItemName = values.ItemName;
+              
+                detailListDto.ItemDiscount = values.ItemDetail.ItemDiscount;
+                detailListDto.ItemAnnouncementDate = values.ItemDetail.ItemAnnouncementDate;
+                detailListDto.ItemImageID = values.ItemImageID;
+                detailListDto.ItemNewPrice = values.ItemDetail.ItemNewPrice;
+                detailListDto.ItemOldPrice = values.ItemDetail.ItemOldPrice;
+                detailListDto.ItemShowcaseImage = values.ItemShowcaseImage;
+
+
+                return View(detailListDto);
 
 
             }

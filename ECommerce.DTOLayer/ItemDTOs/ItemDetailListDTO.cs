@@ -8,22 +8,28 @@ namespace ECommerce.DTOLayer.ItemDTOs
 {
     public class ItemDetailListDTO
     {
+
         public int ItemID { get; set; }
-        public string Name { get; set; }
-        public string ShowcaseImage { get; set; }
-
-        public string ItemNo { get; set; }//ürün no-ilan no
-        //brandID gelir marka için diğerleri sonra eklenecek
-        public double NewPrice { get; set; }
-        public double OldPrice { get; set; }
-        public double DiscountRate { get; set; }
-
-        public DateTime AnnouncementDate { get; set; }//ilan tarihi
-        public int DetailID { get; set; }
-
-        public string SubCategoryName { get; set; }
+        public string ItemName { get; set; }
+        public string ItemShowcaseImage { get; set; }
+    
+        public int ItemDetailID { get; set; }
+      
         public int SubCategoryID { get; set; }
-        public string Picture { get; set; }
-        public int ImageID { get; set; }
+     
+        public int ItemImageID { get; set; }
+
+        public string ItemPicture { get; set; }
+
+        public string ItemNo { get; set; }
+        public double ItemNewPrice { get; set; }
+        public double ItemOldPrice { get; set; }
+        public double ItemDiscount { get; set; }
+        public DateTime ItemAnnouncementDate { get; set; }//ilan tarihi
+
+
+
+
+
     }
 }

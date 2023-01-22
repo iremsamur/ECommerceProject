@@ -12,7 +12,7 @@ namespace ECommerce.EntityLayer.Concrete
         [Key]
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
-        public bool status { get; set; }
+       
 
     }
 }

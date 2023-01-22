@@ -14,12 +14,15 @@ namespace ECommerce.EntityLayer.Concrete
         public int ItemID { get; set; }
         public string ItemName { get; set; }
         public string ItemShowcaseImage { get; set; }
+        public string ItemSubShowcaseImage { get; set; }
         public ItemDetail ItemDetail { get; set; }
         public int ItemDetailID { get; set; }
         public SubCategory SubCategory { get; set; }
         public int SubCategoryID { get; set; }
+
         public ItemImage ItemImage { get; set; }
         public int ItemImageID { get; set; }
+      
 
     }
 }

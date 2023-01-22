@@ -127,6 +127,30 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.Brand", b =>
+                {
+                    b.Property<int>("BrandID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BrandTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("BrandID");
+
+                    b.ToTable("Brands");
+                });
+
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.Category", b =>
                 {
                     b.Property<int>("CategoryID")
@@ -173,6 +197,9 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.Property<string>("ItemShowcaseImage")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ItemSubShowcaseImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("SubCategoryID")
                         .HasColumnType("int");
 
@@ -200,11 +227,26 @@ namespace ECommerce.DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("BrandID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromWho")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ItemAdType")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("ItemAnnouncementDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ItemDetailDescription")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("ItemDiscount")
                         .HasColumnType("float");
@@ -218,13 +260,21 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.Property<double>("ItemOldPrice")
                         .HasColumnType("float");
 
+                    b.Property<string>("ItemStatus")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("gGuarantee")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("status")
                         .HasColumnType("bit");
 
                     b.HasKey("ItemDetailID");
+
+                    b.HasIndex("BrandID");
 
                     b.ToTable("ItemDetails");
                 });
@@ -514,6 +564,17 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.Navigation("SubCategory");
                 });
 
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemDetail", b =>
+                {
+                    b.HasOne("ECommerce.EntityLayer.Concrete.Brand", "Brand")
+                        .WithMany("ItemDetails")
+                        .HasForeignKey("BrandID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+                });
+
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemRatings", b =>
                 {
                     b.HasOne("ECommerce.EntityLayer.Concrete.Item", "Item")
@@ -585,6 +646,11 @@ namespace ECommerce.DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.Brand", b =>
+                {
+                    b.Navigation("ItemDetails");
                 });
 
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemDetail", b =>

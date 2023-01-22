@@ -27,7 +27,7 @@ namespace ECommerce.UILayer.ViewComponents.HighlightsPage
             List<int> randomCategoryIDList = new List<int>();
             for (int j = 1;j <= 2;j++)
             {
-                randomCategoryID = rnd.Next(3, 5);
+                randomCategoryID = rnd.Next(1, 3);//veritabanı verileri kategoriye id'ye göre değiştiriliyor. dinamik yapılacak
 
                 if (!randomCategoryIDList.Contains(randomCategoryID))
                     randomCategoryIDList.Add(randomCategoryID);
@@ -35,7 +35,7 @@ namespace ECommerce.UILayer.ViewComponents.HighlightsPage
                 {
                     while (randomCategoryIDList.Contains(randomCategoryID))
                     {
-                        randomCategoryID = rnd.Next(3, 5);
+                        randomCategoryID = rnd.Next(1, 3);//veritabanı verileri kategoriye id'ye göre değiştiriliyor. dinamik yapılacak
                     }
                     randomCategoryIDList.Add(randomCategoryID);
                 }

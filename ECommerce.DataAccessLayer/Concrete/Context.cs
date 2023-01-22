@@ -13,7 +13,7 @@ namespace ECommerce.DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=LAPTOP-ISO96UVH\\SQLEXPRESS;database=ECommerceProjectDB;integrated security=true;");
+            optionsBuilder.UseSqlServer("server=LAPTOP-ISO96UVH\\SQLEXPRESS;database=ECommerceCapstoneProjectDB;integrated security=true;");
 
 
         }
@@ -23,6 +23,7 @@ namespace ECommerce.DataAccessLayer.Concrete
 
         public DbSet<Item> Items { get; set; }
         public DbSet<ItemDetail> ItemDetails { get; set; }
+        public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories{ get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<ItemImage> ItemImages { get; set; }

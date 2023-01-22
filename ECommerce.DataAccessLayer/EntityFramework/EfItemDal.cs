@@ -1,6 +1,6 @@
 ﻿using ECommerce.DataAccessLayer.Abstract;
 using ECommerce.DataAccessLayer.Concrete;
-using ECommerce.DataAccessLayer.Migrations;
+
 using ECommerce.DataAccessLayer.Repository;
 using ECommerce.EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;

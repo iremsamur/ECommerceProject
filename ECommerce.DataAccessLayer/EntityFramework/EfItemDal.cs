@@ -71,7 +71,7 @@ namespace ECommerce.DataAccessLayer.EntityFramework
         {
             using (var context = new Context())
             {
-                var value = context.Items.Include(x => x.ItemImage).Include(x => x.SubCategory).ThenInclude(x => x.Category).Include(x => x.ItemDetail).Where(x => x.ItemID == itemID).FirstOrDefault();
+                var value = context.Items.Include(x => x.ItemImage).Include(x => x.SubCategory).ThenInclude(x => x.Category).Include(x => x.ItemDetail).ThenInclude(x=>x.Brand).Where(x => x.ItemID == itemID).FirstOrDefault();
 
                 return value;
             }

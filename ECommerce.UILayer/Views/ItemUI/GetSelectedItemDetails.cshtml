@@ -11,8 +11,8 @@
 	<div class="container py-xl-4 py-lg-2">
 		<!-- tittle heading -->
 		<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-			<span>S</span>ingle
-			<span>P</span>age
+			<span>@Model.ItemName</span>
+			
 		</h3>
 		<!-- //tittle heading -->
 		<div class="row">
@@ -24,7 +24,9 @@
 							<li >
 								
 								<div class="img-zoom-container">
-									<img id="myimage" src="@Model.ItemShowcaseImage" width="300" height="240" alt="Girl">
+									<img id="myimage" src="@Model.ItemShowcaseImage" width="300" height="240" alt="@Model.ItemName">
+								
+									<img id="mysubimage" src="@Model.ItemSubShowcaseImage" width="300" height="240" alt="@Model.ItemName">
 									<div id="myresult" class="img-zoom-result" ></div>
 								</div>
 
@@ -39,58 +41,60 @@
 			<div class="col-lg-7 single-right-left simpleCart_shelfItem">
 				<h3 class="mb-3">@Model.ItemName</h3>
 				<p class="mb-3">
-					<span class="item_price">@Model.ItemOldPrice</span>
-					<del class="mx-2 font-weight-light">@Model.ItemNewPrice</del>
-					<label>@Model.ItemNo</label>
+				@*	<span class="item_price">@Model.ItemOldPrice</span>
+					<del class="mx-2 font-weight-light">@Model.ItemNewPrice</del>*@
+				
+					<label><strong>@Model.ItemNewPrice ₺</strong></label>
 				</p>
 				<div class="single-infoagile">
 					<ul>
+						
 						<li class="mb-3">
-							Cash on Delivery Eligible.
+							@Model.ItemOldPrice ₺ yerine sadece
 						</li>
 						<li class="mb-3">
-							Shipping Speed to Delivery.
-						</li>
-						<li class="mb-3">
-							EMI starts at $958.
-						</li>
-						<li class="mb-3">
-							3 offers from
-							<span class="item_price">$220.00</span>
+							% @Model.ItemDiscount indirimli yeni fiyatı : 
+							<span class="item_price">@Model.ItemNewPrice ₺</span>
 						</li>
 					</ul>
 				</div>
 				<div class="product-single-w3l">
 					<p class="my-3">
 						<i class="far fa-hand-point-right mr-2"></i>
-						Free standard installation within
-						<label>48 hours</label> of delivery
+						Büyük indirimli fiyat : 
+						<label><strong>% @Model.ItemDiscount</strong></label> indirim oranı ile
 					</p>
 					<ul>
 						<li class="mb-1">
-							Frost Free Double Door: Auto defrost to stop ice-build up
+							İlan Numarası : @Model.ItemNo
 						</li>
 						<li class="mb-1">
-							Capacity 260 L: Suitable for families with 2 to 3 members
+							İlan Tarihi : @Model.ItemAnnouncementDate
 						</li>
 						<li class="mb-1">
-							Energy Rating: 3 Star
+							Marka : @Model.BrandTitle
 						</li>
 						<li class="mb-1">
-							Warranty: 1 year warranty on product and 10 years warranty on compressor
+							Kimden : @Model.FromWho
 						</li>
 						<li class="mb-1">
-							Shelf Type: Toughened Glass to withstand the weight of heaviest vessels
+							Garanti : @Model.gGuarantee
 						</li>
 						<li class="mb-1">
-							Inverter Compressor: Energy efficient, less noise & more durable
+							Ürün İlan Türü : @Model.ItemAdType
 						</li>
 						<li class="mb-1">
-							Also included in the box: User manual, Warranty card
+							Ürün Durumu : @Model.ItemStatus
+						</li>
+						<li class="mb-1">
+							Ürün Açıklaması : @Model.Description
+						</li>
+						<li class="mb-1">
+							Ürün Detay Özellikleri : @Model.ItemDetailDescription
 						</li>
 					</ul>
 					<p class="my-sm-4 my-3">
-						<i class="fas fa-retweet mr-3"></i>Net banking & Credit/ Debit/ ATM card
+						<i class="fas fa-retweet mr-3"></i><strong><a href="">Banka İşbirliği İle Ürün Kampanyalarını İncele!!</a></strong>
 					</p>
 				</div>
 				<div class="occasion-cart">
@@ -106,7 +110,7 @@
 								<input type="hidden" name="currency_code" value="USD" />
 								<input type="hidden" name="return" value=" " />
 								<input type="hidden" name="cancel_return" value=" " />
-								<input type="submit" name="submit" value="Add to cart" class="button" />
+								<input type="submit" name="submit" value="Aklımdakiler Listesine Ekle" class="button" />
 							</fieldset>
 						</form>
 					</div>
@@ -178,7 +182,7 @@
 		}
 	}
 	imageZoom("myimage", "myresult");
-	
+	imageZoom("mysubimage", "myresult");
 	
 
 </script>

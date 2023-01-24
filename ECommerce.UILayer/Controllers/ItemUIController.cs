@@ -1,6 +1,7 @@
 ﻿using ECommerce.BusinessLayer.Abstract;
 using ECommerce.DTOLayer.ItemDTOs;
 using ECommerce.EntityLayer.Concrete;
+using ECommerce.EntityLayer.Concrete.Enum;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -48,6 +49,7 @@ namespace ECommerce.UILayer.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSelectedItemDetails(int id)
         {
+           
             //bana güncellenecek kullanıcı verilerini getirir.
             var httpClient = new HttpClient();
             var responseMessage = await httpClient.GetAsync("https://localhost:44362/api/Item/GetSelectedItemDetail/" + id);//id değerine göre veriyi alıyor
@@ -66,6 +68,22 @@ namespace ECommerce.UILayer.Controllers
                 detailListDto.ItemNewPrice = values.ItemDetail.ItemNewPrice;
                 detailListDto.ItemOldPrice = values.ItemDetail.ItemOldPrice;
                 detailListDto.ItemShowcaseImage = values.ItemShowcaseImage;
+                detailListDto.ItemSubShowcaseImage = values.ItemSubShowcaseImage;
+                detailListDto.BrandTitle = values.ItemDetail.Brand.BrandTitle;
+                detailListDto.FromWho = values.ItemDetail.FromWho;
+                detailListDto.Description = values.ItemDetail.Description;
+                detailListDto.ItemDetailDescription = values.ItemDetail.ItemDetailDescription;
+
+                if (values.ItemDetail.ItemAdType == 1)
+                {
+                    detailListDto.ItemAdType = ItemAdType.Satılık.ToString();
+                }
+                detailListDto.ItemAdType = ItemAdType.Kiralık.ToString();
+
+                detailListDto.gGuarantee = values.ItemDetail.gGuarantee;
+             
+                detailListDto.ItemStatus = values.ItemDetail.ItemStatus;
+            
 
 
                 return View(detailListDto);

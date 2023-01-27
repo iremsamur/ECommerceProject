@@ -1,0 +1,21 @@
+﻿<div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+	 <form  method="post" asp-action="AddComment" asp-controller="Comment">
+		<input type="hidden" name="ItemID" value="@ViewBag.ItemAdID" />
+		<div class="d-flex flex-start w-100">
+
+			<img class="rounded-circle shadow-1-strong me-3"
+				 src="@ViewBag.loggedUserImage" alt="Image" width="40"
+				 height="40" />
+			<div class="form-outline w-100">
+				<textarea name="CommentContent" placeholder="Yorumunuz*" class="form-control" id="textAreaExample" rows="4"
+						  style="background: #fff;"></textarea>
+				<label class="form-label" for="textAreaExample">Mesaj</label>
+			</div>
+		</div>
+		<div class="float-end mt-2 pt-1">
+			<button type="button" class="btn btn-primary btn-sm">Gönder</button>
+			<button type="button" class="btn btn-outline-primary btn-sm">İptal</button>
+		</div>
+		
+	</form>
+</div>

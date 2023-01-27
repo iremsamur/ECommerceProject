@@ -40,8 +40,15 @@ using ECommerce.DTOLayer.ItemDTOs;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\Views\_ViewImports.cshtml"
+using ECommerce.DTOLayer.CommentDTOs;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4c37c5006854737e134e7e8c406c850117f82f10", @"/Views/Item/GetItemDetails.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"392f56ef63a12791a3e88b48615554db70b84e42", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"82f9d0c9056c8e79ac82662b6b185e88cde54e11", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Item_GetItemDetails : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -109,7 +116,7 @@ using ECommerce.DTOLayer.ItemDTOs;
 							<li data-thumb=""~/electro_store-web_Free28-08-2018_1414020280/images/si1.jpg"">
 								<div class=""thumb-image"">
 									");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "4c37c5006854737e134e7e8c406c850117f82f107751", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "4c37c5006854737e134e7e8c406c850117f82f107971", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -126,7 +133,7 @@ using ECommerce.DTOLayer.ItemDTOs;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t<li data-thumb=\"~/electro_store-web_Free28-08-2018_1414020280/images/si2.jpg\">\r\n\t\t\t\t\t\t\t\t<div class=\"thumb-image\">\r\n\t\t\t\t\t\t\t\t\t");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "4c37c5006854737e134e7e8c406c850117f82f109243", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "4c37c5006854737e134e7e8c406c850117f82f109463", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -143,7 +150,7 @@ using ECommerce.DTOLayer.ItemDTOs;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t</li>\r\n\t\t\t\t\t\t\t<li data-thumb=\"~/electro_store-web_Free28-08-2018_1414020280/images/si3.jpg\">\r\n\t\t\t\t\t\t\t\t<div class=\"thumb-image\">\r\n\t\t\t\t\t\t\t\t\t");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "4c37c5006854737e134e7e8c406c850117f82f1010735", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "4c37c5006854737e134e7e8c406c850117f82f1010955", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -221,7 +228,7 @@ using ECommerce.DTOLayer.ItemDTOs;
 				<div class=""occasion-cart"">
 					<div class=""snipcart-details top_brand_home_details item_add single-item hvr-outline-out"">
 						");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4c37c5006854737e134e7e8c406c850117f82f1013772", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4c37c5006854737e134e7e8c406c850117f82f1013992", async() => {
                 WriteLiteral(@"
 							<fieldset>
 								<input type=""hidden"" name=""cmd"" value=""_cart"" />
@@ -306,7 +313,7 @@ using ECommerce.DTOLayer.ItemDTOs;
 						<h4>add a review</h4>
 	");
             WriteLiteral("\t\t\t\t\t");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4c37c5006854737e134e7e8c406c850117f82f1019360", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4c37c5006854737e134e7e8c406c850117f82f1019580", async() => {
                 WriteLiteral("\r\n\t\t\t\t\t\t\t<input type=\"text\" value=\"Name\" onfocus=\"this.value = \'\';\" onblur=\"if (this.value == \'\') {this.value = \'Name\';}\"");
                 BeginWriteAttribute("required", " required=\"", 6977, "\"", 6988, 0);
                 EndWriteAttribute();

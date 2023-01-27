@@ -175,6 +175,46 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.Comment", b =>
+                {
+                    b.Property<int>("CommentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AppUserID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CommentContent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CommentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("CommentState")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ItemID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("CommentID");
+
+                    b.HasIndex("AppUserID");
+
+                    b.HasIndex("ItemID");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.Item", b =>
                 {
                     b.Property<int>("ItemID")
@@ -537,6 +577,25 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.Comment", b =>
+                {
+                    b.HasOne("ECommerce.EntityLayer.Concrete.AppUser", "AppUser")
+                        .WithMany("Comments")
+                        .HasForeignKey("AppUserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ECommerce.EntityLayer.Concrete.Item", "Item")
+                        .WithMany("Comments")
+                        .HasForeignKey("ItemID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Item");
+                });
+
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.Item", b =>
                 {
                     b.HasOne("ECommerce.EntityLayer.Concrete.ItemDetail", "ItemDetail")
@@ -648,9 +707,19 @@ namespace ECommerce.DataAccessLayer.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.AppUser", b =>
+                {
+                    b.Navigation("Comments");
+                });
+
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.Brand", b =>
                 {
                     b.Navigation("ItemDetails");
+                });
+
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.Item", b =>
+                {
+                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemDetail", b =>

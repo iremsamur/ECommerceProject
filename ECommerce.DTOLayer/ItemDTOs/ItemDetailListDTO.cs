@@ -35,6 +35,8 @@ namespace ECommerce.DTOLayer.ItemDTOs
         public string Description { get; set; } //açıklaması
         public string ItemDetailDescription { get; set; }//ürün detayı açıklaması örneğin bilgisayar için ram, cpu vb.
 
+     
+
 
 
 

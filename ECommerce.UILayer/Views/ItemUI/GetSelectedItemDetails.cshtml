@@ -5,7 +5,7 @@
 }
 
 <link href="~/customizecss/previewitempage.css" rel="stylesheet" />
-
+<link href="~/customizecss/tab.css" rel="stylesheet" />
 
 <div class="banner-bootom-w3-agileits py-5">
 	<div class="container py-xl-4 py-lg-2">
@@ -121,10 +121,67 @@
 		</div>
 	</div>
 </div>
+<hr />
+
+<!--comment 2-->
+<div class="tabs-to-dropdown">
+	<div class="nav-wrapper d-flex align-items-center justify-content-between">
+		<ul class="nav nav-pills d-none d-md-flex" id="pills-tab" role="tablist">
+			<li class="nav-item" role="presentation">
+				<a class="nav-link active" id="pills-company-tab" data-toggle="pill" href="#pills-company" role="tab" aria-controls="pills-company" aria-selected="true">İlan Değerlendirmeleri</a>
+			</li>
+			<li class="nav-item" role="presentation">
+				<a class="nav-link" id="pills-product-tab" data-toggle="pill" href="#pills-product" role="tab" aria-controls="pills-product" aria-selected="false">Product</a>
+			</li>
+			
+		</ul>
+
+	
+	</div>
+
+	<div class="tab-content" id="pills-tabContent">
+		<div class="tab-pane fade show active" id="pills-company" role="tabpanel" aria-labelledby="pills-company-tab">
+			<div class="container-fluid">
+				<h4 class="mb-0">Son Görüşler</h4>
+					
+				<section style="background-color: white;">
+					<div class="container my-5 py-5">
+						<div class="row d-flex justify-content-center">
+						
+
+							<div class="col-md-12 col-lg-10 col-xl-8">
+								<div class="card">
+									<!--_CommentListPage ViewComponent çağırılacak-->
+									@await Component.InvokeAsync("_CommentListPage",new{id=ViewBag.ItemAdID})
+									<!--leave a comment-->
+								<!--leave a comment partial view gelecek-->
+									@await Html.PartialAsync("~/Views/Comment/AddComment.cshtml")
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+		<div class="tab-pane fade" id="pills-product" role="tabpanel" aria-labelledby="pills-product-tab">
+			<div class="container-fluid">
+				<h2 class="mb-3 font-weight-bold">Product</h2>
+				<p>Sed auctor urna sit amet eros mattis interdum. Integer imperdiet ante in quam lacinia, a laoreet risus imperdiet. Ut a blandit elit, vitae volutpat nunc. Nam posuere urna sagittis lectus eleifend viverra. Quisque mauris nunc, viverra vitae sodales non, auctor in diam. Sed dignissim pulvinar sapien sed fermentum. Praesent interdum turpis ut neque tristique ornare. Nam dictum est sed sem elementum rutrum. Nam a mollis turpis.</p>
+				<p>Proin odio nisi, aliquet ac ipsum quis, auctor semper leo. Curabitur vitae justo vel augue varius cursus non quis est. Nunc vulputate nunc nibh, sed tempus erat tincidunt eget. Duis a lacus at nulla porttitor tincidunt. Vestibulum euismod elementum mi ut tincidunt. Suspendisse tempus, mi et imperdiet maximus, est turpis placerat massa, at venenatis sem elit ut ex. Donec non aliquam odio. Curabitur ut leo vitae magna lobortis accumsan. Phasellus viverra eu leo non rhoncus.</p>
+				<p>Pellentesque rutrum sit amet nunc sit amet faucibus. Ut id arcu tempus, varius erat et, ornare libero. In quis felis nunc. Aliquam euismod lacus a eros ornare, ut aliquam sem mattis. Cras non varius dui, quis commodo ante. Maecenas gravida est non nulla malesuada egestas.</p>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+
+<!--comment2-->
 
 
 
 
+<script src="~/customizejs/tab.js"></script>
 <script>
 	function imageZoom(imgID, resultID) {
 		var img, lens, result, cx, cy;

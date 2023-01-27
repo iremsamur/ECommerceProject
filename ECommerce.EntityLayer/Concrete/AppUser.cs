@@ -26,5 +26,6 @@ namespace ECommerce.EntityLayer.Concrete
         {
             get; set;
         }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

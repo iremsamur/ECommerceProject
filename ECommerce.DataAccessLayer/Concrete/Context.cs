@@ -31,5 +31,6 @@ namespace ECommerce.DataAccessLayer.Concrete
         public DbSet<ItemRatings> ItemRatings { get; set; }
         public DbSet<ItemRatingsSpModel> ItemRatingsSpModels { get; set; }
         public DbSet<ItemDiscountScoresSpModel> ItemDiscountScoresSpModels { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }

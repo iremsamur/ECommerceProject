@@ -59,6 +59,8 @@ namespace ECommerce.UILayer.Controllers
                 var jsonItem = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<Item>(jsonItem);
                 //ilişkili tablodan gelen verilerileride dto'ya da gösterebilmek için bu böyle eklendi
+
+                ViewBag.ItemAdID = values.ItemID;
                 detailListDto.ItemNo = values.ItemDetail.ItemNo;
                 detailListDto.ItemName = values.ItemName;
               

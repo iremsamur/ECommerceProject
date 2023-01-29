@@ -8,13 +8,17 @@ namespace ECommerce.UILayer.ViewComponents.CommentListPage
 	public class _CommentListPage : ViewComponent
     {
         private readonly ICommentService _commentService;
+        private readonly IUserService _userService;
 
-        public _CommentListPage(ICommentService commentService)
+        public _CommentListPage(ICommentService commentService, IUserService userService)
         {
             _commentService = commentService;
+            _userService = userService;
         }
         public IViewComponentResult Invoke(int id)
         {
+           
+           
             List<CommentListByItemIdDTO> commentListDTO = new List<CommentListByItemIdDTO>();
             CommentListByItemIdDTO commentDTO = new CommentListByItemIdDTO();
             var values = _commentService.TGetItemWithCommentByID(id);

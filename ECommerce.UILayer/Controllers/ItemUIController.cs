@@ -14,10 +14,12 @@ namespace ECommerce.UILayer.Controllers
     public class ItemUIController : Controller
     {
         private readonly IItemService _itemService;
+        private readonly IUserService _userService;
 
-        public ItemUIController(IItemService itemService)
+        public ItemUIController(IItemService itemService, IUserService userService)
         {
             _itemService = itemService;
+            _userService = userService;
         }
 
         public IActionResult GetItemsInTheShowcaseWithImage()
@@ -49,7 +51,11 @@ namespace ECommerce.UILayer.Controllers
         [HttpGet]
         public async Task<IActionResult> GetSelectedItemDetails(int id)
         {
-           
+
+            var username = User.Identity.Name;
+            var loggedUserValues = _userService.TgetLoggedUserID(username);
+            ViewBag.loggedUserImage = loggedUserValues.ImageUrl;
+
             //bana güncellenecek kullanıcı verilerini getirir.
             var httpClient = new HttpClient();
             var responseMessage = await httpClient.GetAsync("https://localhost:44362/api/Item/GetSelectedItemDetail/" + id);//id değerine göre veriyi alıyor

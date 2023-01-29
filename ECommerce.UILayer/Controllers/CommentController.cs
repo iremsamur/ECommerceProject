@@ -60,9 +60,7 @@ namespace ECommerce.UILayer.Controllers
         [HttpGet]
         public PartialViewResult AddComment()
         {
-            var username = User.Identity.Name;
-            var loggedUserValues = _userService.TgetLoggedUserID(username);
-            ViewBag.loggedUserImage = loggedUserValues.ImageUrl;
+      
 
             return PartialView();
         }

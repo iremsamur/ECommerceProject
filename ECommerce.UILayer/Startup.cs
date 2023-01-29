@@ -57,6 +57,7 @@ namespace ECommerce.UILayer
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();//bu eklenmezse giriþ yapanýn bilgilerini tutmaz
 
             app.UseAuthorization();
 

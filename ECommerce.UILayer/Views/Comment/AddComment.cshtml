@@ -1,5 +1,6 @@
-﻿<div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
-	 <form  method="post" asp-action="AddComment" asp-controller="Comment">
+﻿<!--orjinali-->
+<div class="card-footer py-3 border-0" style="background-color: #f8f9fa;">
+	<form action="/Comment/AddComment/" method="post">
 		<input type="hidden" name="ItemID" value="@ViewBag.ItemAdID" />
 		<div class="d-flex flex-start w-100">
 
@@ -13,9 +14,10 @@
 			</div>
 		</div>
 		<div class="float-end mt-2 pt-1">
-			<button type="button" class="btn btn-primary btn-sm">Gönder</button>
+			<button type="submit" class="btn btn-primary btn-sm">Gönder</button>
 			<button type="button" class="btn btn-outline-primary btn-sm">İptal</button>
 		</div>
 		
 	</form>
 </div>
+

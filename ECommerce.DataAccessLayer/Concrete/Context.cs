@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,8 +18,20 @@ namespace ECommerce.DataAccessLayer.Concrete
 
 
         }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<MindList>()
+         .HasKey(pt => new { pt.ItemId, pt.UserId });
+            builder.Entity<MindList>().HasOne(pt => pt.Item)
+                .WithMany(p => p.MindLists)
+                .HasForeignKey(pt => pt.ItemId);
+            builder.Entity<MindList>().HasOne(pt => pt.AppUser)
+                .WithMany(p => p.MindLists)
+                .HasForeignKey(pt => pt.UserId);
+            base.OnModelCreating(builder);
+        }
 
-     
+
 
 
         public DbSet<Item> Items { get; set; }
@@ -32,5 +45,6 @@ namespace ECommerce.DataAccessLayer.Concrete
         public DbSet<ItemRatingsSpModel> ItemRatingsSpModels { get; set; }
         public DbSet<ItemDiscountScoresSpModel> ItemDiscountScoresSpModels { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<MindList> MindLists { get; set; }
     }
 }

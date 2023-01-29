@@ -1,6 +1,7 @@
 using ECommerce.BusinessLayer.DIContainer;
 using ECommerce.DataAccessLayer.Concrete;
 using ECommerce.EntityLayer.Concrete;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,8 +31,9 @@ namespace ECommerce.ApiLayer
         public void ConfigureServices(IServiceCollection services)
         {
             services.Containerdependencies();
-            services.AddDbContext<Context>();
-            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+            services.AddMediatR(typeof(Startup));
+            //services.AddDbContext<Context>();
+            //services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 
             services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

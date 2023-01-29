@@ -447,6 +447,24 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.ToTable("ItemRatingsSpModels");
                 });
 
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.MindList", b =>
+                {
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MindListId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ItemId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("MindLists");
+                });
+
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.SubCategory", b =>
                 {
                     b.Property<int>("SubCategoryID")
@@ -645,6 +663,25 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.Navigation("Item");
                 });
 
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.MindList", b =>
+                {
+                    b.HasOne("ECommerce.EntityLayer.Concrete.Item", "Item")
+                        .WithMany("MindLists")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ECommerce.EntityLayer.Concrete.AppUser", "AppUser")
+                        .WithMany("MindLists")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Item");
+                });
+
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.SubCategory", b =>
                 {
                     b.HasOne("ECommerce.EntityLayer.Concrete.Category", "Category")
@@ -710,6 +747,8 @@ namespace ECommerce.DataAccessLayer.Migrations
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.AppUser", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("MindLists");
                 });
 
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.Brand", b =>
@@ -720,6 +759,8 @@ namespace ECommerce.DataAccessLayer.Migrations
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.Item", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("MindLists");
                 });
 
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemDetail", b =>

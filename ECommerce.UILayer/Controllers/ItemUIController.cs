@@ -55,6 +55,7 @@ namespace ECommerce.UILayer.Controllers
             var username = User.Identity.Name;
             var loggedUserValues = _userService.TgetLoggedUserID(username);
             ViewBag.loggedUserImage = loggedUserValues.ImageUrl;
+            ViewBag.loggedUserID = loggedUserValues.Id;
 
             //bana güncellenecek kullanıcı verilerini getirir.
             var httpClient = new HttpClient();

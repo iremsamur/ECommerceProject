@@ -29,6 +29,9 @@ namespace ECommerce.BusinessLayer.DIContainer
             services.AddScoped<IUserDal, EfUserDal>();
             services.AddScoped<ICommentService,CommentManager>();
             services.AddScoped<ICommentDal, EfCommentDal>();
+            services.AddScoped<IMindListService, MindListManager>();
+            services.AddScoped<IMindListDal, EfMindListDal>();
+
 
         }
         //Automapper için 

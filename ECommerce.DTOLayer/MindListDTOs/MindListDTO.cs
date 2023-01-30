@@ -8,5 +8,7 @@ namespace ECommerce.DTOLayer.MindListDTOs
 {
     public class MindListDTO
     {
+        public int UserId { get; set; }
+        public int ItemId { get; set; }
     }
 }

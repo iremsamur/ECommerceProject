@@ -82,3 +82,6 @@ C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.ApiLayer\obj\
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.ApiLayer\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.ApiLayer\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.ApiLayer\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.ApiLayer\bin\Debug\net5.0\MediatR.dll
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.ApiLayer\bin\Debug\net5.0\MediatR.Contracts.dll
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.ApiLayer\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

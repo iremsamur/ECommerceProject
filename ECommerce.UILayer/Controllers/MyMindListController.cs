@@ -13,10 +13,12 @@ namespace ECommerce.UILayer.Controllers
     public class MyMindListController : Controller
     {
         private readonly IMindListService _mindListService;
+        private readonly IUserService _userService;
 
-        public MyMindListController(IMindListService mindListService)
+        public MyMindListController(IMindListService mindListService, IUserService userService)
         {
             _mindListService = mindListService;
+            _userService = userService;
         }
 
         //şimdi ekleme işlemi yazalım.
@@ -40,9 +42,21 @@ namespace ECommerce.UILayer.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 //eğer başarılı ise
-                return RedirectToAction("GetAllItemAds", "ItemAds");
+                return RedirectToAction("GetMindListCheckoutPage");
             }
             return View(mindListDTO);
         }
+
+        //checkout için
+        [HttpGet]
+        public IActionResult GetMindListCheckoutPage()
+        {
+            //Burada aklımdakiler listesinde yer alan tüm ürünler gelecek ve yanlarında satın al kirala butonları olacak tıklanan butona göre uygun sayfaya yönlendirilecekler
+            var username = User.Identity.Name;
+            var loggedUserValues = _userService.TgetLoggedUserID(username);
+            ViewBag.loggedUserImage = loggedUserValues.ImageUrl;
+            return View();
+        }
+
     }
 }

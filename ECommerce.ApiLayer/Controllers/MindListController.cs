@@ -21,6 +21,7 @@ namespace ECommerce.ApiLayer.Controllers
         [HttpPost]
         public IActionResult AddMindList(MindList mindList)
         {
+
             _mindListService.TInsert(mindList);
             return Ok();
         }

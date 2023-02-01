@@ -33,7 +33,8 @@ namespace ECommerce.UILayer
         {
 
             services.Containerdependencies();
-     
+
+            services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(typeof(Startup));
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();

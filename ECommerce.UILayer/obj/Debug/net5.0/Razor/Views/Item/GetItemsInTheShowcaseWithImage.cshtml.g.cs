@@ -47,8 +47,15 @@ using ECommerce.DTOLayer.CommentDTOs;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 7 "C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\Views\_ViewImports.cshtml"
+using ECommerce.DTOLayer.MindListDTOs;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a9a927972ac914a35c009553c2acd96febc99e86", @"/Views/Item/GetItemsInTheShowcaseWithImage.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"82f9d0c9056c8e79ac82662b6b185e88cde54e11", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5c23fee9e1a438563d3429d932f1361601c49e35", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Item_GetItemsInTheShowcaseWithImage : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Item>>
     #nullable disable
@@ -161,7 +168,7 @@ WriteAttributeValue("", 752, item.ItemName, 752, 14, false);
 #line hidden
 #nullable disable
             WriteLiteral("</del>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t<div class=\"snipcart-details top_brand_home_details item_add single-item hvr-outline-out\">\r\n\t\t\t\t\t\t\t\t\t\t");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a9a927972ac914a35c009553c2acd96febc99e868452", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a9a927972ac914a35c009553c2acd96febc99e868673", async() => {
                 WriteLiteral(@"
 											<fieldset>
 												<input type=""hidden"" name=""cmd"" value=""_cart"" />

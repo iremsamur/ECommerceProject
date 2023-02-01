@@ -23,5 +23,27 @@ namespace ECommerce.DataAccessLayer.EntityFramework
                 return values;
             }
         }
+
+        public List<MindList> GetMyMindListByUser(int UserId)
+        {
+            using (var context = new Context())
+            {
+                var values = context.MindLists
+                    .Include(x => x.Item).ThenInclude(x=>x.ItemDetail).ThenInclude(x=>x.Brand).Include(x => x.AppUser).Where(x => x.UserId == UserId).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
+
+                return values;
+            }
+        }
+
+        public List<MindList> GetMyMindListByUserAndItem(int UserId, int ItemId)
+        {
+            using (var context = new Context())
+            {
+                var values = context.MindLists
+                    .Include(x => x.Item).Include(x => x.AppUser).Where(x => x.UserId == UserId && x.ItemId==ItemId).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
+
+                return values;
+            }
+        }
     }
 }

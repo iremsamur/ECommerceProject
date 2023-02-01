@@ -13,5 +13,9 @@ namespace ECommerce.BusinessLayer.Abstract
     {
         public List<MindList> TGetMyMindList(int id);
         public Task<Unit> GetMyMindListWithAppUserAndItem(CreateMindListCommand mindListCommand);
+
+        public List<MindList> TGetMyMindListWithAppUserAndItem(int userId, int itemId);
+
+        public List<MindList> GetMyMindListByUser(int userId);
     }
 }

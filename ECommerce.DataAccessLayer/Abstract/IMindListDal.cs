@@ -11,5 +11,8 @@ namespace ECommerce.DataAccessLayer.Abstract
     {
         List<MindList> GetMyMindList(int id);
 
+        List<MindList> GetMyMindListByUserAndItem(int UserId, int ItemId);
+        List<MindList> GetMyMindListByUser(int UserId);
+
     }
 }

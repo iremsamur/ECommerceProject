@@ -33,6 +33,7 @@
     ".NETCoreApp,Version=v5.0": {
       "ECommerce.UILayer/1.0.0": {
         "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "ECommerce.ApiLayer": "1.0.0",
           "ECommerce.BusinessLayer": "1.0.0",
           "ECommerce.DTOLayer": "1.0.0",

@@ -58,5 +58,15 @@ namespace ECommerce.BusinessLayer.Concrete
         {
             return await _mediator.Send(mindListCommand);
         }
+
+        public List<MindList> TGetMyMindListWithAppUserAndItem(int userId,int itemId)
+        {
+            return _mindListDal.GetMyMindListByUserAndItem(userId, itemId);
+        }
+
+        public List<MindList> GetMyMindListByUser(int userId)
+        {
+            return _mindListDal.GetMyMindListByUser(userId);
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ECommerce.DTOLayer.ItemDTOs;
+using ECommerce.DTOLayer.UserDTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +12,7 @@ namespace ECommerce.DTOLayer.MindListDTOs
     {
         public int UserId { get; set; }
         public int ItemId { get; set; }
+        public  ItemDTO Item{ get; set; }
+        public  UserDTO User { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace ECommerce.BusinessLayer.Abstract
 	{
 		int TGetCountOfSubCategories();
 		public List<SubCategory> TGetSubCategoriesByCategoryID(int CategoryID);
+        
 
     }
 }

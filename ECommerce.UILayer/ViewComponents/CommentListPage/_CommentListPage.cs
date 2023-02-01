@@ -31,8 +31,6 @@ namespace ECommerce.UILayer.ViewComponents.CommentListPage
                 commentDTO.ImageUrl = comment.AppUser.ImageUrl;
                 commentDTO.Email = comment.AppUser.Email;
                 commentListDTO.Add(commentDTO); 
-
-             
             }
 
            

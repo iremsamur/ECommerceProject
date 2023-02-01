@@ -17,6 +17,7 @@ namespace ECommerce.DataAccessLayer.Abstract
         ItemDiscountScoresSpModel GetMostDiscountedItemAllDetails(int CategoryID);
 
         Item GetSelectedItemAllDetails(int itemID);
+        List<Item> GetItemsBySubCategory(List<SubCategory> subCategories);
 
 
 

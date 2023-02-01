@@ -11,5 +11,6 @@ namespace ECommerce.DataAccessLayer.Abstract
     {
         int GetCountOfSubCategories();
         List<SubCategory> GetSubCategoriesByCategoryID(int CategoryID);
+        
     }
 }

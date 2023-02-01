@@ -16,6 +16,23 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 {
     public class EfItemDal : GenericRepository<Item>, IItemDal
     {
+        public List<Item> GetItemsBySubCategory(List<SubCategory> subCategories)
+        {
+            List<Item> items = new List<Item>();
+            using (var context = new Context())
+            {
+                foreach(var category in subCategories)
+                {
+                    var value = context.Items.Include(x => x.ItemImage).Include(x => x.SubCategory).Include(x => x.ItemDetail).Where(x => x.SubCategoryID == category.SubCategoryID).FirstOrDefault();
+                    items.Add(value);
+
+                }
+
+
+                return items;
+            }
+        }
+
         public List<Item> GetItemWithImage()
         {
             using (var context = new Context())

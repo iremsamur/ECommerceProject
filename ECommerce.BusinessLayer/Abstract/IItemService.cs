@@ -21,6 +21,8 @@ namespace ECommerce.BusinessLayer.Abstract
 
         Item TGetSelectedItemAllDetails(int itemID);
 
+        List<Item> TGetItemsBySubCategory(List<SubCategory> subCategories);
+
 
 
 

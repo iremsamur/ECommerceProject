@@ -17,7 +17,7 @@ namespace ECommerce.DTOLayer.ItemDTOs
         public int ItemImageID { get; set; }
         public string ItemPicture { get; set; }
 
-
+        public ItemDetailDTO ItemDetail { get; set; }
         public string ItemNo { get; set; }
         public double ItemNewPrice { get; set; }
         public double ItemOldPrice { get; set; }

@@ -54,8 +54,15 @@ using ECommerce.DTOLayer.MindListDTOs;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 8 "C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\Views\_ViewImports.cshtml"
+using ECommerce.DTOLayer.SubCategoryDTOs;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2b8b3d39e0141d5454277e53b4a063a7ae2d4563", @"/Views/Shared/Components/_ShowcaseSearchWithFilterPage/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5c23fee9e1a438563d3429d932f1361601c49e35", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1522e79d1b64ed825ff57aacf6ab945679557f27", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Components__ShowcaseSearchWithFilterPage_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -88,7 +95,7 @@ using ECommerce.DTOLayer.MindListDTOs;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<div class=\"col-lg-3 mt-lg-0 mt-4 p-lg-0\">\r\n\t<div class=\"side-bar p-sm-4 p-3\">\r\n\t\t<div class=\"search-hotel border-bottom py-2\">\r\n\t\t\t<h3 class=\"agileits-sear-head mb-3\">Search Here..</h3>\r\n\t\t\t");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2b8b3d39e0141d5454277e53b4a063a7ae2d45635286", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2b8b3d39e0141d5454277e53b4a063a7ae2d45635510", async() => {
                 WriteLiteral("\r\n\t\t\t\t<input type=\"search\" placeholder=\"Product name...\" name=\"search\"");
                 BeginWriteAttribute("required", " required=\"", 292, "\"", 303, 0);
                 EndWriteAttribute();

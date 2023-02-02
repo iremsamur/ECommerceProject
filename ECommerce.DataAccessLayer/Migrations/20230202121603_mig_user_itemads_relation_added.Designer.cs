@@ -4,14 +4,16 @@ using ECommerce.DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ECommerce.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20230202121603_mig_user_itemads_relation_added")]
+    partial class mig_user_itemads_relation_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -245,21 +247,6 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.Property<int?>("AppUserId")
                         .HasColumnType("int");
 
-                    b.Property<string>("CompanyAbout")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanyPicture")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CompanySectorName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("StaffUserId")
                         .HasColumnType("int");
 
@@ -374,9 +361,6 @@ namespace ECommerce.DataAccessLayer.Migrations
 
                     b.Property<double>("ItemOldPrice")
                         .HasColumnType("float");
-
-                    b.Property<int>("ItemSellerType")
-                        .HasColumnType("int");
 
                     b.Property<string>("ItemStatus")
                         .HasColumnType("nvarchar(max)");

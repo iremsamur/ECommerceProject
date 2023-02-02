@@ -25,6 +25,8 @@ namespace ECommerce.EntityLayer.Concrete
 
         public Brand Brand { get; set; }
         public int BrandID { get; set; }
+
+        public int ItemSellerType { get; set; }//sahibinden mi kurum mu satıyor
         public string gGuarantee { get; set; }//garantisi
         public string FromWho { get; set; } //kimden
         public string ItemStatus { get; set; }//durumu - 2.el, 1.el

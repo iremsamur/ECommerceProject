@@ -24,7 +24,7 @@ namespace ECommerce.UILayer.ViewComponents.GetAdsBySameCategoriesItems
         {
             var values = _mapper.Map<List<SubCategory>>(subCategoryDTO);
             var items = _itemService.TGetItemsBySubCategory(values);
-            var mappingItems = _mapper.Map<List<ItemDetailListDTO>>(items);//buradaki hataya bakılacak
+            var mappingItems = _mapper.Map<List<ItemWithSubCategoryDTO>>(items);//buradaki hataya bakılacak
             return View(mappingItems);
         }
 

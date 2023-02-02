@@ -9,6 +9,7 @@ namespace ECommerce.DTOLayer.ItemDTOs
 {
 	public class ItemDetailDTO
 	{
+        public int ItemDetailID { get; set; }
         public string ItemNo { get; set; }
         public double ItemNewPrice { get; set; }
         public double ItemOldPrice { get; set; }

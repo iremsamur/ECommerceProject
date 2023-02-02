@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommerce.DTOLayer.SubCategoryDTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace ECommerce.DTOLayer.ItemDTOs
         public string ItemSubShowcaseImage { get; set; }
         public int ItemDetailID { get; set; }
         public int SubCategoryID { get; set; }
+        public SubCategoryDTO SubCategory { get; set; }
         public int ItemImageID { get; set; }
         public string ItemPicture { get; set; }
 

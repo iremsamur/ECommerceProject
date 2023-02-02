@@ -15,10 +15,12 @@ namespace ECommerce.UILayer.Mapping.AutoMapperProfile
          
       
             CreateMap<Item, ItemDetailListDTO>().ReverseMap();
+            CreateMap<ItemDetail, ItemDetailDTO>().ReverseMap();
             CreateMap<MindList, MindListDTO>().ReverseMap();
             CreateMap<AppUser, UserDTO>().ReverseMap();
             CreateMap<Item, ItemDTO>().ReverseMap();
             CreateMap<SubCategory, SubCategoryDTO>().ReverseMap();
+            CreateMap<Item, ItemWithSubCategoryDTO>().ReverseMap();
          
         }
     }

@@ -31,6 +31,8 @@ namespace ECommerce.BusinessLayer.DIContainer
             services.AddScoped<ICommentDal, EfCommentDal>();
             services.AddScoped<IMindListService, MindListManager>();
             services.AddScoped<IMindListDal, EfMindListDal>();
+            services.AddScoped<IRoleService, RoleManager>();
+            services.AddScoped<IRoleDal, EfRoleDal>();
 
 
         }

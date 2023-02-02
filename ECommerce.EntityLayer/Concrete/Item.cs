@@ -16,12 +16,12 @@ namespace ECommerce.EntityLayer.Concrete
         public string ItemShowcaseImage { get; set; }
         public string ItemSubShowcaseImage { get; set; }
         public ItemDetail ItemDetail { get; set; }
-        public int ItemDetailID { get; set; }
+        public int? ItemDetailID { get; set; }
         public SubCategory SubCategory { get; set; }
-        public int SubCategoryID { get; set; }
+        public int? SubCategoryID { get; set; }
 
         public ItemImage ItemImage { get; set; }
-        public int ItemImageID { get; set; }
+        public int? ItemImageID { get; set; }
 
 
         public ICollection<Comment> Comments { get; set; }

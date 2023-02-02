@@ -13,8 +13,8 @@ namespace ECommerce.DTOLayer.ItemDTOs
         public string ItemName { get; set; }
         public string ItemShowcaseImage { get; set; }
         public ItemDetailDTO ItemDetail { get; set; }
-        public int ItemDetailID { get; set; }
+        public int? ItemDetailID { get; set; }
         public SubCategoryDTO SubCategory { get; set; }
-        public int SubCategoryID { get; set; }
+        public int? SubCategoryID { get; set; }
     }
 }

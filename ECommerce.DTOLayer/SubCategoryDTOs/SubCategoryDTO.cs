@@ -8,7 +8,7 @@ namespace ECommerce.DTOLayer.SubCategoryDTOs
 {
 	public class SubCategoryDTO
 	{
-        public int SubCategoryID { get; set; }
+        public int? SubCategoryID { get; set; }
         public string CategoryName { get; set; }
     }
 }

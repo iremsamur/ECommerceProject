@@ -35,7 +35,7 @@ namespace ECommerce.BusinessLayer.Concrete
 
 		public List<SubCategory> TGetList()
 		{
-			throw new NotImplementedException();
+			return _subCategoryDal.GetList();
 		}
 
 		public List<SubCategory> TGetSubCategoriesByCategoryID(int CategoryID)

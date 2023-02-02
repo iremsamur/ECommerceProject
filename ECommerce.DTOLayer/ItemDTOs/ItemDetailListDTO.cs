@@ -13,10 +13,10 @@ namespace ECommerce.DTOLayer.ItemDTOs
         public string ItemName { get; set; }
         public string ItemShowcaseImage { get; set; }
         public string ItemSubShowcaseImage { get; set; }
-        public int ItemDetailID { get; set; }
-        public int SubCategoryID { get; set; }
+        public int? ItemDetailID { get; set; }
+        public int? SubCategoryID { get; set; }
         public SubCategoryDTO SubCategory { get; set; }
-        public int ItemImageID { get; set; }
+        public int? ItemImageID { get; set; }
         public string ItemPicture { get; set; }
 
         public ItemDetailDTO ItemDetail { get; set; }
@@ -29,7 +29,7 @@ namespace ECommerce.DTOLayer.ItemDTOs
 
         public DateTime ItemAnnouncementDate { get; set; }//ilan tarihi
 
-        public int BrandID { get; set; }
+        public int? BrandID { get; set; }
         public string BrandTitle { get; set; }
         public string gGuarantee { get; set; }//garantisi
         public string FromWho { get; set; } //kimden

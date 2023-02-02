@@ -1,0 +1,34 @@
+﻿@model CreateItemDTO
+@{
+    ViewData["Title"] = "CreateNewItemAds";
+    Layout = "~/Views/Shared/_SellerAdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("CreateNewItemAds", "IndividualSellerController", FormMethod.Post))
+{
+    @Html.Label("Ürün Adı")
+    @Html.TextBoxFor(x => x.ItemName, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("Ürün Ana Görseli")
+    @Html.TextBoxFor(x => x.ItemShowcaseImage, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("Ürün Alt Görseli")
+    @Html.TextBoxFor(x => x.ItemSubShowcaseImage, new { @class = "form-control" })
+    
+    <br />
+    @Html.Label("Ürün Kategorisi")
+
+    @Html.DropDownListFor(x => x.SubCategoryID,(List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+    <br />
+ 
+   
+    <br />
+    <button class="btn btn-info">Ürünü Kaydet</button>
+
+
+
+
+}
+

@@ -327,10 +327,10 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ItemDetailID")
+                    b.Property<int?>("ItemDetailID")
                         .HasColumnType("int");
 
-                    b.Property<int>("ItemImageID")
+                    b.Property<int?>("ItemImageID")
                         .HasColumnType("int");
 
                     b.Property<string>("ItemName")
@@ -342,7 +342,7 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.Property<string>("ItemSubShowcaseImage")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SubCategoryID")
+                    b.Property<int?>("SubCategoryID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedDate")
@@ -369,7 +369,7 @@ namespace ECommerce.DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BrandID")
+                    b.Property<int?>("BrandID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedDate")
@@ -817,21 +817,15 @@ namespace ECommerce.DataAccessLayer.Migrations
                 {
                     b.HasOne("ECommerce.EntityLayer.Concrete.ItemDetail", "ItemDetail")
                         .WithMany("Items")
-                        .HasForeignKey("ItemDetailID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ItemDetailID");
 
                     b.HasOne("ECommerce.EntityLayer.Concrete.ItemImage", "ItemImage")
                         .WithMany("Items")
-                        .HasForeignKey("ItemImageID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ItemImageID");
 
                     b.HasOne("ECommerce.EntityLayer.Concrete.SubCategory", "SubCategory")
                         .WithMany("Items")
-                        .HasForeignKey("SubCategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("SubCategoryID");
 
                     b.Navigation("ItemDetail");
 
@@ -844,9 +838,7 @@ namespace ECommerce.DataAccessLayer.Migrations
                 {
                     b.HasOne("ECommerce.EntityLayer.Concrete.Brand", "Brand")
                         .WithMany("ItemDetails")
-                        .HasForeignKey("BrandID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BrandID");
 
                     b.Navigation("Brand");
                 });

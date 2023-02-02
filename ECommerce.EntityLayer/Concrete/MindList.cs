@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.EntityLayer.Concrete
 {
-    public class MindList
+    public class MindList: BaseEntity
     {
         //item-user çoka çok ilişki sepete eklenen ürün- mindlist aklımdakiler listesi yani aslında sepet
        

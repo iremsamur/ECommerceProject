@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.EntityLayer.Concrete
 {
-	public class IndividualSeller
+	public class IndividualSeller:BaseEntity
 	{
         [Key]
         public int IndividualSellerId { get; set; }

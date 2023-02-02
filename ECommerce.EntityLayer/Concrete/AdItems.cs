@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ECommerce.EntityLayer.Concrete
 {
-	public class AdItems
-	{
+	public class AdItems:BaseEntity
+    {
         //Burada companyseller-item ve individualseller-item çoka çok ilişkili
         public virtual CompanySeller CompanySeller { get; set; }
         public int? CompanySellerId { get; set; }

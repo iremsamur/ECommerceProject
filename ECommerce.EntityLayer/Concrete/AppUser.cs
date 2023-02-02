@@ -34,6 +34,9 @@ namespace ECommerce.EntityLayer.Concrete
         public ICollection<IndividualSeller> IndividualSellers { get; set; }
         public ICollection<CompanySeller> CompanySellers { get; set; }
 
+        public virtual ICollection<Message> UserSender { get; set; }//Gönderici için WriterMessage ilişkisi
+        public virtual ICollection<Message> UserReceiver { get; set; } //alıcı için WriterMessage ilişkisi
+
 
     }
 }

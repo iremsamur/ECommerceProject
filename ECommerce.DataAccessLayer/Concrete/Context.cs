@@ -43,6 +43,19 @@ namespace ECommerce.DataAccessLayer.Concrete
               .WithMany(p => p.AdItems)
               .HasForeignKey(pt => pt.IndividualSellerId);
             base.OnModelCreating(builder);
+
+
+            builder.Entity<Message>()
+                .HasOne(x => x.SenderUser)
+                .WithMany(y => y.UserSender)
+                .HasForeignKey(z => z.SenderID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+         
+            builder.Entity<Message>()
+                .HasOne(x => x.ReceiverUser)
+                .WithMany(y => y.UserReceiver)
+                .HasForeignKey(z => z.ReceiverID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
         }
 
 
@@ -63,5 +76,6 @@ namespace ECommerce.DataAccessLayer.Concrete
         public DbSet<IndividualSeller> IndividualSellers { get; set; }
         public DbSet<CompanySeller> CompanySellers { get; set; }
         public DbSet<AdItems> AdItemss { get; set; }
+        public DbSet<Message> Messages { get; set; }
     }
 }

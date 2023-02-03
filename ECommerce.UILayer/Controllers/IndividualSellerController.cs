@@ -1,10 +1,15 @@
-﻿using ECommerce.BusinessLayer.Abstract;
+﻿using AutoMapper;
+using ECommerce.BusinessLayer.Abstract;
 using ECommerce.BusinessLayer.Concrete;
 using ECommerce.DTOLayer.ItemDTOs;
+using ECommerce.UILayer.Models;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -15,10 +20,12 @@ namespace ECommerce.UILayer.Controllers
 	public class IndividualSellerController : Controller
 	{
         private readonly ISubCategoryService _subCategoryService;
+        private readonly IMapper _mapper;
 
-        public IndividualSellerController(ISubCategoryService subCategoryService)
+        public IndividualSellerController(ISubCategoryService subCategoryService, IMapper mapper)
         {
             _subCategoryService = subCategoryService;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
@@ -41,14 +48,37 @@ namespace ECommerce.UILayer.Controllers
         }
         //ek işlemi backend operasyonlarının yazılacağı apinin çağırılacağı metod
         [HttpPost]
-        public async Task<IActionResult> CreateNewItemAds(CreateItemDTO createItemDTO)
+        public async Task<IActionResult> CreateNewItemAds(CreateNewItemAdsViewModel createNewItemViewModel)
         {
-            //çalışmıyor bakılacak
+            CreateItemDTO createItemDTO = new CreateItemDTO();
+            if (createNewItemViewModel.ItemShowcaseImage != null)
+            {
+                var extension = Path.GetExtension(createNewItemViewModel.ItemShowcaseImage.FileName);
+              
+                var newImageName = Guid.NewGuid() + extension;//Yüklenen resmin yeni ismi
+                var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ItemImages/", newImageName);
+                var stream = new FileStream(location, FileMode.Create);//Dosya oluştur.
+                createNewItemViewModel.ItemShowcaseImage.CopyTo(stream);//Yüklenen dosyayı Dosya akışına kopyala.
+                createItemDTO.ItemShowcaseImage= "/ItemImages/"+newImageName;
+            }
+            if (createNewItemViewModel.ItemSubShowcaseImage != null)
+            {
+                var extension = Path.GetExtension(createNewItemViewModel.ItemSubShowcaseImage.FileName);
+
+                var newImageName = Guid.NewGuid() + extension;//Yüklenen resmin yeni ismi
+                var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ItemImages/", newImageName);
+                var stream = new FileStream(location, FileMode.Create);//Dosya oluştur.
+                createNewItemViewModel.ItemSubShowcaseImage.CopyTo(stream);//Yüklenen dosyayı Dosya akışına kopyala.
+                createItemDTO.ItemSubShowcaseImage = "/ItemImages/" + newImageName;
+            }
+            createItemDTO.ItemName = createNewItemViewModel.ItemName;
+            createItemDTO.SubCategoryID = createNewItemViewModel.SubCategoryID;
+
             var httpClient = new HttpClient();
           
             var jsonItem = JsonConvert.SerializeObject(createItemDTO);
             StringContent content = new StringContent(jsonItem, Encoding.UTF8, "application/json");
-            var responseMessage = await httpClient.PostAsync("https://localhost:44362/api/IndividualSellerUI/CreateItemAds", content);
+            var responseMessage = await httpClient.PostAsync("https://localhost:44362/api/IndividualSeller/CreateItemAds", content);
        
             if (responseMessage.IsSuccessStatusCode)
             {

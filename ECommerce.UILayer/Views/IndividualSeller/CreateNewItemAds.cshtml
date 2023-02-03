@@ -1,34 +1,51 @@
-﻿@model CreateItemDTO
+﻿@model CreateNewItemAdsViewModel
 @{
     ViewData["Title"] = "CreateNewItemAds";
     Layout = "~/Views/Shared/_SellerAdminLayout.cshtml";
 }
 
-@using (Html.BeginForm("CreateNewItemAds", "IndividualSellerController", FormMethod.Post))
-{
-    @Html.Label("Ürün Adı")
-    @Html.TextBoxFor(x => x.ItemName, new { @class = "form-control" })
+<form class="form-group" action="/IndividualSeller/CreateNewItemAds/" method="post" enctype="multipart/form-data">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yeni İlan Ekleme</h4>
+                <br />
+               
 
-    <br />
-    @Html.Label("Ürün Ana Görseli")
-    @Html.TextBoxFor(x => x.ItemShowcaseImage, new { @class = "form-control" })
 
-    <br />
-    @Html.Label("Ürün Alt Görseli")
-    @Html.TextBoxFor(x => x.ItemSubShowcaseImage, new { @class = "form-control" })
-    
-    <br />
-    @Html.Label("Ürün Kategorisi")
+                <div class="forms-sample">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Ürün Adı </label>
 
-    @Html.DropDownListFor(x => x.SubCategoryID,(List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
-    <br />
+                        @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for = "WriterName" placeholder="Username">*@
+
+                        @Html.TextBoxFor(x => x.ItemName, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Ürün Kategorisi</label>
+                        @Html.DropDownListFor(x => x.SubCategoryID,(List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+                        @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for="WriterMail" placeholder="Username">*@
+
+                    </div>
  
-   
-    <br />
-    <button class="btn btn-info">Ürünü Kaydet</button>
+                    <div class="form-group">
+                        <label>Ürün Ana Görseli</label>
+                        <input type="file" name="ItemShowcaseImage" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ürün Alt Görseli</label>
+                        <input type="file" name="ItemSubShowcaseImage" />
+                    </div>
+
+                    <button type="submit" class="btn btn-gradient-primary mr-2">Kaydet</button>
+                    <button class="btn btn-light">İptal</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+</form>
 
 
-}
 

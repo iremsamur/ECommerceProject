@@ -1717,7 +1717,8 @@
       "ECommerce.DTOLayer/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.ExpressionMapping": "5.1.0",
-          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0"
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
+          "Microsoft.AspNetCore.Http.Features": "2.2.0"
         },
         "runtime": {
           "ECommerce.DTOLayer.dll": {}

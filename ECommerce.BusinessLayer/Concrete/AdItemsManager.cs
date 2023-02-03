@@ -1,5 +1,6 @@
 ﻿using ECommerce.BusinessLayer.Abstract;
 using ECommerce.DataAccessLayer.Abstract;
+using ECommerce.DataAccessLayer.EntityFramework;
 using ECommerce.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;

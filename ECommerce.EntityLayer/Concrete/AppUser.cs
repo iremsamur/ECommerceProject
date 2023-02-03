@@ -30,12 +30,22 @@ namespace ECommerce.EntityLayer.Concrete
         public ICollection<Comment> Comments { get; set; }
          //item-user çoka çok ilişki sepete eklenen ürün
         public virtual ICollection<MindList> MindLists { get; set; }
+        public virtual ICollection<ItemOwner> ItemOwners { get; set; }
 
-        public ICollection<IndividualSeller> IndividualSellers { get; set; }
-        public ICollection<CompanySeller> CompanySellers { get; set; }
+        //public ICollection<IndividualSeller> IndividualSellers { get; set; }
+        //public ICollection<CompanySeller> CompanySellers { get; set; }
 
         public virtual ICollection<Message> UserSender { get; set; }//Gönderici için WriterMessage ilişkisi
         public virtual ICollection<Message> UserReceiver { get; set; } //alıcı için WriterMessage ilişkisi
+
+   
+
+        public IndividualSeller IndividualSeller { get; set; }
+        public int? IndividualSellerId { get; set; }
+
+        public CompanySeller CompanySeller { get; set; }
+        public int? CompanySellerId { get; set; }
+
 
 
     }

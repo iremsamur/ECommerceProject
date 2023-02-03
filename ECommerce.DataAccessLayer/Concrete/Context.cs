@@ -28,21 +28,18 @@ namespace ECommerce.DataAccessLayer.Concrete
             builder.Entity<MindList>().HasOne(pt => pt.AppUser)
                 .WithMany(p => p.MindLists)
                 .HasForeignKey(pt => pt.UserId);
-            base.OnModelCreating(builder);
+       
 
-            //AdItem
-            builder.Entity<AdItems>()
-         .HasKey(pt => new { pt.ItemId, pt.IndividualSellerId,pt.CompanySellerId });
-            builder.Entity<AdItems>().HasOne(pt => pt.Item)
-                .WithMany(p => p.AdItemss)
-                .HasForeignKey(pt => pt.ItemId);
-            builder.Entity<AdItems>().HasOne(pt => pt.CompanySeller)
-                .WithMany(p => p.AdItems)
-                .HasForeignKey(pt => pt.CompanySellerId);
-            builder.Entity<AdItems>().HasOne(pt => pt.IndividualSeller)
-              .WithMany(p => p.AdItems)
-              .HasForeignKey(pt => pt.IndividualSellerId);
-            base.OnModelCreating(builder);
+
+            builder.Entity<ItemOwner>()
+        .HasKey(pt => new { pt.OwnerId, pt.ItemAdId });
+            builder.Entity<ItemOwner>().HasOne(pt => pt.ItemAd)
+                .WithMany(p => p.ItemOwners)
+                .HasForeignKey(pt => pt.ItemAdId);
+            builder.Entity<ItemOwner>().HasOne(pt => pt.OwnerUser)
+                .WithMany(p => p.ItemOwners)
+                .HasForeignKey(pt => pt.OwnerId);
+           
 
 
             builder.Entity<Message>()
@@ -56,6 +53,8 @@ namespace ECommerce.DataAccessLayer.Concrete
                 .WithMany(y => y.UserReceiver)
                 .HasForeignKey(z => z.ReceiverID)
                 .OnDelete(DeleteBehavior.ClientSetNull);
+
+            base.OnModelCreating(builder);
         }
 
 
@@ -75,7 +74,8 @@ namespace ECommerce.DataAccessLayer.Concrete
         public DbSet<MindList> MindLists { get; set; }
         public DbSet<IndividualSeller> IndividualSellers { get; set; }
         public DbSet<CompanySeller> CompanySellers { get; set; }
-        public DbSet<AdItems> AdItemss { get; set; }
+        //public DbSet<AdItems> AdItemss { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<ItemOwner> ItemOwners { get; set; }
     }
 }

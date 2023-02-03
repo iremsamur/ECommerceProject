@@ -11,8 +11,10 @@ namespace ECommerce.EntityLayer.Concrete
 	{
         [Key]
         public int IndividualSellerId { get; set; }
-        public virtual AppUser AppUser { get; set; }
-        public int IndividualUserId { get; set; }
-        public virtual ICollection<AdItems> AdItems { get; set; }//Item- Individual çoka çok ilişkisi
+        //public virtual AppUser AppUser { get; set; }
+        //public int IndividualUserId { get; set; }
+        /* public virtual ICollection<AdItems> AdItems { get; set; }*///Item- Individual çoka çok ilişkisi
+        public ICollection<AppUser> Users { get; set; }
     }
 }
+

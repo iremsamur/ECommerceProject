@@ -19,6 +19,11 @@ namespace ECommerce.DataAccessLayer.Abstract
         Item GetSelectedItemAllDetails(int itemID);
         List<Item> GetItemsBySubCategory(List<SubCategory> subCategories);
 
+        int GetItemId(string itemName);
+
+       
+        bool GetItemByItemNumber(string itemNumber);
+
 
 
     }

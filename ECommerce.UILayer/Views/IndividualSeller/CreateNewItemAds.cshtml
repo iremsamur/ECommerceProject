@@ -1,17 +1,19 @@
-﻿@model CreateNewItemAdsViewModel
+﻿@model ECommerce.UILayer.Models.CreateNewItemAdsViewModel
 @{
     ViewData["Title"] = "CreateNewItemAds";
     Layout = "~/Views/Shared/_SellerAdminLayout.cshtml";
 }
-
-<form class="form-group" action="/IndividualSeller/CreateNewItemAds/" method="post" enctype="multipart/form-data">
+<button onclick="myFunction()" class="btn btn-gradient-primary mr-2">Formu Göster/Gizle</button>
+<br />
+<form class="form-group" action="/IndividualSeller/CreateNewItemAds/" method="post" enctype="multipart/form-data" id="createItemForm">
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
+                
+        
                 <h4 class="card-title">Yeni İlan Ekleme</h4>
                 <br />
-               
-
+        
 
                 <div class="forms-sample">
                     <div class="form-group">
@@ -19,25 +21,36 @@
 
                         @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for = "WriterName" placeholder="Username">*@
 
-                        @Html.TextBoxFor(x => x.ItemName, new { @class = "form-control" })
+                        @Html.TextBoxFor(x => x.ItemName, new { @class = "form-control",@style="background-color:red;" })
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail3">Ürün Kategorisi</label>
-                        @Html.DropDownListFor(x => x.SubCategoryID,(List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+                        @Html.DropDownListFor(x => x.SubCategoryID,(List<SelectListItem>)ViewBag.cv, new { @class = "form-control",@style="background-color:red;" })
                         @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for="WriterMail" placeholder="Username">*@
 
                     </div>
+                    <br />
+
  
                     <div class="form-group">
-                        <label>Ürün Ana Görseli</label>
-                        <input type="file" name="ItemShowcaseImage" />
-                    </div>
-                    <div class="form-group">
-                        <label>Ürün Alt Görseli</label>
-                        <input type="file" name="ItemSubShowcaseImage" />
-                    </div>
+                        
+                        <label for="showcaseImage">Ürün Ana Görseli Seçin : </label>
 
-                    <button type="submit" class="btn btn-gradient-primary mr-2">Kaydet</button>
+                        <input type="file"
+                                name="ItemShowcaseImage"
+                               accept="image/png, image/jpeg" style="background-color:red;color:white;">
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="subShowcaseImage">Ürün Alt Görseli Seçin : </label>
+                    
+                        <input type="file"
+                               name="ItemSubShowcaseImage"
+                               accept="image/png, image/jpeg" style="background-color:red;color:white;">
+                    </div>
+                    <br />
+
+                    <button type="submit" class="btn btn-gradient-primary mr-2" id="savebtn">Kaydet</button>
                     <button class="btn btn-light">İptal</button>
                 </div>
             </div>
@@ -46,6 +59,17 @@
 
 
 </form>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("createItemForm");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
 
 
 

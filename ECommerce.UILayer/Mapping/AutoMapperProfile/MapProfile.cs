@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using ECommerce.DTOLayer;
+
+using ECommerce.DTOLayer.ItemDetailDTO;
 using ECommerce.DTOLayer.ItemDTOs;
+using ECommerce.DTOLayer.ItemOwnerDTOs;
 using ECommerce.DTOLayer.MindListDTOs;
 using ECommerce.DTOLayer.SubCategoryDTOs;
 using ECommerce.DTOLayer.UserDTOs;
@@ -22,6 +25,9 @@ namespace ECommerce.UILayer.Mapping.AutoMapperProfile
             CreateMap<SubCategory, SubCategoryDTO>().ReverseMap();
             CreateMap<Item, ItemWithSubCategoryDTO>().ReverseMap();
             CreateMap<Item, CreateItemDTO>().ReverseMap();
+            CreateMap<ItemDetail, CreateItemDetailDTO>().ReverseMap();
+            CreateMap<ItemOwner, ItemOwnerDTO>().ReverseMap();
+
 
         }
     }

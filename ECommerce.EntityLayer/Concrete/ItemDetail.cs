@@ -34,5 +34,6 @@ namespace ECommerce.EntityLayer.Concrete
         public string ItemDetailDescription { get; set; }//ürün detayı açıklaması örneğin bilgisayar için ram, cpu vb.
 
 
+
     }
 }

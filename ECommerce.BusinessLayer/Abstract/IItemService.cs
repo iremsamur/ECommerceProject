@@ -23,6 +23,11 @@ namespace ECommerce.BusinessLayer.Abstract
 
         List<Item> TGetItemsBySubCategory(List<SubCategory> subCategories);
 
+        int TGetItemId(string itemName);
+
+        public bool TGetItemByItemNumber(string itemNumber);
+
+
 
 
 

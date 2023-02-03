@@ -33,6 +33,12 @@ namespace ECommerce.BusinessLayer.DIContainer
             services.AddScoped<IMindListDal, EfMindListDal>();
             services.AddScoped<IRoleService, RoleManager>();
             services.AddScoped<IRoleDal, EfRoleDal>();
+            services.AddScoped<IBrandService, BrandManager>();
+            services.AddScoped<IBrandDal, EfBrandDal>();
+            services.AddScoped<IAdItemsService,AdItemsManager>();
+            services.AddScoped<IAdItemsDal, EfAdItemsDal>();
+            services.AddScoped<IItemOwnerService, ItemOwnerManager>();
+            services.AddScoped<IItemOwnerDal, EfItemOwnerDal>();
 
 
         }

@@ -11,16 +11,16 @@ namespace ECommerce.EntityLayer.Concrete
 	{
         [Key]
         public int CompanySellerId { get; set; }
-        public virtual AppUser AppUser { get; set; }
-        public int StaffUserId { get; set; }
+        //public virtual AppUser AppUser { get; set; }
+        //public int StaffUserId { get; set; }
 
-        public virtual ICollection<AdItems> AdItems { get; set; }//Item- Company çoka çok ilişkisi
+      /*  public virtual ICollection<AdItems> AdItems { get; set; }*///Item- Company çoka çok ilişkisi
 
         public string CompanyName { get; set; }
         public string CompanyPicture { get; set; }
         public string CompanyNumber { get; set; }
         public string CompanySectorName { get; set; }
         public string CompanyAbout { get; set; }
-
+        public ICollection<AppUser> Users { get; set; }
     }
 }

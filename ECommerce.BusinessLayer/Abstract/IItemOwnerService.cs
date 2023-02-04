@@ -9,5 +9,6 @@ namespace ECommerce.BusinessLayer.Abstract
 {
     public interface IItemOwnerService : IGenericService<ItemOwner>
     {
+        public List<ItemOwner> TGetItemOwnerByLoggedUser(int userId);
     }
 }

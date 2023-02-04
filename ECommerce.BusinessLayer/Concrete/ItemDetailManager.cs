@@ -1,4 +1,5 @@
 ﻿using ECommerce.BusinessLayer.Abstract;
+using ECommerce.DataAccessLayer.Abstract;
 using ECommerce.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,13 @@ namespace ECommerce.BusinessLayer.Concrete
 {
     public class ItemDetailManager : IItemDetailService
     {
+        private IItemDetailDal _itemDetailDal;
+
+        public ItemDetailManager(IItemDetailDal itemDetailDal)
+        {
+            _itemDetailDal = itemDetailDal;
+        }
+
         public void TDelete(ItemDetail t)
         {
             throw new NotImplementedException();
@@ -27,7 +35,7 @@ namespace ECommerce.BusinessLayer.Concrete
 
         public void TInsert(ItemDetail t)
         {
-            throw new NotImplementedException();
+            _itemDetailDal.Insert(t);
         }
 
         public void TUpdate(ItemDetail t)

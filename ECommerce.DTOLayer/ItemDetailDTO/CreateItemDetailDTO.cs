@@ -11,7 +11,6 @@ namespace ECommerce.DTOLayer.ItemDetailDTO
     public class CreateItemDetailDTO
     {
 
-       
         public string ItemNo { get; set; }
         public double ItemNewPrice { get; set; }
         public double ItemOldPrice { get; set; }

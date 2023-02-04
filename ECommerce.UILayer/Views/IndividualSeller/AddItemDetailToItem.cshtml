@@ -1,0 +1,57 @@
+﻿@model UpdateItemDTO
+@{
+    ViewData["Title"] = "AddItemDetailToItem";
+    Layout = "~/Views/Shared/_SellerAdminLayout.cshtml";
+}
+
+<button onclick="myFunction()" class="btn btn-gradient-primary mr-2">Formu Göster/Gizle</button>
+<br />
+<form class="form-group" action="/IndividualSeller/AddItemDetailToItem/" method="post" id="createItemForm">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+
+
+                <h4 class="card-title">İlana Detay Ekleme</h4>
+                <br />
+
+
+                <div class="forms-sample">
+                  
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Ürünlerim</label>
+                        @Html.DropDownListFor(x => x.ItemID,(List<SelectListItem>)ViewBag.items, new { @class = "form-control",@style="background-color:red;" })
+                        @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for="WriterMail" placeholder="Username">*@
+
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Ürün Detayları</label>
+                        @Html.DropDownListFor(x => x.ItemDetailID,(List<SelectListItem>)ViewBag.itemDetails, new { @class = "form-control",@style="background-color:red;" })
+                        @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for="WriterMail" placeholder="Username">*@
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-gradient-primary mr-2" id="savebtn">Kaydet</button>
+                    <button class="btn btn-light">İptal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("createItemForm");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+

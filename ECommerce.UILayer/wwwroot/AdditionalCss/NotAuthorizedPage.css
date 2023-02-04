@@ -1,197 +1,89 @@
-﻿body {
-    background-color: #1C2127;
+﻿html {
+    box-sizing: border-box;
 }
 
-.container {
-    position: absolute;
-    right: 30px;
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
-.message {
-    font-family: 'Poppins', sans-serif;
-    font-size: 30px;
-    color: white;
-    font-weight: 500;
-    position: absolute;
-    top: 230px;
-    left: 40px;
+body * {
+    margin: 0;
+    padding: 0;
 }
 
-.message2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 18px;
-    color: white;
-    font-weight: 300;
-    width: 360px;
-    position: absolute;
-    top: 280px;
-    left: 40px;
+body {
+    font: normal 100%/1.15 "Merriweather", serif;
+    background: #fff url("https://www.dropbox.com/s/0czxq7wr862we98/texture.jpg?raw=1") repeat 0 0;
+    color: #fff;
 }
 
-.neon {
-    text-align: center;
-    width: 300px;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    font-family: 'Varela Round', sans-serif;
-    font-size: 90px;
-    color: #5BE0B3;
-    letter-spacing: 3px;
-    text-shadow: 0 0 5px #6EECC1;
-    animation: flux 2s linear infinite;
-}
-
-.trash {
-    width: 170px;
-    height: 220px;
-    background-color: #585F67;
-    top: 300px;
-}
-
-.can {
-    width: 190px;
-    height: 30px;
-    background-color: #6B737C;
-    border-radius: 15px 15px 0 0;
-}
-
-.door-frame {
-    height: 495px;
-    width: 295px;
-    border-radius: 90px 90px 0 0;
-    background-color: #8594A5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.door {
-    height: 450px;
-    width: 250px;
-    border-radius: 70px 70px 0 0;
-    background-color: #A0AEC0;
-}
-
-.eye {
-    top: 15px;
-    left: 25px;
-    height: 5px;
-    width: 15px;
-    border-radius: 50%;
-    background-color: white;
-    animation: eye 7s ease-in-out infinite;
-    position: absolute;
-}
-
-.eye2 {
-    left: 65px;
-}
-
-.window {
-    height: 40px;
-    width: 130px;
-    background-color: #1C2127;
-    border-radius: 3px;
-    margin: 80px auto;
+/* https://www.vecteezy.com/vector-art/87721-wood-fence-vectors */
+.wrapper {
     position: relative;
+    max-width: 1298px;
+    height: auto;
+    margin: 2em auto 0 auto;
+    background: transparent url("https://www.dropbox.com/s/qq5n8w99q40wtrg/wood-fence.png?raw=1") no-repeat center top 24em;
 }
 
-.leaf {
-    height: 40px;
-    width: 130px;
-    background-color: #8594A5;
-    border-radius: 3px;
-    margin: 80px auto;
-    animation: leaf 7s infinite;
-    transform-origin: right;
+/* https://www.vecteezy.com/vector-art/237238-dog-family-colored-doodle-drawing */
+.box {
+    max-width: 70%;
+    min-height: 600px;
+    margin: 0 auto;
+    padding: 1em 1em;
+    text-align: center;
+    background: transparent url("https://www.dropbox.com/s/ft9vhk6720t1k86/dog-family-colored-doodle-drawing.jpg?raw=1") no-repeat top 10em center;
 }
 
-.handle {
-    height: 8px;
-    width: 50px;
-    border-radius: 4px;
-    background-color: #EBF3FC;
-    position: absolute;
-    margin-top: 250px;
-    margin-left: 30px;
+h1 {
+    margin: 0 0 1rem 0;
+    font-size: 8em;
+    text-shadow: 0 0 6px #8b4d1a;
 }
 
-.rectangle {
-    height: 70px;
-    width: 25px;
-    background-color: #CBD8E6;
-    border-radius: 4px;
-    position: absolute;
-    margin-top: 220px;
-    margin-left: 20px;
+p {
+    margin-bottom: 0.5em;
+    font-size: 1.75em;
+    color: #ea8a1a;
 }
 
-@keyframes leaf {
-    0% {
-        transform: scaleX(1);
+    p:first-of-type {
+        margin-top: 16em;
+        text-shadow: none;
     }
 
-    5% {
-        transform: scaleX(0.2);
+    p > a {
+        border-bottom: 1px dashed #837256;
+        font-style: italic;
+        text-decoration: none;
+        color: #837256;
     }
 
-    70% {
-        transform: scaleX(0.2);
+        p > a:hover {
+            text-shadow: 0 0 3px #8b4d1a;
+        }
+
+    p img {
+        vertical-align: bottom;
     }
 
-    75% {
-        transform: scaleX(1);
+@media screen and (max-width: 600px) {
+    .wrapper {
+        background-size: 300px 114px;
+        background-position: center top 22em;
     }
 
-    100% {
-        transform: scaleX(1);
-    }
-}
-
-@keyframes eye {
-    0% {
-        opacity: 0;
-        transform: translateX(0)
+    .box {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        background-size: 320px 185px;
     }
 
-    5% {
-        opacity: 0;
-    }
-
-    15% {
-        opacity: 1;
-        transform: translateX(0)
-    }
-
-    20% {
-        transform: translateX(15px)
-    }
-
-    35% {
-        transform: translateX(15px)
-    }
-
-    40% {
-        transform: translateX(-15px)
-    }
-
-    60% {
-        transform: translateX(-15px)
-    }
-
-    65% {
-        transform: translateX(0)
-    }
-}
-
-@keyframes flux {
-    0%, 100% {
-        text-shadow: 0 0 5px #00FFC6, 0 0 15px #00FFC6, 0 0 50px #00FFC6, 0 0 50px #00FFC6, 0 0 2px #B9FFE8, 2px 2px 3px #12E29C;
-        color: #4BFFEF;
-    }
-
-    50% {
-        text-shadow: 0 0 3px #00B58D, 0 0 7px #00B58D, 0 0 25px #00B58D, 0 0 25px #00B58D, 0 0 2px #00B58D, 2px 2px 3px #006A60;
-        color: #63D3AE;
+    p:first-of-type {
+        margin-top: 12em;
     }
 }

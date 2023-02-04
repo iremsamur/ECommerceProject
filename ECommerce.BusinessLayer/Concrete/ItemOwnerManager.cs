@@ -18,6 +18,11 @@ namespace ECommerce.BusinessLayer.Concrete
             _itemOwnerDal = itemOwnerDal;
         }
 
+        public List<ItemOwner> TGetItemOwnerByLoggedUser(int userId)
+        {
+            return _itemOwnerDal.GetItemOwnerByLoggedUser(userId);
+        }
+
         public void TDelete(ItemOwner t)
         {
             throw new NotImplementedException();

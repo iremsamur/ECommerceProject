@@ -1,5 +1,6 @@
 using ECommerce.BusinessLayer.DIContainer;
 using ECommerce.DataAccessLayer.Concrete;
+using ECommerce.DataAccessLayer.CQRS.Handlers.ItemAdsHandlers;
 using ECommerce.EntityLayer.Concrete;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -31,7 +32,7 @@ namespace ECommerce.ApiLayer
         public void ConfigureServices(IServiceCollection services)
         {
             services.Containerdependencies();
-            services.AddMediatR(typeof(Startup));
+            services.AddMediatR(typeof(GetMyOpenItemAdsHandlers).Assembly);
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 

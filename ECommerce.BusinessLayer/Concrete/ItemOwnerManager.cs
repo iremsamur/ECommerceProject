@@ -1,6 +1,9 @@
 ﻿using ECommerce.BusinessLayer.Abstract;
 using ECommerce.DataAccessLayer.Abstract;
+using ECommerce.DataAccessLayer.CQRS.Queries.ItemAds;
+using ECommerce.DataAccessLayer.CQRS.Results.ItemAdsResults;
 using ECommerce.EntityLayer.Concrete;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +15,12 @@ namespace ECommerce.BusinessLayer.Concrete
     public class ItemOwnerManager : IItemOwnerService
     {
         private readonly IItemOwnerDal _itemOwnerDal;
+        private readonly IMediator _mediator;
 
-        public ItemOwnerManager(IItemOwnerDal itemOwnerDal)
+        public ItemOwnerManager(IItemOwnerDal itemOwnerDal, IMediator mediator)
         {
             _itemOwnerDal = itemOwnerDal;
+            _mediator = mediator;
         }
 
         public List<ItemOwner> TGetItemOwnerByLoggedUser(int userId)
@@ -46,6 +51,12 @@ namespace ECommerce.BusinessLayer.Concrete
         public void TUpdate(ItemOwner t)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<List<GetMyOpenItemAdsQueryResult>> GetMyOpenItemAds(int UserID)
+        {
+            var values = await _mediator.Send(new GetMyOpenItemAdsQuery(UserID));
+            return values;
         }
     }
 }

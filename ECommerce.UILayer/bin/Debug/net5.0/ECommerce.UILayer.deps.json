@@ -40,6 +40,8 @@
           "ECommerce.DataAccessLayer": "1.0.0",
           "ECommerce.EntityLayer": "1.0.0",
           "FluentValidation.AspNetCore": "11.2.2",
+          "MediatR": "11.1.0",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "Microsoft.AspNetCore.Identity": "2.2.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.17",
           "Microsoft.EntityFrameworkCore": "5.0.17",

@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Concrete\" />
-    <Folder Include="CQRS\Queries\" />
-    <Folder Include="CQRS\Results\" />
   </ItemGroup>
 
   <ItemGroup>

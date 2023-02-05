@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using ECommerce.BusinessLayer.Abstract;
 using ECommerce.BusinessLayer.Concrete;
-
+using ECommerce.DataAccessLayer.CQRS.Queries.ItemAds;
+using ECommerce.DataAccessLayer.CQRS.Results.ItemAdsResults;
 using ECommerce.DTOLayer.ItemDetailDTO;
 using ECommerce.DTOLayer.ItemDetailOwnerDTOs;
 using ECommerce.DTOLayer.ItemDTOs;
@@ -10,6 +11,7 @@ using ECommerce.DTOLayer.MindListDTOs;
 using ECommerce.EntityLayer.Concrete;
 using ECommerce.EntityLayer.Concrete.Enum;
 using ECommerce.UILayer.Models;
+using MediatR;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -35,9 +37,10 @@ namespace ECommerce.UILayer.Controllers
         private readonly IItemOwnerService _itemOwnerService;
         private readonly IItemDetailService _itemDetailService;
         private readonly IItemDetailOwnerService _itemDetailOwnerService;
+        private readonly IMediator _mediator;
 
 
-        public IndividualSellerController(ISubCategoryService subCategoryService, IMapper mapper, IBrandService brandService, IUserService userService, IItemService itemService, IItemOwnerService itemOwnerService, IItemDetailService itemDetailService, IItemDetailOwnerService itemDetailOwnerService)
+        public IndividualSellerController(ISubCategoryService subCategoryService, IMapper mapper, IBrandService brandService, IUserService userService, IItemService itemService, IItemOwnerService itemOwnerService, IItemDetailService itemDetailService, IItemDetailOwnerService itemDetailOwnerService, IMediator mediator)
         {
             _subCategoryService = subCategoryService;
             _mapper = mapper;
@@ -47,12 +50,37 @@ namespace ECommerce.UILayer.Controllers
             _itemOwnerService = itemOwnerService;
             _itemDetailService = itemDetailService;
             _itemDetailOwnerService = itemDetailOwnerService;
+            _mediator = mediator;
         }
 
         public IActionResult Index()
         {
             return View();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllMyOpenItemAds()
+        {
+            var username = User.Identity.Name;
+            var loggedUserValues = _userService.TgetLoggedUserID(username);
+            //var values = await _itemOwnerService.GetMyOpenItemAds(loggedUserValues.Id);
+            //var values = await _mediator.Send(new GetMyOpenItemAdsQuery(loggedUserValues.Id));
+            var httpClient = new HttpClient();
+            var responseMessage = await httpClient.GetAsync("https://localhost:44362/api/ItemOwner/GetMyOpenItemAdsByUser/" + loggedUserValues.Id);//id değerine göre veriyi alıyor
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonItem = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<GetAllMyOpenItemAdsDTO>>(jsonItem);
+                return View(values);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+
 
         [HttpGet]
         public IActionResult CreateNewItemAds()

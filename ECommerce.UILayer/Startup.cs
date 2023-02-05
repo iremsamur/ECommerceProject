@@ -3,6 +3,7 @@ using ECommerce.BusinessLayer.Concrete;
 using ECommerce.BusinessLayer.DIContainer;
 using ECommerce.DataAccessLayer.Abstract;
 using ECommerce.DataAccessLayer.Concrete;
+using ECommerce.DataAccessLayer.CQRS.Handlers.ItemAdsHandlers;
 using ECommerce.DataAccessLayer.EntityFramework;
 using ECommerce.EntityLayer.Concrete;
 using MediatR;
@@ -35,7 +36,8 @@ namespace ECommerce.UILayer
             services.Containerdependencies();
 
             services.AddAutoMapper(typeof(Startup));
-            services.AddMediatR(typeof(Startup));
+            //services.AddMediatR(typeof(Startup));
+            services.AddMediatR(typeof(GetMyOpenItemAdsHandlers).Assembly);
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 

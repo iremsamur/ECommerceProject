@@ -3,11 +3,12 @@ using ECommerce.DTOLayer.ItemOwnerDTOs;
 using ECommerce.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace ECommerce.ApiLayer.Controllers
 {
     //[Route("api/[controller]/[action]")]
-    [Route("api/[controller]/")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ItemOwnerController : ControllerBase
     {
@@ -28,6 +29,14 @@ namespace ECommerce.ApiLayer.Controllers
             return Ok();
         }
 
-      
+        [HttpGet("{UserId}")]
+        public async Task<IActionResult> GetMyOpenItemAdsByUser(int UserId)
+        {
+            var values = await _itemOwnerService.GetMyOpenItemAds(UserId); 
+            return Ok(values);
+
+        }
+
+
     }
 }

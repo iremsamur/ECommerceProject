@@ -1,0 +1,52 @@
+﻿@model List<GetAllMyOpenItemAdsDTO>
+@{
+    ViewData["Title"] = "GetAllMyOpenItemAds";
+    Layout = "~/Views/Shared/_SellerAdminLayout.cshtml";
+}
+
+<div class="card ">
+    <div class="card-header">
+        <h4 class="card-title"> Simple Table</h4>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table tablesorter " id="">
+                <thead class=" text-primary">
+                    <tr>
+                        <th>
+                            Ürün Numarası
+                        </th>
+                        <th>
+                            Ürün Adı
+                        </th>
+                     
+                        <th>
+                            Ürün Resmi
+                        </th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model){
+                        <tr>
+                            <td>
+                                @item.ItemNo
+                            </td>
+                            <td>
+                                @item.ItemName
+                            </td>
+                            <td>
+                                <img src="@item.ItemShowcaseImage" alt="@item.ItemName" style="width:300px;height:300px;">
+                            </td>
+                           
+                        </tr>
+
+                    }
+             
+                 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

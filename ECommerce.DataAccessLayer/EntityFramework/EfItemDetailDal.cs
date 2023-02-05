@@ -13,6 +13,14 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 {
     public class EfItemDetailDal : GenericRepository<ItemDetail>, IItemDetailDal
     {
-        
+        public int GetItemDetailId(string itemNumber)
+        {
+            using (var context = new Context())
+            {
+                var itemDetailId = context.ItemDetails.Where(x => x.ItemNo == itemNumber).Select(y => y.ItemDetailID).FirstOrDefault();
+
+                return itemDetailId;
+            }
+        }
     }
 }

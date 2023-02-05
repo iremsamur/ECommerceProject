@@ -3,6 +3,7 @@ using ECommerce.BusinessLayer.Abstract;
 using ECommerce.BusinessLayer.Concrete;
 
 using ECommerce.DTOLayer.ItemDetailDTO;
+using ECommerce.DTOLayer.ItemDetailOwnerDTOs;
 using ECommerce.DTOLayer.ItemDTOs;
 using ECommerce.DTOLayer.ItemOwnerDTOs;
 using ECommerce.DTOLayer.MindListDTOs;
@@ -33,9 +34,10 @@ namespace ECommerce.UILayer.Controllers
         private readonly IItemService _itemService;
         private readonly IItemOwnerService _itemOwnerService;
         private readonly IItemDetailService _itemDetailService;
+        private readonly IItemDetailOwnerService _itemDetailOwnerService;
 
 
-        public IndividualSellerController(ISubCategoryService subCategoryService, IMapper mapper, IBrandService brandService, IUserService userService, IItemService itemService, IItemOwnerService itemOwnerService, IItemDetailService itemDetailService)
+        public IndividualSellerController(ISubCategoryService subCategoryService, IMapper mapper, IBrandService brandService, IUserService userService, IItemService itemService, IItemOwnerService itemOwnerService, IItemDetailService itemDetailService, IItemDetailOwnerService itemDetailOwnerService)
         {
             _subCategoryService = subCategoryService;
             _mapper = mapper;
@@ -44,6 +46,7 @@ namespace ECommerce.UILayer.Controllers
             _itemService = itemService;
             _itemOwnerService = itemOwnerService;
             _itemDetailService = itemDetailService;
+            _itemDetailOwnerService = itemDetailOwnerService;
         }
 
         public IActionResult Index()
@@ -65,6 +68,7 @@ namespace ECommerce.UILayer.Controllers
             return View();
         }
         //ek işlemi backend operasyonlarının yazılacağı apinin çağırılacağı metod
+        
         [HttpPost]
         public async Task<IActionResult> CreateNewItemAds(CreateNewItemAdsViewModel createNewItemViewModel)
         {
@@ -200,6 +204,13 @@ namespace ECommerce.UILayer.Controllers
             var values = _mapper.Map<ItemDetail>(createItemDetailDTO);
             _itemDetailService.TInsert(values);
 
+            var value = _itemDetailService.TGetItemDetailId(createItemDetailDTO.ItemNo);
+            ItemDetailOwnerDTO itemDetailOwnerDTO = new ItemDetailOwnerDTO();
+            itemDetailOwnerDTO.OwnerId = loggedUserValues.Id;
+            itemDetailOwnerDTO.ItemDetailId = value;
+            var itemDetailOwner = _mapper.Map<ItemDetailOwner>(itemDetailOwnerDTO);
+            _itemDetailOwnerService.TInsert(itemDetailOwner);
+
             return RedirectToAction("Index");
 
         }
@@ -238,15 +249,15 @@ namespace ECommerce.UILayer.Controllers
 
             ViewBag.items = itemValues;
 
-            var values = _itemOwnerService.TGetItemOwnerByLoggedUser(loggedUserValues.Id);
-            List<SelectListItem> itemDetailValues = (from x in values
+
+            List<SelectListItem> itemDetailValues = (from x in _itemDetailOwnerService.TGetItemDetailOwnerByLoggedUser(loggedUserValues.Id)
                                                      select new SelectListItem
                                                      {
-                                                         Text = x.ItemAd.ItemDetail.ItemNo + " " + x.ItemAd.ItemName,
-                                                         Value = x.ItemAd.ItemDetailID.ToString()
+                                                         Text = x.ItemAdDetail.ItemNo,
+                                                         Value = x.ItemDetailId.ToString()
 
                                                      }).ToList();
-            //önce userid gelecek itemowner'dan sonrasında bu id'nin itemlarını listeleyecek. Bu item'dan seçim yapıp onun detayını ekleyecek
+
 
             ViewBag.itemDetails = itemDetailValues;
 

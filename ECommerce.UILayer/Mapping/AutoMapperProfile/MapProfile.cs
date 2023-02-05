@@ -2,6 +2,7 @@
 using ECommerce.DTOLayer;
 
 using ECommerce.DTOLayer.ItemDetailDTO;
+using ECommerce.DTOLayer.ItemDetailOwnerDTOs;
 using ECommerce.DTOLayer.ItemDTOs;
 using ECommerce.DTOLayer.ItemOwnerDTOs;
 using ECommerce.DTOLayer.MindListDTOs;
@@ -27,7 +28,7 @@ namespace ECommerce.UILayer.Mapping.AutoMapperProfile
             CreateMap<Item, CreateItemDTO>().ReverseMap();
             CreateMap<ItemDetail, CreateItemDetailDTO>().ReverseMap();
             CreateMap<ItemOwner, ItemOwnerDTO>().ReverseMap();
-
+            CreateMap<ItemDetailOwner, ItemDetailOwnerDTO>().ReverseMap();
 
         }
     }

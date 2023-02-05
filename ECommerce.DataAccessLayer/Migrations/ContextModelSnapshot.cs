@@ -334,9 +334,6 @@ namespace ECommerce.DataAccessLayer.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AppUserId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("BrandID")
                         .HasColumnType("int");
 
@@ -387,11 +384,33 @@ namespace ECommerce.DataAccessLayer.Migrations
 
                     b.HasKey("ItemDetailID");
 
-                    b.HasIndex("AppUserId");
-
                     b.HasIndex("BrandID");
 
                     b.ToTable("ItemDetails");
+                });
+
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemDetailOwner", b =>
+                {
+                    b.Property<int>("OwnerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ItemDetailId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("OwnerId", "ItemDetailId");
+
+                    b.HasIndex("ItemDetailId");
+
+                    b.ToTable("ItemDetailOwners");
                 });
 
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemDiscountScore", b =>
@@ -800,17 +819,30 @@ namespace ECommerce.DataAccessLayer.Migrations
 
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemDetail", b =>
                 {
-                    b.HasOne("ECommerce.EntityLayer.Concrete.AppUser", "AppUser")
-                        .WithMany("ItemDetails")
-                        .HasForeignKey("AppUserId");
-
                     b.HasOne("ECommerce.EntityLayer.Concrete.Brand", "Brand")
                         .WithMany("ItemDetails")
                         .HasForeignKey("BrandID");
 
-                    b.Navigation("AppUser");
-
                     b.Navigation("Brand");
+                });
+
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemDetailOwner", b =>
+                {
+                    b.HasOne("ECommerce.EntityLayer.Concrete.ItemDetail", "ItemAdDetail")
+                        .WithMany("ItemDetailOwners")
+                        .HasForeignKey("ItemDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ECommerce.EntityLayer.Concrete.AppUser", "OwnerUser")
+                        .WithMany("ItemDetailOwners")
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ItemAdDetail");
+
+                    b.Navigation("OwnerUser");
                 });
 
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemOwner", b =>
@@ -943,7 +975,7 @@ namespace ECommerce.DataAccessLayer.Migrations
                 {
                     b.Navigation("Comments");
 
-                    b.Navigation("ItemDetails");
+                    b.Navigation("ItemDetailOwners");
 
                     b.Navigation("ItemOwners");
 
@@ -980,6 +1012,8 @@ namespace ECommerce.DataAccessLayer.Migrations
 
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.ItemDetail", b =>
                 {
+                    b.Navigation("ItemDetailOwners");
+
                     b.Navigation("Items");
                 });
 

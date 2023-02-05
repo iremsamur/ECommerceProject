@@ -9,6 +9,6 @@ namespace ECommerce.DataAccessLayer.Abstract
 {
     public interface IItemDetailDal : IGenericDal<ItemDetail>
     {
-      
+        int GetItemDetailId(string itemNumber);
     }
 }

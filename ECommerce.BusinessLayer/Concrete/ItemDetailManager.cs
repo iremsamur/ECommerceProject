@@ -28,6 +28,11 @@ namespace ECommerce.BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
+        public int TGetItemDetailId(string itemNumber)
+        {
+            return _itemDetailDal.GetItemDetailId(itemNumber);
+        }
+
         public List<ItemDetail> TGetList()
         {
             throw new NotImplementedException();

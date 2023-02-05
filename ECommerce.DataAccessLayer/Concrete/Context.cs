@@ -39,7 +39,17 @@ namespace ECommerce.DataAccessLayer.Concrete
             builder.Entity<ItemOwner>().HasOne(pt => pt.OwnerUser)
                 .WithMany(p => p.ItemOwners)
                 .HasForeignKey(pt => pt.OwnerId);
-           
+
+
+            builder.Entity<ItemDetailOwner>()
+        .HasKey(pt => new { pt.OwnerId, pt.ItemDetailId });
+            builder.Entity<ItemDetailOwner>().HasOne(pt => pt.ItemAdDetail)
+                .WithMany(p => p.ItemDetailOwners)
+                .HasForeignKey(pt => pt.ItemDetailId);
+            builder.Entity<ItemDetailOwner>().HasOne(pt => pt.OwnerUser)
+                .WithMany(p => p.ItemDetailOwners)
+                .HasForeignKey(pt => pt.OwnerId);
+
 
 
             builder.Entity<Message>()
@@ -77,5 +87,7 @@ namespace ECommerce.DataAccessLayer.Concrete
         //public DbSet<AdItems> AdItemss { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<ItemOwner> ItemOwners { get; set; }
+
+        public DbSet<ItemDetailOwner> ItemDetailOwners { get; set; }
     }
 }

@@ -9,6 +9,6 @@ namespace ECommerce.BusinessLayer.Abstract
 {
     public interface IItemDetailService : IGenericService<ItemDetail>
     {
-      
+        public int TGetItemDetailId(string itemNumber);
     }
 }

@@ -41,6 +41,8 @@ namespace ECommerce.BusinessLayer.DIContainer
             services.AddScoped<IItemOwnerDal, EfItemOwnerDal>();
             services.AddScoped<IItemDetailService, ItemDetailManager>();
             services.AddScoped<IItemDetailDal, EfItemDetailDal>();
+            services.AddScoped<IItemDetailOwnerService, ItemDetailOwnerManager>();
+            services.AddScoped<IItemDetailOwnerDal, EfItemDetailOwnerDal>();
 
 
         }

@@ -33,6 +33,8 @@ namespace ECommerce.EntityLayer.Concrete
         public string Description { get; set; } //açıklaması
         public string ItemDetailDescription { get; set; }//ürün detayı açıklaması örneğin bilgisayar için ram, cpu vb.
 
+        public virtual ICollection<ItemDetailOwner> ItemDetailOwners { get; set; }
+
 
 
     }

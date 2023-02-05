@@ -31,6 +31,7 @@ namespace ECommerce.EntityLayer.Concrete
          //item-user çoka çok ilişki sepete eklenen ürün
         public virtual ICollection<MindList> MindLists { get; set; }
         public virtual ICollection<ItemOwner> ItemOwners { get; set; }
+        public virtual ICollection<ItemDetailOwner> ItemDetailOwners { get; set; }
 
         //public ICollection<IndividualSeller> IndividualSellers { get; set; }
         //public ICollection<CompanySeller> CompanySellers { get; set; }

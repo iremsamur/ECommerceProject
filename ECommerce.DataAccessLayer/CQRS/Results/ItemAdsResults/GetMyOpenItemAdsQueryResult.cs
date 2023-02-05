@@ -14,6 +14,7 @@ namespace ECommerce.DataAccessLayer.CQRS.Results.ItemAdsResults
         public double ItemNewPrice { get; set; }
         public double ItemOldPrice { get; set; }
         public double ItemDiscount { get; set; }
+        public bool Status { get; set; }
 
         public int ItemAdType { get; set; }// ürünün ilan türü - satılık ürün/kiralık ürün
 

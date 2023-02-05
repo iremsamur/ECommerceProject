@@ -29,5 +29,9 @@ namespace ECommerce.DTOLayer.ItemDetailDTO
         public string Description { get; set; } //açıklaması
         public string ItemDetailDescription { get; set; }//ürün detayı açıklaması örneğin bilgisayar için ram, cpu vb.
         public int? AppUserId { get; set; }
+
+        public bool status { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
     }
 }

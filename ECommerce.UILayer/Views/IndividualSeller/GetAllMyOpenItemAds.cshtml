@@ -6,7 +6,7 @@
 
 <div class="card ">
     <div class="card-header">
-        <h4 class="card-title"> Simple Table</h4>
+        <h4 class="card-title">Açtığım Aktif İlanlar</h4>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -23,7 +23,28 @@
                         <th>
                             Ürün Resmi
                         </th>
-                       
+                        <th>
+                            Ürün Yeni Fiyatı
+                        </th>
+                        <th>
+                            Ürün Eski Fiyatı
+                        </th>
+                        <th>
+                            Ürün İndirim Oranı (%)
+                        </th>
+                        <th>
+                            İlan Türü
+                        </th>
+                        <th>
+                            İlan Yayın Tarihi
+                        </th>
+                        <th>
+                            Ürün Durumu
+                        </th>
+                        <th>
+                            Açıklama
+                        </th>
+                        <th>İlan Durumu (Aktif/Pasif)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,8 +57,22 @@
                                 @item.ItemName
                             </td>
                             <td>
-                                <img src="@item.ItemShowcaseImage" alt="@item.ItemName" style="width:300px;height:300px;">
+                                <img src="@item.ItemShowcaseImage" alt="@item.ItemName" style="width:300px;height:150px;">
                             </td>
+                            <td>@item.ItemNewPrice</td>
+
+                            <td>@item.ItemOldPrice</td>
+                            <td>@item.ItemDiscount</td>
+                            <td>@item.ItemAdType</td>
+                            <td>@item.ItemAnnouncementDate</td>
+                            <td>@item.ItemStatus</td>
+                            <td>@item.Description</td>
+                            @if(item.Status==true){
+                                <td style="background-color:limegreen;color:white;">Aktif</td>
+                            }
+                            else{
+                                <td style="background-color:red;color:white;">Pasif</td>
+                            }
                            
                         </tr>
 

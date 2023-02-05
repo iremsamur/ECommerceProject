@@ -15,5 +15,8 @@ namespace ECommerce.DTOLayer.ItemDTOs
         public int? ItemDetailID { get; set; }
         public int? SubCategoryID { get; set; }
         public int? ItemImageID { get; set; }
+        public bool status { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
     }
 }

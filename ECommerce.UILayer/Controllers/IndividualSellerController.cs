@@ -127,6 +127,9 @@ namespace ECommerce.UILayer.Controllers
             }
             createItemDTO.ItemName = createNewItemViewModel.ItemName;
             createItemDTO.SubCategoryID = createNewItemViewModel.SubCategoryID;
+            createItemDTO.status = true;
+            createItemDTO.CreatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            createItemDTO.UpdatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             var values = _mapper.Map<Item>(createItemDTO);
             _itemService.TInsert(values);
 
@@ -135,6 +138,9 @@ namespace ECommerce.UILayer.Controllers
             ItemOwnerDTO itemOwnerDTO = new ItemOwnerDTO();
             itemOwnerDTO.OwnerId = loggedUserValues.Id;
             itemOwnerDTO.ItemAdId = value;
+            itemOwnerDTO.status = true;
+            itemOwnerDTO.UpdatedDate= DateTime.Parse(DateTime.Now.ToShortDateString());
+            itemOwnerDTO.CreatedDate= DateTime.Parse(DateTime.Now.ToShortDateString());
             _itemOwnerService.TInsert(_mapper.Map<ItemOwner>(itemOwnerDTO));
            // await AddItemOwner(itemOwnerDTO);
 
@@ -229,6 +235,11 @@ namespace ECommerce.UILayer.Controllers
             createItemDetailDTO.ItemAnnouncementDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             createItemDetailDTO.ItemSellerType = (int)ItemSellerType.Sahibinden;
             createItemDetailDTO.FromWho = "Sahibinden";
+            createItemDetailDTO.status = true;
+            createItemDetailDTO.CreatedDate= DateTime.Parse(DateTime.Now.ToShortDateString()); 
+            createItemDetailDTO.UpdatedDate= DateTime.Parse(DateTime.Now.ToShortDateString()); 
+
+            createItemDetailDTO.ItemNewPrice = CalculateNewPrice(createItemDetailDTO.ItemOldPrice, createItemDetailDTO.ItemDiscount);
             var values = _mapper.Map<ItemDetail>(createItemDetailDTO);
             _itemDetailService.TInsert(values);
 
@@ -236,11 +247,18 @@ namespace ECommerce.UILayer.Controllers
             ItemDetailOwnerDTO itemDetailOwnerDTO = new ItemDetailOwnerDTO();
             itemDetailOwnerDTO.OwnerId = loggedUserValues.Id;
             itemDetailOwnerDTO.ItemDetailId = value;
+            itemDetailOwnerDTO.status = true;
+            itemDetailOwnerDTO.CreatedDate= DateTime.Parse(DateTime.Now.ToShortDateString());
+            itemDetailOwnerDTO.UpdatedDate= DateTime.Parse(DateTime.Now.ToShortDateString()); 
             var itemDetailOwner = _mapper.Map<ItemDetailOwner>(itemDetailOwnerDTO);
             _itemDetailOwnerService.TInsert(itemDetailOwner);
 
             return RedirectToAction("Index");
 
+        }
+        public double CalculateNewPrice(double oldPrice,double discount)
+        {
+            return oldPrice * ((100 - discount) / 100);
         }
         public string GetItemNo()
         {
@@ -300,6 +318,7 @@ namespace ECommerce.UILayer.Controllers
         {
             var values = _itemService.TGetByID(updateItemDTO.ItemID);
             values.ItemDetailID = updateItemDTO.ItemDetailID;
+            values.UpdatedDate= DateTime.Parse(DateTime.Now.ToShortDateString());
             _itemService.TUpdate(values);
             return RedirectToAction("Index");
             

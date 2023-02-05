@@ -10,6 +10,10 @@ namespace ECommerce.DTOLayer.ItemOwnerDTOs
     {
         public int OwnerId { get; set; }
         public int ItemAdId { get; set; }
+        public bool status { get; set; }
+
+        public DateTime CreatedDate { get; set; }
+        public DateTime UpdatedDate { get; set; }
 
 
     }

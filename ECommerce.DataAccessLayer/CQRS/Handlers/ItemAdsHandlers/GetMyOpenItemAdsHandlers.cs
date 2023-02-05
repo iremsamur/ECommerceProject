@@ -24,7 +24,7 @@ namespace ECommerce.DataAccessLayer.CQRS.Handlers.ItemAdsHandlers
 
         public async Task<List<GetMyOpenItemAdsQueryResult>> Handle(GetMyOpenItemAdsQuery request, CancellationToken cancellationToken)
         {
-            return await _context.ItemOwners.Include(x => x.OwnerUser).Include(x => x.ItemAd).ThenInclude(x => x.ItemDetail).Where(x => x.OwnerId == request.UserId).Select(x => new GetMyOpenItemAdsQueryResult
+            return await _context.ItemOwners.Include(x => x.OwnerUser).Include(x => x.ItemAd).ThenInclude(x => x.ItemDetail).Where(x => x.OwnerId == request.UserId && x.status==true).Select(x => new GetMyOpenItemAdsQueryResult
             {
                 ItemName = x.ItemAd.ItemName,
                 ItemShowcaseImage = x.ItemAd.ItemShowcaseImage,
@@ -39,7 +39,8 @@ namespace ECommerce.DataAccessLayer.CQRS.Handlers.ItemAdsHandlers
                 FromWho = x.ItemAd.ItemDetail.FromWho,
                 ItemStatus = x.ItemAd.ItemDetail.ItemStatus,
                 Description = x.ItemAd.ItemDetail.Description,
-                ItemDetailDescription = x.ItemAd.ItemDetail.ItemDetailDescription
+                ItemDetailDescription = x.ItemAd.ItemDetail.ItemDetailDescription,
+                Status=x.status
 
 
             }).AsNoTracking().ToListAsync();

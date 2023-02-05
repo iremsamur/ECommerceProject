@@ -63,7 +63,7 @@ namespace ECommerce.UILayer.Controllers
         {
             var username = User.Identity.Name;
             var loggedUserValues = _userService.TgetLoggedUserID(username);
-            //var values = await _itemOwnerService.GetMyOpenItemAds(loggedUserValues.Id);
+            //var values2 = await _itemOwnerService.GetMyOpenItemAds(loggedUserValues.Id);
             //var values = await _mediator.Send(new GetMyOpenItemAdsQuery(loggedUserValues.Id));
             var httpClient = new HttpClient();
             var responseMessage = await httpClient.GetAsync("https://localhost:44362/api/ItemOwner/GetMyOpenItemAdsByUser/" + loggedUserValues.Id);//id değerine göre veriyi alıyor
@@ -90,9 +90,10 @@ namespace ECommerce.UILayer.Controllers
                                                    {
                                                        Text = x.CategoryName,
                                                        Value = x.CategoryID.ToString()
-                                               
+
                                                    }).ToList();
             ViewBag.cv = categoryValues;
+
             return View();
         }
         //ek işlemi backend operasyonlarının yazılacağı apinin çağırılacağı metod
@@ -131,41 +132,41 @@ namespace ECommerce.UILayer.Controllers
             createItemDTO.CreatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             createItemDTO.UpdatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             var values = _mapper.Map<Item>(createItemDTO);
-            _itemService.TInsert(values);
+            if (ModelState.IsValid)
+            {
+                _itemService.TInsert(values);
 
 
-            var value = _itemService.TGetItemId(createItemDTO.ItemName);
-            ItemOwnerDTO itemOwnerDTO = new ItemOwnerDTO();
-            itemOwnerDTO.OwnerId = loggedUserValues.Id;
-            itemOwnerDTO.ItemAdId = value;
-            itemOwnerDTO.status = true;
-            itemOwnerDTO.UpdatedDate= DateTime.Parse(DateTime.Now.ToShortDateString());
-            itemOwnerDTO.CreatedDate= DateTime.Parse(DateTime.Now.ToShortDateString());
-            _itemOwnerService.TInsert(_mapper.Map<ItemOwner>(itemOwnerDTO));
-           // await AddItemOwner(itemOwnerDTO);
+                var value = _itemService.TGetItemId(createItemDTO.ItemName);
+                ItemOwnerDTO itemOwnerDTO = new ItemOwnerDTO();
+                itemOwnerDTO.OwnerId = loggedUserValues.Id;
+                itemOwnerDTO.ItemAdId = value;
+                itemOwnerDTO.status = true;
+                itemOwnerDTO.UpdatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                itemOwnerDTO.CreatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                _itemOwnerService.TInsert(_mapper.Map<ItemOwner>(itemOwnerDTO));
+           
 
-            return RedirectToAction("Index");
+                return RedirectToAction("GetAllMyOpenItemAds");
+            }
+            else
+            {
+                List<SelectListItem> categoryValues = (from x in _subCategoryService.TGetList()
+                                                       select new SelectListItem
+                                                       {
+                                                           Text = x.CategoryName,
+                                                           Value = x.CategoryID.ToString()
 
+                                                       }).ToList();
+                //bu satır dropdownlistte validasyonda dolayı normalde get içinde geldiği için ama sayfa yeniden yüklenmesi tekrar post içinde de yapılması gerektiği için eklendi
+                //SubCategoryID There is no ViewData item of type 'IEnumerable<SelectListItem>' that has the key 'CategoryID' hatası çözüöü
+                ViewBag.cv = categoryValues;
 
-            /*
-             *   
-              var httpClient = new HttpClient();
-              var jsonItem = JsonConvert.SerializeObject(createItemDTO);
-              StringContent content = new StringContent(jsonItem, Encoding.UTF8, "application/json");
-              var responseMessage = await httpClient.PostAsync("https://localhost:44362/api/IndividualSeller/CreateItemAds", content);
+                return View(createNewItemViewModel);
 
-              if (responseMessage.IsSuccessStatusCode)
-              {
-
-                  var value = _itemService.TGetItemId(createItemDTO.ItemName);
-                  ItemOwnerDTO itemOwnerDTO = new ItemOwnerDTO();
-                  itemOwnerDTO.OwnerId = loggedUserValues.Id;
-                  itemOwnerDTO.ItemAdId = value;
-                  await AddItemOwner(itemOwnerDTO);
-
-                  return RedirectToAction("Index");
-              }
-            */
+            }
+         
+         
            
         }
 

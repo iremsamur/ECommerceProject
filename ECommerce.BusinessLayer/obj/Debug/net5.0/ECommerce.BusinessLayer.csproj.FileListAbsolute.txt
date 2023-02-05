@@ -18,3 +18,5 @@ C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.BusinessLayer
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.BusinessLayer\obj\Debug\net5.0\ECommerce.BusinessLayer.pdb
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.BusinessLayer\obj\Debug\net5.0\ECommerce.BusinessLayer.genruntimeconfig.cache
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.BusinessLayer\obj\Debug\net5.0\ref\ECommerce.BusinessLayer.dll
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.BusinessLayer\bin\Debug\net5.0\ECommerce.DTOLayer.dll
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.BusinessLayer\bin\Debug\net5.0\ECommerce.DTOLayer.pdb

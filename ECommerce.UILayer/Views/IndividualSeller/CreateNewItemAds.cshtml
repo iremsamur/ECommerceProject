@@ -22,11 +22,13 @@
                         @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for = "WriterName" placeholder="Username">*@
 
                         @Html.TextBoxFor(x => x.ItemName, new { @class = "form-control",@style="background-color:red;" })
+                        <span asp-validation-for="ItemName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail3">Ürün Kategorisi</label>
                         @Html.DropDownListFor(x => x.SubCategoryID,(List<SelectListItem>)ViewBag.cv, new { @class = "form-control",@style="background-color:red;" })
                         @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for="WriterMail" placeholder="Username">*@
+                      
 
                     </div>
                     <br />
@@ -39,6 +41,7 @@
                         <input type="file"
                                 name="ItemShowcaseImage"
                                accept="image/png, image/jpeg" style="background-color:red;color:white;">
+                        <span asp-validation-for="ItemShowcaseImage" class="text-danger"></span>
                     </div>
                     <br />
                     <div class="form-group">
@@ -47,6 +50,7 @@
                         <input type="file"
                                name="ItemSubShowcaseImage"
                                accept="image/png, image/jpeg" style="background-color:red;color:white;">
+                        <span asp-validation-for="ItemSubShowcaseImage" class="text-danger"></span>
                     </div>
                     <br />
 

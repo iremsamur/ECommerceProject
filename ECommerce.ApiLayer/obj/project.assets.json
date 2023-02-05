@@ -2384,6 +2384,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
+          "ECommerce.DTOLayer": "1.0.0",
           "ECommerce.DataAccessLayer": "1.0.0",
           "ECommerce.EntityLayer": "1.0.0",
           "FluentValidation.AspNetCore": "11.2.2",

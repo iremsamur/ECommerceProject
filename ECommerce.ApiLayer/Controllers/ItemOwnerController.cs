@@ -32,7 +32,8 @@ namespace ECommerce.ApiLayer.Controllers
         [HttpGet("{UserId}")]
         public async Task<IActionResult> GetMyOpenItemAdsByUser(int UserId)
         {
-            var values = await _itemOwnerService.GetMyOpenItemAds(UserId); 
+            var values = await _itemOwnerService.GetMyOpenItemAds(UserId);
+            
             return Ok(values);
 
         }

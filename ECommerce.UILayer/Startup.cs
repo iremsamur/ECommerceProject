@@ -37,6 +37,7 @@ namespace ECommerce.UILayer
 
             services.AddAutoMapper(typeof(Startup));
             //services.AddMediatR(typeof(Startup));
+            services.CustomizeValidator();
             services.AddMediatR(typeof(GetMyOpenItemAdsHandlers).Assembly);
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();

@@ -1,0 +1,78 @@
+﻿@model ECommerce.UILayer.Models.UpdateItemAdsViewModel
+@{
+    ViewData["Title"] = "UpdateItemAd";
+    Layout = "~/Views/Shared/_SellerAdminLayout.cshtml";
+}
+<button onclick="myFunction()" class="btn btn-gradient-primary mr-2">Formu Göster/Gizle</button>
+<br />
+<form class="form-group" action="/IndividualSeller/UpdateItemAd/" method="post" enctype="multipart/form-data" id="createItemForm">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+
+
+                <h4 class="card-title">İlan Bilgisi Güncelleme</h4>
+                <br />
+
+                <input type="hidden" asp-for="ItemID" /> <!--Kullanıcıya ID'yi göstermez. Ama arka planda ID'yi alır-->
+                <div class="forms-sample">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Ürün Adı </label>
+
+                        @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for = "WriterName" placeholder="Username">*@
+
+                        @Html.TextBoxFor(x => x.ItemName, new { @class = "form-control",@style="background-color:red;" })
+                        <span asp-validation-for="ItemName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Ürün Kategorisi</label>
+                        @Html.DropDownListFor(x => x.SubCategoryID,(List<SelectListItem>)ViewBag.cv, new { @class = "form-control",@style="background-color:red;" })
+                        @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for="WriterMail" placeholder="Username">*@
+
+
+                    </div>
+                    <br />
+
+
+                    <div class="form-group">
+
+                        <label for="showcaseImage">Ürün Ana Görseli Seçin : </label>
+
+                        <input type="file"
+                               name="ItemShowcaseImage"
+                               accept="image/png, image/jpeg" style="background-color:red;color:white;">
+                        <span asp-validation-for="ItemShowcaseImage" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="subShowcaseImage">Ürün Alt Görseli Seçin : </label>
+
+                        <input type="file"
+                               name="ItemSubShowcaseImage"
+                               accept="image/png, image/jpeg" style="background-color:red;color:white;">
+                        <span asp-validation-for="ItemSubShowcaseImage" class="text-danger"></span>
+                    </div>
+                    <br />
+
+                    <button type="submit" class="btn btn-gradient-primary mr-2" id="savebtn">Kaydet</button>
+                    <button class="btn btn-light">İptal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("createItemForm");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+

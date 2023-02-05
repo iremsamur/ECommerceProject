@@ -18,6 +18,16 @@ namespace ECommerce.BusinessLayer.Concrete
             _itemDetailDal = itemDetailDal;
         }
 
+        public void TChangeItemDetailStatusToActive(int id)
+        {
+            _itemDetailDal.ChangeItemDetailStatusToActive(id);
+        }
+
+        public void TChangeItemDetailStatusToPassive(int id)
+        {
+            _itemDetailDal.ChangeItemDetailStatusToPassive(id);
+        }
+
         public void TDelete(ItemDetail t)
         {
             throw new NotImplementedException();
@@ -25,7 +35,7 @@ namespace ECommerce.BusinessLayer.Concrete
 
         public ItemDetail TGetByID(int id)
         {
-            throw new NotImplementedException();
+            return _itemDetailDal.GetByID(id);
         }
 
         public int TGetItemDetailId(string itemNumber)
@@ -45,7 +55,7 @@ namespace ECommerce.BusinessLayer.Concrete
 
         public void TUpdate(ItemDetail t)
         {
-            throw new NotImplementedException();
+            _itemDetailDal.Update(t);
         }
     }
 }

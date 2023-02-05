@@ -90,5 +90,20 @@ namespace ECommerce.BusinessLayer.Concrete
         {
             return _itemDal.GetItemByItemNumber(itemNumber);
         }
+
+        public void TChangeItemAdStatusToActive(int id)
+        {
+            _itemDal.ChangeItemAdStatusToActive(id);
+        }
+
+        public void TChangeItemAdStatusToPassive(int id)
+        {
+            _itemDal.ChangeItemAdStatusToPassive(id);
+        }
+
+        public int TGetItemDetailId(int itemId)
+        {
+            return _itemDal.GetItemDetailId(itemId);
+        }
     }
 }

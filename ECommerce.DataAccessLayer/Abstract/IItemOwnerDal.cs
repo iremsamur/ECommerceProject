@@ -10,5 +10,8 @@ namespace ECommerce.DataAccessLayer.Abstract
     public interface IItemOwnerDal : IGenericDal<ItemOwner>
     {
         List<ItemOwner> GetItemOwnerByLoggedUser(int userId);
+        public void ChangeItemOwnerStatusToActive(int id);
+
+        public void ChangeItemOwnerStatusToPassive(int id);
     }
 }

@@ -18,6 +18,16 @@ namespace ECommerce.BusinessLayer.Concrete
             _itemDetailOwnerDal = itemDetailOwnerDal;
         }
 
+        public void TChangeItemDetailOwnerStatusToActive(int id)
+        {
+            _itemDetailOwnerDal.ChangeItemDetailOwnerStatusToActive(id);
+        }
+
+        public void TChangeItemDetailOwnerStatusToPassive(int id)
+        {
+            _itemDetailOwnerDal.ChangeItemDetailOwnerStatusToPassive(id);
+        }
+
         public void TDelete(ItemDetailOwner t)
         {
             throw new NotImplementedException();

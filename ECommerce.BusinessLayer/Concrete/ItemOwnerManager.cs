@@ -58,5 +58,15 @@ namespace ECommerce.BusinessLayer.Concrete
             var values = await _mediator.Send(new GetMyOpenItemAdsQuery(UserID));
             return values;
         }
+
+        public void TChangeItemOwnerStatusToActive(int id)
+        {
+            _itemOwnerDal.ChangeItemOwnerStatusToActive(id);
+        }
+
+        public void TChangeItemOwnerStatusToPassive(int id)
+        {
+            _itemOwnerDal.ChangeItemOwnerStatusToPassive(id);
+        }
     }
 }

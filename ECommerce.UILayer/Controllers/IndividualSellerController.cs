@@ -79,6 +79,60 @@ namespace ECommerce.UILayer.Controllers
                 return RedirectToAction("Index");
             }
         }
+        [HttpGet]
+        public IActionResult UpdateItemAd(int id)
+        {
+            List<SelectListItem> categoryValues = (from x in _subCategoryService.TGetList()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.CategoryName,
+                                                       Value = x.CategoryID.ToString()
+
+                                                   }).ToList();
+            ViewBag.cv = categoryValues;
+            var values = _itemService.TGetByID(id);
+            UpdateItemAdsViewModel updateItemViewModel = new UpdateItemAdsViewModel();
+            updateItemViewModel.ItemID = values.ItemID;
+            updateItemViewModel.ItemName = values.ItemName;
+            updateItemViewModel.SubCategoryID = values.SubCategoryID;
+        
+            return View(updateItemViewModel);
+
+
+        }
+        [HttpPost]
+        public IActionResult UpdateItemAd(UpdateItemAdsViewModel updateItemViewModel)
+        {
+            var values = _itemService.TGetByID(updateItemViewModel.ItemID);
+            values.ItemName = updateItemViewModel.ItemName;
+           
+            values.UpdatedDate= DateTime.Parse(DateTime.Now.ToShortDateString());
+
+            if (updateItemViewModel.ItemShowcaseImage != null)
+            {
+                var extension = Path.GetExtension(updateItemViewModel.ItemShowcaseImage.FileName);
+
+                var newImageName = Guid.NewGuid() + extension;//Yüklenen resmin yeni ismi
+                var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ItemImages/", newImageName);
+                var stream = new FileStream(location, FileMode.Create);//Dosya oluştur.
+                updateItemViewModel.ItemShowcaseImage.CopyTo(stream);//Yüklenen dosyayı Dosya akışına kopyala.
+                values.ItemShowcaseImage = "/ItemImages/" + newImageName;
+            }
+            if (updateItemViewModel.ItemSubShowcaseImage != null)
+            {
+                var extension = Path.GetExtension(updateItemViewModel.ItemSubShowcaseImage.FileName);
+
+                var newImageName = Guid.NewGuid() + extension;//Yüklenen resmin yeni ismi
+                var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ItemImages/", newImageName);
+                var stream = new FileStream(location, FileMode.Create);//Dosya oluştur.
+                updateItemViewModel.ItemSubShowcaseImage.CopyTo(stream);//Yüklenen dosyayı Dosya akışına kopyala.
+                values.ItemSubShowcaseImage = "/ItemImages/" + newImageName;
+            }
+
+            _itemService.TUpdate(values);
+            return RedirectToAction("GetAllMyOpenItemAds");
+
+        }
 
 
 
@@ -192,6 +246,69 @@ namespace ECommerce.UILayer.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult UpdateItemDetails(int id)
+        {
+            var username = User.Identity.Name;
+            var loggedUserValues = _userService.TgetLoggedUserID(username);
+
+            List<SelectListItem> brandValues = (from x in _brandService.TGetList()
+                                                select new SelectListItem
+                                                {
+                                                    Text = x.BrandTitle,
+                                                    Value = x.BrandID.ToString()
+
+                                                }).ToList();
+
+            //önce userid gelecek itemowner'dan sonrasında bu id'nin itemlarını listeleyecek. Bu item'dan seçim yapıp onun detayını ekleyecek
+
+            ViewBag.brands = brandValues;
+
+            var values = _itemDetailService.TGetByID(id);
+
+            ViewBag.itemNumber = values.ItemNo;
+
+            UpdateItemDetailDTO updateItemDetailDTO = new UpdateItemDetailDTO();
+            updateItemDetailDTO.ItemNo = values.ItemNo;
+            updateItemDetailDTO.ItemDiscount = values.ItemDiscount;
+            updateItemDetailDTO.ItemOldPrice = values.ItemOldPrice;
+            updateItemDetailDTO.BrandID = values.BrandID;
+            updateItemDetailDTO.Description = values.Description;
+            updateItemDetailDTO.ItemDetailDescription= values.ItemDetailDescription;
+            updateItemDetailDTO.ItemAdType = values.ItemAdType;
+            updateItemDetailDTO.gGuarantee = values.gGuarantee;
+            updateItemDetailDTO.ItemStatus = values.ItemStatus;
+            updateItemDetailDTO.ItemDetailID = values.ItemDetailID;
+
+
+
+
+            return View(updateItemDetailDTO);
+        }
+        //ek işlemi backend operasyonlarının yazılacağı apinin çağırılacağı metod
+        [HttpPost]
+        public async Task<IActionResult> UpdateItemDetails(UpdateItemDetailDTO updateItemDetailDTO)
+        {
+            var values = _itemDetailService.TGetByID(updateItemDetailDTO.ItemDetailID);
+            values.ItemOldPrice = updateItemDetailDTO.ItemOldPrice;
+            values.ItemDiscount = updateItemDetailDTO.ItemDiscount;
+            values.ItemNewPrice= CalculateNewPrice(updateItemDetailDTO.ItemOldPrice, updateItemDetailDTO.ItemDiscount);
+            values.UpdatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            values.ItemDetailDescription = updateItemDetailDTO.ItemDetailDescription;
+            values.Description = updateItemDetailDTO.Description;
+            values.BrandID = updateItemDetailDTO.BrandID;
+            values.ItemAdType = updateItemDetailDTO.ItemAdType;
+            values.gGuarantee = updateItemDetailDTO.gGuarantee;
+            values.ItemStatus = updateItemDetailDTO.ItemStatus;
+      
+            _itemDetailService.TUpdate(values);
+            return RedirectToAction("GetAllMyOpenItemAds");
+
+
+
+
+        }
+
 
 
 
@@ -212,8 +329,15 @@ namespace ECommerce.UILayer.Controllers
             //önce userid gelecek itemowner'dan sonrasında bu id'nin itemlarını listeleyecek. Bu item'dan seçim yapıp onun detayını ekleyecek
 
             ViewBag.brands = brandValues;
+            string ItemNo = GetItemNo();
+            bool isAvailableItemNumber = _itemService.TGetItemByItemNumber(ItemNo);
+            if (isAvailableItemNumber == false)
+            {
+                ItemNo = GetItemNo();
+            }
+            ViewBag.itemNumber = ItemNo;
 
-           
+
 
 
             return View();
@@ -227,12 +351,7 @@ namespace ECommerce.UILayer.Controllers
             var username = User.Identity.Name;
             var loggedUserValues = _userService.TgetLoggedUserID(username);
             createItemDetailDTO.AppUserId = loggedUserValues.Id;
-            createItemDetailDTO.ItemNo = GetItemNo();
-            bool isAvailableItemNumber = _itemService.TGetItemByItemNumber(createItemDetailDTO.ItemNo);
-            if (isAvailableItemNumber == false)
-            {
-                createItemDetailDTO.ItemNo = GetItemNo();
-            }
+       
             createItemDetailDTO.ItemAnnouncementDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             createItemDetailDTO.ItemSellerType = (int)ItemSellerType.Sahibinden;
             createItemDetailDTO.FromWho = "Sahibinden";
@@ -242,39 +361,60 @@ namespace ECommerce.UILayer.Controllers
 
             createItemDetailDTO.ItemNewPrice = CalculateNewPrice(createItemDetailDTO.ItemOldPrice, createItemDetailDTO.ItemDiscount);
             var values = _mapper.Map<ItemDetail>(createItemDetailDTO);
-            if (ModelState.IsValid)
-            {
-                _itemDetailService.TInsert(values);
+            _itemDetailService.TInsert(values);
 
-                var value = _itemDetailService.TGetItemDetailId(createItemDetailDTO.ItemNo);
-                ItemDetailOwnerDTO itemDetailOwnerDTO = new ItemDetailOwnerDTO();
-                itemDetailOwnerDTO.OwnerId = loggedUserValues.Id;
-                itemDetailOwnerDTO.ItemDetailId = value;
-                itemDetailOwnerDTO.status = true;
-                itemDetailOwnerDTO.CreatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                itemDetailOwnerDTO.UpdatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                var itemDetailOwner = _mapper.Map<ItemDetailOwner>(itemDetailOwnerDTO);
-                _itemDetailOwnerService.TInsert(itemDetailOwner);
+            var value = _itemDetailService.TGetItemDetailId(createItemDetailDTO.ItemNo);
+            ItemDetailOwnerDTO itemDetailOwnerDTO = new ItemDetailOwnerDTO();
+            itemDetailOwnerDTO.OwnerId = loggedUserValues.Id;
+            itemDetailOwnerDTO.ItemDetailId = value;
+            itemDetailOwnerDTO.status = true;
+            itemDetailOwnerDTO.CreatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            itemDetailOwnerDTO.UpdatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            var itemDetailOwner = _mapper.Map<ItemDetailOwner>(itemDetailOwnerDTO);
+            _itemDetailOwnerService.TInsert(itemDetailOwner);
 
-                return RedirectToAction("GetAllMyOpenItemAds");
+            return RedirectToAction("GetAllMyOpenItemAds");
+            //if (ModelState.IsValid)
+            //{
+            //    _itemDetailService.TInsert(values);
 
-            }
-            else
-            {
-                List<SelectListItem> brandValues = (from x in _brandService.TGetList()
-                                                    select new SelectListItem
-                                                    {
-                                                        Text = x.BrandTitle,
-                                                        Value = x.BrandID.ToString()
+            //    var value = _itemDetailService.TGetItemDetailId(createItemDetailDTO.ItemNo);
+            //    ItemDetailOwnerDTO itemDetailOwnerDTO = new ItemDetailOwnerDTO();
+            //    itemDetailOwnerDTO.OwnerId = loggedUserValues.Id;
+            //    itemDetailOwnerDTO.ItemDetailId = value;
+            //    itemDetailOwnerDTO.status = true;
+            //    itemDetailOwnerDTO.CreatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            //    itemDetailOwnerDTO.UpdatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            //    var itemDetailOwner = _mapper.Map<ItemDetailOwner>(itemDetailOwnerDTO);
+            //    _itemDetailOwnerService.TInsert(itemDetailOwner);
 
-                                                    }).ToList();
-                //önce userid gelecek itemowner'dan sonrasında bu id'nin itemlarını listeleyecek. Bu item'dan seçim yapıp onun detayını ekleyecek
+            //    return RedirectToAction("GetAllMyOpenItemAds");
 
-                ViewBag.brands = brandValues;
+            //}
+            //else
+            //{
+            //    List<SelectListItem> brandValues = (from x in _brandService.TGetList()
+            //                                        select new SelectListItem
+            //                                        {
+            //                                            Text = x.BrandTitle,
+            //                                            Value = x.BrandID.ToString()
 
-                return View(createItemDetailDTO);
+            //                                        }).ToList();
 
-            }
+            //    string ItemNo = GetItemNo();
+            //    bool isAvailableItemNumber = _itemService.TGetItemByItemNumber(ItemNo);
+            //    if (isAvailableItemNumber == false)
+            //    {
+            //        ItemNo = GetItemNo();
+            //    }
+            //    ViewBag.itemNumber = ItemNo;
+            //    önce userid gelecek itemowner'dan sonrasında bu id'nin itemlarını listeleyecek.Bu item'dan seçim yapıp onun detayını ekleyecek
+
+            //    ViewBag.brands = brandValues;
+
+            //    return View(createItemDetailDTO);
+
+            //}
 
 
         }
@@ -344,6 +484,31 @@ namespace ECommerce.UILayer.Controllers
             _itemService.TUpdate(values);
             return RedirectToAction("Index");
             
+
+        }
+
+        public IActionResult RemoveItemAd(int id)
+        {
+            var itemDetailId = _itemService.TGetItemDetailId(id);
+            _itemService.TChangeItemAdStatusToPassive(id);
+            _itemDetailService.TChangeItemDetailStatusToPassive(itemDetailId);
+            _itemOwnerService.TChangeItemOwnerStatusToPassive(id);
+            _itemDetailOwnerService.TChangeItemDetailOwnerStatusToPassive(itemDetailId);
+
+            return RedirectToAction("GetAllMyOpenItemAds");
+
+
+        }
+        public IActionResult OpenItemAd(int id)
+        {
+            var itemDetailId = _itemService.TGetItemDetailId(id);
+            _itemService.TChangeItemAdStatusToActive(id);
+            _itemDetailService.TChangeItemDetailStatusToActive(itemDetailId);
+            _itemOwnerService.TChangeItemOwnerStatusToActive(id);
+            _itemDetailOwnerService.TChangeItemDetailOwnerStatusToActive(itemDetailId);
+
+            return RedirectToAction("GetAllMyOpenItemAds");
+
 
         }
 

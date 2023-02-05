@@ -1,4 +1,5 @@
-﻿using ECommerce.EntityLayer.Concrete;
+﻿using ECommerce.DataAccessLayer.Concrete;
+using ECommerce.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,11 @@ namespace ECommerce.DataAccessLayer.Abstract
 
        
         bool GetItemByItemNumber(string itemNumber);
+        public void ChangeItemAdStatusToActive(int id);
 
+        public void ChangeItemAdStatusToPassive(int id);
 
+        int GetItemDetailId(int itemId);
 
     }
 }

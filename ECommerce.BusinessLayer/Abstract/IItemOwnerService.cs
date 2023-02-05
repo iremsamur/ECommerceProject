@@ -14,5 +14,8 @@ namespace ECommerce.BusinessLayer.Abstract
         public List<ItemOwner> TGetItemOwnerByLoggedUser(int userId);
 
         public Task<List<GetMyOpenItemAdsQueryResult>> GetMyOpenItemAds(int UserID);
+        public void TChangeItemOwnerStatusToActive(int id);
+
+        public void TChangeItemOwnerStatusToPassive(int id);
     }
 }

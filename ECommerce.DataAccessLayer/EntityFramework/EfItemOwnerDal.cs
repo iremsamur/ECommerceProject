@@ -23,5 +23,29 @@ namespace ECommerce.DataAccessLayer.EntityFramework
                 return values;
             }
         }
+        public void ChangeItemOwnerStatusToActive(int id)
+        {
+
+            using (var context = new Context())
+            {
+                var itemOwner = context.ItemOwners.Include(x=>x.ItemAd).Where(x=>x.ItemAdId==id).FirstOrDefault();
+                itemOwner.status= true;
+
+                Update(itemOwner);
+
+            }
+        }
+
+        public void ChangeItemOwnerStatusToPassive(int id)
+        {
+            using (var context = new Context())
+            {
+                var itemOwner = context.ItemOwners.Include(x => x.ItemAd).Where(x => x.ItemAdId == id).FirstOrDefault();
+                itemOwner.status = false;
+
+                Update(itemOwner);
+
+            }
+        }
     }
 }

@@ -16,6 +16,31 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 {
     public class EfItemDal : GenericRepository<Item>, IItemDal
     {
+        public void ChangeItemAdStatusToActive(int id)
+        {
+
+            using (var context = new Context())
+            {
+                var item = context.Items.Find(id);
+                item.status = true;
+                
+                Update(item);
+
+            }
+        }
+
+        public void ChangeItemAdStatusToPassive(int id)
+        {
+            using (var context = new Context())
+            {
+                var item = context.Items.Find(id);
+                item.status = false;
+
+                Update(item);
+
+            }
+        }
+
         public bool GetItemByItemNumber(string itemNumber)
         {
             bool check = false;
@@ -31,11 +56,21 @@ namespace ECommerce.DataAccessLayer.EntityFramework
             }
         }
 
+        public int GetItemDetailId(int itemId)
+        {
+            using (var context = new Context())
+            {
+                var itemDetailId = context.Items.Where(x => x.ItemID == itemId).Select(y => y.ItemDetailID).FirstOrDefault();
+
+                return (int)itemDetailId;
+            }
+        }
+
         public int GetItemId(string itemName)
         {
             using (var context = new Context())
             {
-                var itemId = context.Items.Where(x=>x.ItemName==itemName).Select(y=>y.ItemID).FirstOrDefault();
+                var itemId = context.Items.Where(x=>x.ItemName==itemName && x.status == true).Select(y=>y.ItemID).FirstOrDefault();
 
                 return itemId;
             }

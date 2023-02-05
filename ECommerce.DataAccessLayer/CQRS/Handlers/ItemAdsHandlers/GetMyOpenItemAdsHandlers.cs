@@ -24,8 +24,10 @@ namespace ECommerce.DataAccessLayer.CQRS.Handlers.ItemAdsHandlers
 
         public async Task<List<GetMyOpenItemAdsQueryResult>> Handle(GetMyOpenItemAdsQuery request, CancellationToken cancellationToken)
         {
-            return await _context.ItemOwners.Include(x => x.OwnerUser).Include(x => x.ItemAd).ThenInclude(x => x.ItemDetail).Where(x => x.OwnerId == request.UserId && x.status==true).Select(x => new GetMyOpenItemAdsQueryResult
+            return await _context.ItemOwners.Include(x => x.OwnerUser).Include(x => x.ItemAd).ThenInclude(x => x.ItemDetail).Where(x => x.OwnerId == request.UserId).Select(x => new GetMyOpenItemAdsQueryResult
             {
+                ItemId=x.ItemAdId,
+                ItemDetailID=x.ItemAd.ItemDetailID,
                 ItemName = x.ItemAd.ItemName,
                 ItemShowcaseImage = x.ItemAd.ItemShowcaseImage,
                 ItemNo = x.ItemAd.ItemDetail.ItemNo,

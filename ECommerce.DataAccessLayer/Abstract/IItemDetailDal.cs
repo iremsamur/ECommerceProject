@@ -10,5 +10,9 @@ namespace ECommerce.DataAccessLayer.Abstract
     public interface IItemDetailDal : IGenericDal<ItemDetail>
     {
         int GetItemDetailId(string itemNumber);
+       
+        public void ChangeItemDetailStatusToActive(int id);
+
+        public void ChangeItemDetailStatusToPassive(int id);
     }
 }

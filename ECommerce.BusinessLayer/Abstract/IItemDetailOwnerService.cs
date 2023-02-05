@@ -10,5 +10,9 @@ namespace ECommerce.BusinessLayer.Abstract
     public interface IItemDetailOwnerService : IGenericService<ItemDetailOwner>
     {
         public List<ItemDetailOwner> TGetItemDetailOwnerByLoggedUser(int userId);
+        public void TChangeItemDetailOwnerStatusToActive(int id);
+
+        public void TChangeItemDetailOwnerStatusToPassive(int id);
     }
+
 }

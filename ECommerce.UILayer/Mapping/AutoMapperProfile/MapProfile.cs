@@ -29,6 +29,8 @@ namespace ECommerce.UILayer.Mapping.AutoMapperProfile
             CreateMap<ItemDetail, CreateItemDetailDTO>().ReverseMap();
             CreateMap<ItemOwner, ItemOwnerDTO>().ReverseMap();
             CreateMap<ItemDetailOwner, ItemDetailOwnerDTO>().ReverseMap();
+            CreateMap<Item, UpdateItemAdDTO>().ReverseMap();
+            CreateMap<ItemDetail, UpdateItemDetailDTO>().ReverseMap();
 
         }
     }

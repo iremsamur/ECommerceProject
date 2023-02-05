@@ -27,6 +27,12 @@ namespace ECommerce.BusinessLayer.Abstract
 
         public bool TGetItemByItemNumber(string itemNumber);
 
+        public void TChangeItemAdStatusToActive(int id);
+
+        public void TChangeItemAdStatusToPassive(int id);
+
+        public int TGetItemDetailId(int itemId);
+
 
 
 

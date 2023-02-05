@@ -6,7 +6,7 @@
 
 <div class="card ">
     <div class="card-header">
-        <h4 class="card-title">Açtığım Aktif İlanlar</h4>
+        <h4 class="card-title">Açtığım İlanlar</h4>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -45,6 +45,9 @@
                             Açıklama
                         </th>
                         <th>İlan Durumu (Aktif/Pasif)</th>
+                        <th>İlan Güncelle</th>
+                        <th>İlan Detay Güncelle</th>
+                        <th>İlanı Kaldır</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,6 +76,15 @@
                             else{
                                 <td style="background-color:red;color:white;">Pasif</td>
                             }
+                            <td><a href="/IndividualSeller/UpdateItemAd/@item.ItemId" class="btn btn-outline-success">İlan Düzenle</a></td>
+                            <td><a href="/IndividualSeller/UpdateItemDetails/@item.ItemDetailId" class="btn btn-outline-info">İlan Detay Düzenle</a></td>
+                            @if(item.Status==true){
+                                <td><a href="/IndividualSeller/RemoveItemAd/@item.ItemId" class="btn btn-outline-danger">İlanı Kapat</a></td>
+                            }
+                            else{
+                                <td><a href="/IndividualSeller/OpenItemAd/@item.ItemId" class="btn btn-outline-danger">İlanı Aç</a></td>
+                            }
+                           
                            
                         </tr>
 

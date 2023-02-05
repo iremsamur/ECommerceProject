@@ -8,6 +8,8 @@ namespace ECommerce.DataAccessLayer.CQRS.Results.ItemAdsResults
 {
     public class GetMyOpenItemAdsQueryResult
     {
+        public int ItemId { get; set; }
+        public int? ItemDetailID { get; set; }
         public string ItemName { get; set; }
         public string ItemShowcaseImage { get; set; }
         public string ItemNo { get; set; }

@@ -1,8 +1,10 @@
 ﻿using ECommerce.BusinessLayer.Abstract;
 using ECommerce.BusinessLayer.Concrete;
+using ECommerce.BusinessLayer.ValidationRules.ItemDetailValidation;
 using ECommerce.BusinessLayer.ValidationRules.ItemValidation;
 using ECommerce.DataAccessLayer.Abstract;
 using ECommerce.DataAccessLayer.EntityFramework;
+using ECommerce.DTOLayer.ItemDetailDTO;
 using ECommerce.DTOLayer.ItemDTOs;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
@@ -54,6 +56,9 @@ namespace ECommerce.BusinessLayer.DIContainer
         {
             //DTO ve onun ilgili validator eşleştirmelerini burada yazıp tanımlıyoruz
             services.AddTransient<IValidator<CreateItemDTO>, ItemAddValidator>();
+            
+            services.AddTransient<IValidator<CreateItemDetailDTO>, ItemDetailAddValidator>();
+            //services.AddTransient<IValidator<CreateItemDetailDTO>, ItemDetailAddValidator>();
             //services.AddTransient<IValidator<ContactUpdateDTO>, ContactUpdateValidator>();
 
 

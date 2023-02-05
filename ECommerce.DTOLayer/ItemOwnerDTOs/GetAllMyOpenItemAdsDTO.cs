@@ -8,6 +8,8 @@ namespace ECommerce.DTOLayer.ItemOwnerDTOs
 {
     public class GetAllMyOpenItemAdsDTO
     {
+        public int ItemId { get; set; }
+        public int ItemDetailId { get; set; }
         public string ItemName { get; set; }
         public string ItemShowcaseImage { get; set; }
         public string ItemNo { get; set; }

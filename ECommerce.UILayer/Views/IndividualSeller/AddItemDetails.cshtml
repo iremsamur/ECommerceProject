@@ -14,16 +14,27 @@
 
                 <h4 class="card-title">İlan Detayı Ekleme</h4>
                 <br />
+              
 
 
                 <div class="forms-sample">
                     <div class="form-group">
+                        <label for="exampleInputName1">İlan Numarası </label>
+
+               
+
+                        
+                        <input asp-for="ItemNo" class="form-control" readonly="readonly" style="background-color:red;color:white;" value="@ViewBag.itemNumber" />
+                
+                    </div>
+                    <br />
+                    <div class="form-group">
                         <label for="exampleInputName1">Eski Fiyatı </label>
 
-                        @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for = "WriterName" placeholder="Username">*@
+                
 
                         @Html.TextBoxFor(x => x.ItemOldPrice, new { @class = "form-control",@style="background-color:red;" })
-                        <span asp-validation-for="ItemOldPrice" class="text-danger"></span>
+                     @*   <span asp-validation-for="ItemOldPrice" class="text-danger"></span>*@
                     </div>
                     <br />
                   
@@ -32,10 +43,10 @@
                     <div class="form-group">
                         <label for="exampleInputName1">İndirim Oranı</label>
 
-                        @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for = "WriterName" placeholder="Username">*@
+       
 
                         @Html.TextBoxFor(x => x.ItemDiscount, new { @class = "form-control",@style="background-color:red;" })
-                        <span asp-validation-for="ItemDiscount" class="text-danger"></span>
+                     @*   <span asp-validation-for="ItemDiscount" class="text-danger"></span>*@
                     </div>
            
                        <br />
@@ -43,12 +54,10 @@
                      <label for="exampleInputName1">İlan Türü</label>
                         <br />
 
-                        @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for = "WriterName" placeholder="Username">*@
                         <input type="radio" name="ItemAdType" value="@ItemAdType.Kiralık" style="color:white;font-weight:bold;" /> <label>Kiralık</label>
                         <br />
                         <input type="radio" name="ItemAdType" value="@ItemAdType.Satılık" style="color:white;font-weight:bold;" /> <label>Satılık</label>
-                        <br />
-                        <span asp-validation-for="ItemAdType" class="text-danger"></span>
+           
                 
                       
                     </div>
@@ -57,7 +66,7 @@
                     <div class="form-group">
                         <label for="exampleInputEmail3">Marka</label>
                         @Html.DropDownListFor(x => x.BrandID,(List<SelectListItem>)ViewBag.brands, new { @class = "form-control",@style="background-color:red;" })
-                        @*<input type="text" class="form-control" id="exampleInputUsername1" asp-for="WriterMail" placeholder="Username">*@
+
 
                     </div>
                     <br />
@@ -68,7 +77,7 @@
                         <br />
                         <input type="radio" name="gGuarantee" value="Hayır" style="color:white;font-weight:bold;" /> <label>Hayır</label>
                         <br />
-                        <span asp-validation-for="gGuarantee" class="text-danger"></span>
+              
                       
 
                     </div>
@@ -81,7 +90,7 @@
                         <br />
                         <input type="radio" name="ItemStatus" value="2.El" style="color:white;font-weight:bold;" /> <label>2.El</label>
                         <br />
-                        <span asp-validation-for="ItemStatus" class="text-danger"></span>
+       
 
 
                     </div>
@@ -89,7 +98,7 @@
                     <div class="form-group">
                         <label for="exampleInputName1">Açıklama</label>
                         @Html.TextAreaFor(x => x.Description, new { @class = "form-control",@style="background-color:red;" })
-                        <span asp-validation-for="Description" class="text-danger"></span>
+                        @*<span asp-validation-for="Description" class="text-danger"></span>*@
 
 
                     </div>
@@ -97,7 +106,7 @@
                     <div class="form-group">
                         <label for="exampleInputName1">Detay Bilgi</label>
                         @Html.TextAreaFor(x => x.ItemDetailDescription, new { @class = "form-control",@style="background-color:red;" })
-                        <span asp-validation-for="ItemDetailDescription" class="text-danger"></span>
+                    @*    <span asp-validation-for="ItemDetailDescription" class="text-danger"></span>*@
 
 
                     </div>

@@ -1,0 +1,141 @@
+﻿@using ECommerce.EntityLayer.Concrete.Enum
+@model UpdateItemDetailDTO
+@{
+    ViewData["Title"] = "UpdateItemDetails";
+    Layout = "~/Views/Shared/_SellerAdminLayout.cshtml";
+}
+
+<button onclick="myFunction()" class="btn btn-gradient-primary mr-2">Formu Göster/Gizle</button>
+<br />
+<form class="form-group" action="/IndividualSeller/UpdateItemDetails/" method="post" enctype="multipart/form-data" id="createItemForm">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+
+
+                <h4 class="card-title">İlan Detayı Güncelleme</h4>
+                <br />
+
+                <input type="hidden" asp-for="ItemDetailID" /> <!--Kullanıcıya ID'yi göstermez. Ama arka planda ID'yi alır-->
+
+
+
+                <div class="forms-sample">
+                    <div class="form-group">
+                        <label for="exampleInputName1">İlan Numarası </label>
+
+
+
+
+                        <input asp-for="ItemNo" class="form-control" readonly="readonly" style="background-color:red;color:white;" value="@ViewBag.itemNumber" />
+
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="exampleInputName1">Eski Fiyatı </label>
+
+
+
+                        @Html.TextBoxFor(x => x.ItemOldPrice, new { @class = "form-control",@style="background-color:red;" })
+                        @*   <span asp-validation-for="ItemOldPrice" class="text-danger"></span>*@
+                    </div>
+                    <br />
+
+
+                    <br />
+                    <div class="form-group">
+                        <label for="exampleInputName1">İndirim Oranı</label>
+
+
+
+                        @Html.TextBoxFor(x => x.ItemDiscount, new { @class = "form-control",@style="background-color:red;" })
+                        @*   <span asp-validation-for="ItemDiscount" class="text-danger"></span>*@
+                    </div>
+
+                    <br />
+                    <div class="form-group">
+                        <label for="exampleInputName1">İlan Türü</label>
+                        <br />
+
+                        <input type="radio" name="ItemAdType" value="@ItemAdType.Kiralık" style="color:white;font-weight:bold;" /> <label>Kiralık</label>
+                        <br />
+                        <input type="radio" name="ItemAdType" value="@ItemAdType.Satılık" style="color:white;font-weight:bold;" /> <label>Satılık</label>
+
+
+
+                    </div>
+                    <br />
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Marka</label>
+                        @Html.DropDownListFor(x => x.BrandID,(List<SelectListItem>)ViewBag.brands, new { @class = "form-control",@style="background-color:red;" })
+
+
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="exampleInputName1">Garantisi</label>
+                        <br />
+                        <input type="radio" name="gGuarantee" value="Evet" style="color:white;font-weight:bold;" /> <label>Evet</label>
+                        <br />
+                        <input type="radio" name="gGuarantee" value="Hayır" style="color:white;font-weight:bold;" /> <label>Hayır</label>
+                        <br />
+
+
+
+                    </div>
+
+                    <br>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Durumu</label>
+                        <br />
+                        <input type="radio" name="ItemStatus" value="1.El" style="color:white;font-weight:bold;" /> <label>1.El</label>
+                        <br />
+                        <input type="radio" name="ItemStatus" value="2.El" style="color:white;font-weight:bold;" /> <label>2.El</label>
+                        <br />
+
+
+
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Açıklama</label>
+                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control",@style="background-color:red;" })
+                        @*<span asp-validation-for="Description" class="text-danger"></span>*@
+
+
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Detay Bilgi</label>
+                        @Html.TextAreaFor(x => x.ItemDetailDescription, new { @class = "form-control",@style="background-color:red;" })
+                        @*    <span asp-validation-for="ItemDetailDescription" class="text-danger"></span>*@
+
+
+                    </div>
+
+
+
+                    <button type="submit" class="btn btn-gradient-primary mr-2" id="savebtn">Kaydet</button>
+                    <button class="btn btn-light">İptal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+<a href="/IndividualSeller/AddItemDetailToItem" class="btn btn-primary">Ürüne Detay Ekle</a>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("createItemForm");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+
+

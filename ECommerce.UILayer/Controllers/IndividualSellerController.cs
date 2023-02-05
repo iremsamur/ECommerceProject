@@ -147,7 +147,7 @@ namespace ECommerce.UILayer.Controllers
                 _itemOwnerService.TInsert(_mapper.Map<ItemOwner>(itemOwnerDTO));
            
 
-                return RedirectToAction("GetAllMyOpenItemAds");
+                return RedirectToAction("Index");
             }
             else
             {
@@ -242,19 +242,40 @@ namespace ECommerce.UILayer.Controllers
 
             createItemDetailDTO.ItemNewPrice = CalculateNewPrice(createItemDetailDTO.ItemOldPrice, createItemDetailDTO.ItemDiscount);
             var values = _mapper.Map<ItemDetail>(createItemDetailDTO);
-            _itemDetailService.TInsert(values);
+            if (ModelState.IsValid)
+            {
+                _itemDetailService.TInsert(values);
 
-            var value = _itemDetailService.TGetItemDetailId(createItemDetailDTO.ItemNo);
-            ItemDetailOwnerDTO itemDetailOwnerDTO = new ItemDetailOwnerDTO();
-            itemDetailOwnerDTO.OwnerId = loggedUserValues.Id;
-            itemDetailOwnerDTO.ItemDetailId = value;
-            itemDetailOwnerDTO.status = true;
-            itemDetailOwnerDTO.CreatedDate= DateTime.Parse(DateTime.Now.ToShortDateString());
-            itemDetailOwnerDTO.UpdatedDate= DateTime.Parse(DateTime.Now.ToShortDateString()); 
-            var itemDetailOwner = _mapper.Map<ItemDetailOwner>(itemDetailOwnerDTO);
-            _itemDetailOwnerService.TInsert(itemDetailOwner);
+                var value = _itemDetailService.TGetItemDetailId(createItemDetailDTO.ItemNo);
+                ItemDetailOwnerDTO itemDetailOwnerDTO = new ItemDetailOwnerDTO();
+                itemDetailOwnerDTO.OwnerId = loggedUserValues.Id;
+                itemDetailOwnerDTO.ItemDetailId = value;
+                itemDetailOwnerDTO.status = true;
+                itemDetailOwnerDTO.CreatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                itemDetailOwnerDTO.UpdatedDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                var itemDetailOwner = _mapper.Map<ItemDetailOwner>(itemDetailOwnerDTO);
+                _itemDetailOwnerService.TInsert(itemDetailOwner);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("GetAllMyOpenItemAds");
+
+            }
+            else
+            {
+                List<SelectListItem> brandValues = (from x in _brandService.TGetList()
+                                                    select new SelectListItem
+                                                    {
+                                                        Text = x.BrandTitle,
+                                                        Value = x.BrandID.ToString()
+
+                                                    }).ToList();
+                //önce userid gelecek itemowner'dan sonrasında bu id'nin itemlarını listeleyecek. Bu item'dan seçim yapıp onun detayını ekleyecek
+
+                ViewBag.brands = brandValues;
+
+                return View(createItemDetailDTO);
+
+            }
+
 
         }
         public double CalculateNewPrice(double oldPrice,double discount)

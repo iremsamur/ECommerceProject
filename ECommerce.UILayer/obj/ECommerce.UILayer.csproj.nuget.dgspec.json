@@ -515,6 +515,10 @@
               "target": "Package",
               "version": "[11.0.0, )"
             },
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.100.3, )"
+            },
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[11.2.2, )"
@@ -558,6 +562,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "iTextSharp.LGPLv2.Core": {
+              "target": "Package",
+              "version": "[3.3.2, )"
             }
           },
           "imports": [

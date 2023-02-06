@@ -21,5 +21,7 @@ namespace ECommerce.DataAccessLayer.EntityFramework
                 return userInformations;
             }
         }
+
+      
     }
 }

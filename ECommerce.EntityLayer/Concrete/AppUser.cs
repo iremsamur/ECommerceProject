@@ -26,7 +26,8 @@ namespace ECommerce.EntityLayer.Concrete
         {
             get; set;
         }
-        
+        public string EmailConfirmedControlCode { get; set; }
+
         public ICollection<Comment> Comments { get; set; }
          //item-user çoka çok ilişki sepete eklenen ürün
         public virtual ICollection<MindList> MindLists { get; set; }

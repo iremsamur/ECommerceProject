@@ -105,6 +105,7 @@ namespace ECommerce.UILayer.Controllers
 
             public async Task<IActionResult> GetItemAdsPdfReport()
             {
+                string deneme = Directory.GetCurrentDirectory();
                 string path = Path.Combine(Directory.GetCurrentDirectory(), "/wwwroot/PdfReports/" + "ItemAds.pdf");
                 var stream = new FileStream(path, FileMode.Create);
                 Document document = new Document(PageSize.A4);

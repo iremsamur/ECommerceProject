@@ -30,7 +30,7 @@ namespace ECommerce.BusinessLayer.Concrete
 
 		public AppUser TGetByID(int id)
 		{
-			throw new NotImplementedException();
+			return _userDal.GetByID(id);
 		}
 
 		public List<AppUser> TGetList()

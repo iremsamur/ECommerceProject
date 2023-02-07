@@ -6,6 +6,7 @@ using ECommerce.DataAccessLayer.Concrete;
 using ECommerce.DataAccessLayer.CQRS.Handlers.ItemAdsHandlers;
 using ECommerce.DataAccessLayer.EntityFramework;
 using ECommerce.EntityLayer.Concrete;
+using ECommerce.UILayer.Hubs;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,6 +39,7 @@ namespace ECommerce.UILayer
             services.AddAutoMapper(typeof(Startup));
             //services.AddMediatR(typeof(Startup));
             services.CustomizeValidator();
+            services.AddSignalR();
             services.AddMediatR(typeof(GetMyOpenItemAdsHandlers).Assembly);
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
@@ -68,8 +70,12 @@ namespace ECommerce.UILayer
 
             app.UseAuthorization();
 
+          
+
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<ChatHub>("/chathub");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

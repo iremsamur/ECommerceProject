@@ -42,6 +42,7 @@ namespace ECommerce.UILayer.Controllers
                 var username = appUser.UserName;
                 
                 var loggedUserValues = _userService.TgetLoggedUserID(username);
+                ViewBag.loggedUserId = loggedUserValues.Id.ToString();
                 int roleId = _roleService.TGetLoggedUserRoleId(loggedUserValues.Id);
                 if (roleId != 0)
                 {

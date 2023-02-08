@@ -245,3 +245,4 @@ C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\bin\D
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Register\EMailConfirmedPage.cshtml.g.cs
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\bin\Debug\net5.0\libman.json
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\ItemRent\ChatWithItemOwnerForHiring.cshtml.g.cs
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Shared\_CompanySellerLayout.cshtml.g.cs

@@ -47,5 +47,10 @@ namespace ECommerce.BusinessLayer.Concrete
 		{
 			throw new NotImplementedException();
 		}
+
+		public AppUser TGetLoggedUserCompanyInformations(int id)
+		{
+			return _userDal.GetLoggedUserCompanyInformations(id);
+		}
 	}
 }

@@ -17,5 +17,6 @@ namespace ECommerce.BusinessLayer.Abstract
         public void TChangeItemOwnerStatusToActive(int id);
 
         public void TChangeItemOwnerStatusToPassive(int id);
+        public int TGetOwnerByItemId(int id);
     }
 }

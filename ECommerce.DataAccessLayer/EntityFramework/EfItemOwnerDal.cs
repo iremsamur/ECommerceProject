@@ -47,5 +47,17 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 
             }
         }
+
+        public int GetOwnerByItemId(int id)
+        {
+            using (var context = new Context())
+            {
+                var itemOwnerId = context.ItemOwners.Include(x => x.ItemAd).Include(x=>x.OwnerUser).Where(x => x.ItemAdId == id).Select(y => y.OwnerId).FirstOrDefault();
+
+
+                return itemOwnerId;
+
+            }
+        }
     }
 }

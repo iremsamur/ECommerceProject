@@ -82,8 +82,15 @@ using ECommerce.DTOLayer.ItemOwnerDTOs;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\Views\_ViewImports.cshtml"
+using ECommerce.DTOLayer.CompanySellerDTOs;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3834ebb9ca5312e408ff9aec9583595fb5aadc13", @"/Views/IndividualSeller/AddItemDetailToItem.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"26b71c6bdc6240e3aa17c9e8851f19d6f788913a", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e632b250ec3efda3e08f0bfe50475d93bb75fc69", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_IndividualSeller_AddItemDetailToItem : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<UpdateItemDTO>
     #nullable disable
@@ -127,7 +134,7 @@ using ECommerce.DTOLayer.ItemOwnerDTOs;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<button onclick=\"myFunction()\" class=\"btn btn-gradient-primary mr-2\">Formu Göster/Gizle</button>\r\n<br />\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3834ebb9ca5312e408ff9aec9583595fb5aadc137064", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3834ebb9ca5312e408ff9aec9583595fb5aadc137291", async() => {
                 WriteLiteral(@"
     <div class=""col-12 grid-margin stretch-card"">
         <div class=""card"">

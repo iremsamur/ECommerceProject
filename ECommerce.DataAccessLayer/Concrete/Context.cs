@@ -64,6 +64,19 @@ namespace ECommerce.DataAccessLayer.Concrete
                 .HasForeignKey(z => z.ReceiverID)
                 .OnDelete(DeleteBehavior.ClientSetNull);
 
+
+            builder.Entity<MessageNotification>()
+                .HasOne(x => x.SenderUserForNotification)
+                .WithMany(y => y.UserSenderForNotification)
+                .HasForeignKey(z => z.SenderID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            builder.Entity<MessageNotification>()
+                .HasOne(x => x.ReceiverUserForNotification)
+                .WithMany(y => y.UserReceiverForNotification)
+                .HasForeignKey(z => z.ReceiverID)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
             base.OnModelCreating(builder);
         }
 
@@ -89,5 +102,6 @@ namespace ECommerce.DataAccessLayer.Concrete
         public DbSet<ItemOwner> ItemOwners { get; set; }
 
         public DbSet<ItemDetailOwner> ItemDetailOwners { get; set; }
+        public DbSet<MessageNotification> MessageNotifications { get; set; }
     }
 }

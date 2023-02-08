@@ -55,6 +55,10 @@ namespace ECommerce.UILayer.Controllers
 
         public IActionResult Index()
         {
+            var username = User.Identity.Name;
+            var loggedUserValues = _userService.TgetLoggedUserID(username);
+            ViewBag.loggedUserPhoto = loggedUserValues.ImageUrl;
+            ViewBag.loggedUserFullName = loggedUserValues.Name + " " + loggedUserValues.Surname;
             return View();
         }
 

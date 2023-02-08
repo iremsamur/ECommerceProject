@@ -49,6 +49,9 @@ namespace ECommerce.BusinessLayer.DIContainer
             services.AddScoped<IItemDetailOwnerService, ItemDetailOwnerManager>();
             services.AddScoped<IItemDetailOwnerDal, EfItemDetailOwnerDal>();
 
+            services.AddScoped<IMessageNotificationService, MessageNotificationManager>();
+            services.AddScoped<IMessageNotificationDal, EfMessageNotificationDal>();
+
 
         }
         //Automapper için 

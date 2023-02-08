@@ -68,5 +68,10 @@ namespace ECommerce.BusinessLayer.Concrete
         {
             _itemOwnerDal.ChangeItemOwnerStatusToPassive(id);
         }
+
+        public int TGetOwnerByItemId(int id)
+        {
+            return _itemOwnerDal.GetOwnerByItemId(id);
+        }
     }
 }

@@ -611,6 +611,49 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.MessageNotification", b =>
+                {
+                    b.Property<int>("MessageNotificationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("MessageDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MessageDetail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("MessageStatus")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ReceiverID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SenderID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("MessageNotificationId");
+
+                    b.HasIndex("ReceiverID");
+
+                    b.HasIndex("SenderID");
+
+                    b.ToTable("MessageNotifications");
+                });
+
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.MindList", b =>
                 {
                     b.Property<int>("ItemId")
@@ -893,6 +936,21 @@ namespace ECommerce.DataAccessLayer.Migrations
                     b.Navigation("SenderUser");
                 });
 
+            modelBuilder.Entity("ECommerce.EntityLayer.Concrete.MessageNotification", b =>
+                {
+                    b.HasOne("ECommerce.EntityLayer.Concrete.AppUser", "ReceiverUserForNotification")
+                        .WithMany("UserReceiverForNotification")
+                        .HasForeignKey("ReceiverID");
+
+                    b.HasOne("ECommerce.EntityLayer.Concrete.AppUser", "SenderUserForNotification")
+                        .WithMany("UserSenderForNotification")
+                        .HasForeignKey("SenderID");
+
+                    b.Navigation("ReceiverUserForNotification");
+
+                    b.Navigation("SenderUserForNotification");
+                });
+
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.MindList", b =>
                 {
                     b.HasOne("ECommerce.EntityLayer.Concrete.Item", "Item")
@@ -986,7 +1044,11 @@ namespace ECommerce.DataAccessLayer.Migrations
 
                     b.Navigation("UserReceiver");
 
+                    b.Navigation("UserReceiverForNotification");
+
                     b.Navigation("UserSender");
+
+                    b.Navigation("UserSenderForNotification");
                 });
 
             modelBuilder.Entity("ECommerce.EntityLayer.Concrete.Brand", b =>

@@ -13,5 +13,7 @@ namespace ECommerce.DataAccessLayer.Abstract
         public void ChangeItemOwnerStatusToActive(int id);
 
         public void ChangeItemOwnerStatusToPassive(int id);
+
+        public int GetOwnerByItemId(int id);
     }
 }

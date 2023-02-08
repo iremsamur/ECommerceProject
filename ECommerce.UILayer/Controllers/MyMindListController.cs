@@ -68,6 +68,7 @@ namespace ECommerce.UILayer.Controllers
             var username = User.Identity.Name;
             var loggedUserValues = _userService.TgetLoggedUserID(username);
             ViewBag.loggedUserImage = loggedUserValues.ImageUrl;
+           
             List<MindListDTO> mindList = await GetMindListByUserID(loggedUserValues.Id);
             ViewBag.itemCount = mindList.Count; 
             return View(mindList);

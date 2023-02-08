@@ -16,7 +16,7 @@ namespace ECommerce.UILayer.Hubs
             _userService = userService;
         }
 
-        public async Task SendMessage(string user, string message)
+        public async Task SendMessage(string user,string item, string message)
         {
            
             string id = user;
@@ -24,11 +24,13 @@ namespace ECommerce.UILayer.Hubs
             string userName = loggedUser.Name;
             string userSurname = loggedUser.Surname;
             string fullName = userName + " " + userSurname;
-            //user = fullName;
+      
             user = fullName;
+            string sendDate = DateTime.Now.ToString() ;
 
-            //await Clients.All.SendAsync("ReceiveMessage", user, message);
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+
+            
+            await Clients.All.SendAsync("ReceiveMessage", user,sendDate, message);
         }
     }
 }

@@ -11,14 +11,18 @@ namespace ECommerce.UILayer.Controllers
 		{
 			_userService = userService;
 		}
-
-		public IActionResult ChatWithItemOwnerForHiring()
+        [HttpGet]
+        public IActionResult ChatWithItemOwnerForHiring(int id)
 		{
 			var username = User.Identity.Name;
 
             var loggedUserValues = _userService.TgetLoggedUserID(username);
-			//ViewBag.SenderMessageUser = loggedUserValues.Name+" "+loggedUserValues.Surname;
-			ViewBag.SenderMessageUser = loggedUserValues.Id;
+         
+            ViewBag.loggedUserImage = loggedUserValues.ImageUrl;
+            //ViewBag.SenderMessageUser = loggedUserValues.Name+" "+loggedUserValues.Surname;
+            ViewBag.SenderMessageUser = loggedUserValues.Id;
+			ViewBag.ItemId = id;
+
             return View();
 		}
 		public IActionResult GetContactInformationItemOwner()

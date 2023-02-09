@@ -29,8 +29,9 @@ namespace ECommerce.UILayer.Controllers
         private readonly IItemDetailService _itemDetailService;
         private readonly IItemDetailOwnerService _itemDetailOwnerService;
         private readonly IMediator _mediator;
+        private readonly IMessageNotificationService _messageNotificationService;
 
-        public CompanySellerController(IUserService userService, IMapper mapper, IBrandService brandService, ISubCategoryService subCategoryService, IItemService itemService, IItemOwnerService itemOwnerService, IItemDetailService itemDetailService, IItemDetailOwnerService itemDetailOwnerService, IMediator mediator)
+        public CompanySellerController(IUserService userService, IMapper mapper, IBrandService brandService, ISubCategoryService subCategoryService, IItemService itemService, IItemOwnerService itemOwnerService, IItemDetailService itemDetailService, IItemDetailOwnerService itemDetailOwnerService, IMediator mediator, IMessageNotificationService messageNotificationService)
         {
             _userService = userService;
             _mapper = mapper;
@@ -41,6 +42,7 @@ namespace ECommerce.UILayer.Controllers
             _itemDetailService = itemDetailService;
             _itemDetailOwnerService = itemDetailOwnerService;
             _mediator = mediator;
+            _messageNotificationService = messageNotificationService;
         }
 
         public IActionResult Index()
@@ -51,6 +53,8 @@ namespace ECommerce.UILayer.Controllers
             ViewBag.loggedUserFullName = loggedUserValues.Name + " " + loggedUserValues.Surname;
             var companyInformations = _userService.TGetLoggedUserCompanyInformations(loggedUserValues.Id);
             var values = _mapper.Map<AppUserDTO>(companyInformations);
+            var messages = _messageNotificationService.TGetMessageNotifications(loggedUserValues.Id);
+            ViewBag.messageCount = _messageNotificationService.TGetMessageNotificationsCount(loggedUserValues.Id);
             return View(values);
         }
      

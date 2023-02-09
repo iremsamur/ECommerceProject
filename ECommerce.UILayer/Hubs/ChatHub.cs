@@ -1,4 +1,5 @@
-﻿using DocumentFormat.OpenXml.Spreadsheet;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
 using ECommerce.BusinessLayer.Abstract;
 using ECommerce.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,7 @@ namespace ECommerce.UILayer.Hubs
             _messageNotificationService = messageNotificationService;
         }
 
-        public void addMessageNotification(int receiverId,int senderId,string message,string sendDate)
+        public void addMessageNotification(int receiverId,int senderId,string message,string item,string sendDate)
         {
             MessageNotification messageNotification = new MessageNotification();
             messageNotification.SenderID = senderId;
@@ -33,6 +34,7 @@ namespace ECommerce.UILayer.Hubs
             messageNotification.CreatedDate= DateTime.Parse(DateTime.Now.ToShortDateString());
             messageNotification.UpdatedDate= DateTime.Parse(DateTime.Now.ToShortDateString());
             messageNotification.MessageDetail = message;
+            messageNotification.ItemAdId = Int32.Parse(item);
             _messageNotificationService.TInsert(messageNotification);
         }
         public async Task SendMessage(string user,string item, string message)
@@ -49,7 +51,7 @@ namespace ECommerce.UILayer.Hubs
             int ownerUserId = _itemOwnerService.TGetOwnerByItemId(Int32.Parse(item));
             int senderUserId = loggedUser.Id;
 
-            addMessageNotification(ownerUserId, senderUserId, message,sendDate);
+            addMessageNotification(ownerUserId, senderUserId, message,item,sendDate);
 
             await Clients.All.SendAsync("ReceiveMessage", user,sendDate, message);
         }

@@ -2,6 +2,7 @@
 using DocumentFormat.OpenXml.Spreadsheet;
 using ECommerce.BusinessLayer.Abstract;
 using ECommerce.DataAccessLayer.Concrete;
+using ECommerce.DTOLayer.CompanySellerDTOs;
 using ECommerce.DTOLayer.ItemOwnerDTOs;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -17,10 +18,12 @@ namespace ECommerce.UILayer.Controllers
     public class DashboardController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IMessageNotificationService _messageNotificationService;
 
-        public DashboardController(IUserService userService)
+        public DashboardController(IUserService userService, IMessageNotificationService messageNotificationService)
         {
             _userService = userService;
+            _messageNotificationService = messageNotificationService;
         }
 
         public IActionResult MyDashboard()
@@ -38,6 +41,11 @@ namespace ECommerce.UILayer.Controllers
                 checkControlIndividualOrCompanySeller = 2;
             }
             ViewBag.sellerType = checkControlIndividualOrCompanySeller;
+           
+            
+          
+            var messages = _messageNotificationService.TGetMessageNotifications(loggedUserValues.Id);
+            ViewBag.messageCount = _messageNotificationService.TGetMessageNotificationsCount(loggedUserValues.Id);
             return View();
         }
         [HttpGet]

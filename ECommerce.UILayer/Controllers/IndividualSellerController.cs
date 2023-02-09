@@ -40,9 +40,9 @@ namespace ECommerce.UILayer.Controllers
         private readonly IItemDetailService _itemDetailService;
         private readonly IItemDetailOwnerService _itemDetailOwnerService;
         private readonly IMediator _mediator;
+        private readonly IMessageNotificationService _messageNotificationService;
 
-
-        public IndividualSellerController(ISubCategoryService subCategoryService, IMapper mapper, IBrandService brandService, IUserService userService, IItemService itemService, IItemOwnerService itemOwnerService, IItemDetailService itemDetailService, IItemDetailOwnerService itemDetailOwnerService, IMediator mediator)
+        public IndividualSellerController(ISubCategoryService subCategoryService, IMapper mapper, IBrandService brandService, IUserService userService, IItemService itemService, IItemOwnerService itemOwnerService, IItemDetailService itemDetailService, IItemDetailOwnerService itemDetailOwnerService, IMediator mediator, IMessageNotificationService messageNotificationService)
         {
             _subCategoryService = subCategoryService;
             _mapper = mapper;
@@ -53,6 +53,7 @@ namespace ECommerce.UILayer.Controllers
             _itemDetailService = itemDetailService;
             _itemDetailOwnerService = itemDetailOwnerService;
             _mediator = mediator;
+            _messageNotificationService = messageNotificationService;
         }
 
         public IActionResult Index()
@@ -62,6 +63,9 @@ namespace ECommerce.UILayer.Controllers
             ViewBag.loggedUserPhoto = loggedUserValues.ImageUrl;
             ViewBag.loggedUserFullName = loggedUserValues.Name + " " + loggedUserValues.Surname;
             var values = _mapper.Map<AppUserIndividualDTO>(loggedUserValues);
+            var messages = _messageNotificationService.TGetMessageNotifications(loggedUserValues.Id);
+            ViewBag.messages = messages;
+            ViewBag.messageCount = _messageNotificationService.TGetMessageNotificationsCount(loggedUserValues.Id);
             return View(values);
         }
         public IActionResult Logout()

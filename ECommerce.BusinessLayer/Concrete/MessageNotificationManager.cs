@@ -33,6 +33,16 @@ namespace ECommerce.BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
+        public List<MessageNotification> TGetMessageNotifications(int id)
+        {
+            return _messageNotificationDal.GetMessageNotifications(id);
+        }
+
+        public int TGetMessageNotificationsCount(int id)
+        {
+            return _messageNotificationDal.GetMessageNotificationsCount(id);
+        }
+
         public void TInsert(MessageNotification t)
         {
             _messageNotificationDal.Insert(t);

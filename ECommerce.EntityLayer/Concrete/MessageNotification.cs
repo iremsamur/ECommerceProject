@@ -18,6 +18,8 @@ namespace ECommerce.EntityLayer.Concrete
         public string MessageDetail { get; set; }
         public DateTime MessageDate { get; set; }
         public bool MessageStatus { get; set; }
+        public int? ItemAdId { get; set; }
+        public Item ItemAd { get; set; }
 
         public AppUser SenderUserForNotification { get; set; }//Gönderici
         public AppUser ReceiverUserForNotification { get; set; }//Alıcı

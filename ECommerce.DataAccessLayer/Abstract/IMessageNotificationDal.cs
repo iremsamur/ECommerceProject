@@ -9,5 +9,8 @@ namespace ECommerce.DataAccessLayer.Abstract
 {
     public interface IMessageNotificationDal : IGenericDal<MessageNotification>
     {
+        List<MessageNotification> GetMessageNotifications(int id);
+        int GetMessageNotificationsCount(int id);
+
     }
 }

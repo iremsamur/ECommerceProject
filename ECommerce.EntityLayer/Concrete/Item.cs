@@ -23,6 +23,7 @@ namespace ECommerce.EntityLayer.Concrete
         public ItemImage ItemImage { get; set; }
         public int? ItemImageID { get; set; }
 
+        public ICollection<MessageNotification> MessageNotifications { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
 

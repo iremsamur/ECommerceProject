@@ -89,8 +89,15 @@ using ECommerce.DTOLayer.CompanySellerDTOs;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\Views\_ViewImports.cshtml"
+using ECommerce.DTOLayer.IndividualSellerDTOs;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"20b352a211e1d4f79a75677abafff2c091e59a13", @"/Views/Shared/Components/_GetAdsBySameCategoriesItems/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e632b250ec3efda3e08f0bfe50475d93bb75fc69", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1846ddabb0caec99568fe5edf293bf088f1e3efe", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Components__GetAdsBySameCategoriesItems_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<ItemWithSubCategoryDTO>>
     #nullable disable
@@ -195,7 +202,7 @@ WriteAttributeValue("", 812, item.ItemID, 812, 12, false);
 #line hidden
 #nullable disable
             WriteLiteral("</del>\r\n\t\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t\t<div class=\"snipcart-details top_brand_home_details item_add single-item hvr-outline-out\">\r\n\t\t\t\t\t\t\t\t\t\t");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "20b352a211e1d4f79a75677abafff2c091e59a1310291", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "20b352a211e1d4f79a75677abafff2c091e59a1310521", async() => {
                 WriteLiteral(@"
 											<fieldset>
 												<input type=""hidden"" name=""cmd"" value=""_cart"" />

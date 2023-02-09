@@ -52,5 +52,10 @@ namespace ECommerce.BusinessLayer.Concrete
 		{
 			return _userDal.GetLoggedUserCompanyInformations(id);
 		}
+
+		public AppUser TGetLoggedUserRoleInformations(int id)
+		{
+			return _userDal.GetLoggedUserRoleInformations(id);
+		}
 	}
 }

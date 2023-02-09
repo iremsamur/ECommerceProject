@@ -3,6 +3,8 @@ using ECommerce.BusinessLayer.Abstract;
 using ECommerce.BusinessLayer.Concrete;
 using ECommerce.DataAccessLayer.CQRS.Queries.ItemAds;
 using ECommerce.DataAccessLayer.CQRS.Results.ItemAdsResults;
+using ECommerce.DTOLayer.CompanySellerDTOs;
+using ECommerce.DTOLayer.IndividualSellerDTOs;
 using ECommerce.DTOLayer.ItemDetailDTO;
 using ECommerce.DTOLayer.ItemDetailOwnerDTOs;
 using ECommerce.DTOLayer.ItemDTOs;
@@ -59,7 +61,12 @@ namespace ECommerce.UILayer.Controllers
             var loggedUserValues = _userService.TgetLoggedUserID(username);
             ViewBag.loggedUserPhoto = loggedUserValues.ImageUrl;
             ViewBag.loggedUserFullName = loggedUserValues.Name + " " + loggedUserValues.Surname;
-            return View();
+            var values = _mapper.Map<AppUserIndividualDTO>(loggedUserValues);
+            return View(values);
+        }
+        public IActionResult Logout()
+        {
+            return RedirectToAction("SellerSignIn", "Login");
         }
 
         [HttpGet]

@@ -51,7 +51,25 @@
           </a>
         </div>
         <ul class="nav">
-          <li class="active ">
+                    @if (ViewBag.sellerType==1){
+                        <li class="active ">
+                            <a href="/IndividualSeller/Index">
+                                <i class="tim-icons icon-chart-pie-36"></i>
+                                <p>Profilim</p>
+                            </a>
+                        </li>
+
+                    }
+                    @if(ViewBag.sellerType==2){
+                        <li class="active ">
+                            <a href="/CompanySeller/Index">
+                                <i class="tim-icons icon-chart-pie-36"></i>
+                                <p>Profilim</p>
+                            </a>
+                        </li>
+                    
+                    }
+          <li>
                <a href="/Dashboard/MyDashboard">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Dashboard</p>
@@ -75,36 +93,7 @@
               <p>İlan Detayı Ekle</p><!--mesela her bilgi sorgulanışı veya butoa tıklanışta veritabanında görüntüleme değerini trigger ile 1 arttırır. İlan gmrüntüleme istatistiklerini verir-->
             </a>
           </li>
-          <li>
-            <a href="./user.html">
-              <i class="tim-icons icon-single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li>
-            <a href="./tables.html">
-              <i class="tim-icons icon-puzzle-10"></i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li>
-            <a href="./typography.html">
-              <i class="tim-icons icon-align-center"></i>
-              <p>Typography</p>
-            </a>
-          </li>
-          <li>
-            <a href="./rtl.html">
-              <i class="tim-icons icon-world"></i>
-              <p>RTL Support</p>
-            </a>
-          </li>
-          <li class="active-pro">
-            <a href="./upgrade.html">
-              <i class="tim-icons icon-spaceship"></i>
-              <p>Upgrade to PRO</p>
-            </a>
-          </li>
+          
         </ul>
       </div>
     </div>
@@ -157,14 +146,16 @@
                   </div>
                   <b class="caret d-none d-lg-block d-xl-block"></b>
                   <p class="d-lg-none">
-                    Log out
+                         <a href="/IndividualSeller/Logout">Çıkış Yap</a>
+                                       
+                                        
                   </p>
                 </a>
                 <ul class="dropdown-menu dropdown-navbar">
                   <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
                   <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
                   <li class="dropdown-divider"></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
+                                    <li class="nav-link"><a href="/IndividualSeller/Logout" class="nav-item dropdown-item">Çıkış Yap</a></li>
                 </ul>
               </li>
               <li class="separator d-lg-none"></li>

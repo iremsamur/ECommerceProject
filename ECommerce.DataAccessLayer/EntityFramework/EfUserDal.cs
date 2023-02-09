@@ -32,6 +32,13 @@ namespace ECommerce.DataAccessLayer.EntityFramework
             }
         }
 
-      
+        public AppUser GetLoggedUserRoleInformations(int id)
+        {
+            using (var context = new Context())
+            {
+                var userInformations = context.Users.Where(x => x.Id == id).FirstOrDefault();
+                return userInformations;
+            }
+        }
     }
 }

@@ -4,9 +4,15 @@ using ECommerce.DTOLayer.CompanySellerDTOs;
 using ECommerce.DTOLayer.ItemDTOs;
 using ECommerce.DTOLayer.ItemOwnerDTOs;
 using ECommerce.EntityLayer.Concrete;
+using ECommerce.UILayer.Models;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -16,11 +22,25 @@ namespace ECommerce.UILayer.Controllers
     {
         private readonly IUserService _userService;
         private readonly IMapper _mapper;
+        private readonly IBrandService _brandService;
+        private readonly ISubCategoryService _subCategoryService;
+        private readonly IItemService _itemService;
+        private readonly IItemOwnerService _itemOwnerService;
+        private readonly IItemDetailService _itemDetailService;
+        private readonly IItemDetailOwnerService _itemDetailOwnerService;
+        private readonly IMediator _mediator;
 
-        public CompanySellerController(IUserService userService, IMapper mapper)
+        public CompanySellerController(IUserService userService, IMapper mapper, IBrandService brandService, ISubCategoryService subCategoryService, IItemService itemService, IItemOwnerService itemOwnerService, IItemDetailService itemDetailService, IItemDetailOwnerService itemDetailOwnerService, IMediator mediator)
         {
             _userService = userService;
             _mapper = mapper;
+            _brandService = brandService;
+            _subCategoryService = subCategoryService;
+            _itemService = itemService;
+            _itemOwnerService = itemOwnerService;
+            _itemDetailService = itemDetailService;
+            _itemDetailOwnerService = itemDetailOwnerService;
+            _mediator = mediator;
         }
 
         public IActionResult Index()
@@ -31,29 +51,8 @@ namespace ECommerce.UILayer.Controllers
             ViewBag.loggedUserFullName = loggedUserValues.Name + " " + loggedUserValues.Surname;
             var companyInformations = _userService.TGetLoggedUserCompanyInformations(loggedUserValues.Id);
             var values = _mapper.Map<AppUserDTO>(companyInformations);
-
             return View(values);
         }
-        [HttpGet]
-        public async Task<IActionResult> GetAllMyOpenItemAds()
-        {
-            var username = User.Identity.Name;
-            var loggedUserValues = _userService.TgetLoggedUserID(username);
-            //var values2 = await _itemOwnerService.GetMyOpenItemAds(loggedUserValues.Id);
-            //var values = await _mediator.Send(new GetMyOpenItemAdsQuery(loggedUserValues.Id));
-            var httpClient = new HttpClient();
-            var responseMessage = await httpClient.GetAsync("https://localhost:44362/api/ItemOwner/GetMyOpenItemAdsByUser/" + loggedUserValues.Id);//id değerine göre veriyi alıyor
-
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                var jsonItem = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<GetAllMyOpenItemAdsDTO>>(jsonItem);
-                return View(values);
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }
-        }
+     
     }
 }

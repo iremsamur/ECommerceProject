@@ -13,6 +13,8 @@ namespace ECommerce.DataAccessLayer.Abstract
         AppUser getLoggedUserID(string username);
         AppUser GetLoggedUserCompanyInformations(int id);
 
+        AppUser GetLoggedUserRoleInformations(int id);
+
    
      
 

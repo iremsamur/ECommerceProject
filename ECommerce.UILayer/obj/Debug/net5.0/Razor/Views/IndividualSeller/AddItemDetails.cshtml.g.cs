@@ -90,6 +90,13 @@ using ECommerce.DTOLayer.CompanySellerDTOs;
 #line hidden
 #nullable disable
 #nullable restore
+#line 12 "C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\Views\_ViewImports.cshtml"
+using ECommerce.DTOLayer.IndividualSellerDTOs;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\Views\IndividualSeller\AddItemDetails.cshtml"
 using ECommerce.EntityLayer.Concrete.Enum;
 
@@ -97,7 +104,7 @@ using ECommerce.EntityLayer.Concrete.Enum;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1d48d1fdf1ab55f7ad5e1d893f7f34872b47c00e", @"/Views/IndividualSeller/AddItemDetails.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e632b250ec3efda3e08f0bfe50475d93bb75fc69", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1846ddabb0caec99568fe5edf293bf088f1e3efe", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_IndividualSeller_AddItemDetails : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<CreateItemDetailDTO>
     #nullable disable
@@ -146,7 +153,7 @@ using ECommerce.EntityLayer.Concrete.Enum;
 #line hidden
 #nullable disable
             WriteLiteral("<button onclick=\"myFunction()\" class=\"btn btn-gradient-primary mr-2\">Formu Göster/Gizle</button>\r\n<br />\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1d48d1fdf1ab55f7ad5e1d893f7f34872b47c00e9064", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1d48d1fdf1ab55f7ad5e1d893f7f34872b47c00e9294", async() => {
                 WriteLiteral(@"
     <div class=""col-12 grid-margin stretch-card"">
         <div class=""card"">
@@ -166,7 +173,7 @@ using ECommerce.EntityLayer.Concrete.Enum;
 
                         
                         ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "1d48d1fdf1ab55f7ad5e1d893f7f34872b47c00e9803", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "1d48d1fdf1ab55f7ad5e1d893f7f34872b47c00e10033", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();

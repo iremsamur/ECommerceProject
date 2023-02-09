@@ -25,7 +25,19 @@ namespace ECommerce.UILayer.Controllers
 
         public IActionResult MyDashboard()
         {
-          
+            var username = User.Identity.Name;
+            var loggedUserValues = _userService.TgetLoggedUserID(username);
+            var values = _userService.TGetLoggedUserRoleInformations(loggedUserValues.Id);
+            int checkControlIndividualOrCompanySeller = 0;
+            if(values.IndividualSellerId is not null)
+            {
+                checkControlIndividualOrCompanySeller = 1;
+            }
+            if(values.CompanySellerId is not null)
+            {
+                checkControlIndividualOrCompanySeller = 2;
+            }
+            ViewBag.sellerType = checkControlIndividualOrCompanySeller;
             return View();
         }
         [HttpGet]

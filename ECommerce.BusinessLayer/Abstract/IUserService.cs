@@ -11,5 +11,6 @@ namespace ECommerce.BusinessLayer.Abstract
     {
         public AppUser TgetLoggedUserID(string username);
         public AppUser TGetLoggedUserCompanyInformations(int id);
+        public AppUser TGetLoggedUserRoleInformations(int id);
     }
 }

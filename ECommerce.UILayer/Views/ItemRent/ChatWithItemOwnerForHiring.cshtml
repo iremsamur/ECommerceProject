@@ -3,7 +3,7 @@
     ViewData["Title"] = "ChatWithItemOwnerForHiring";
     Layout = "~/Views/Shared/_CustomerLayout.cshtml";
 }
-
+<h6>Satıcı-Müşteri Chat Alanı</h6>
 <div class="container">
     <div class="row p-1">
        
@@ -13,7 +13,7 @@
      
     </div>
     <div class="row p-1 text-bg-info p-3">
-        <div class="col-1">Message</div>
+        <div class="col-1">Mesaj</div>
         <div class="col-5"><input type="text" class="w-100" id="messageInput" />
         
         </div>
@@ -21,7 +21,7 @@
     </div>
     <div class="row p-1">
         <div class="col-6 text-end">
-            <input type="button" id="sendButton" value="Send Message" class="btn btn-warning" />
+            <input type="button" id="sendButton" value="Gönder" class="btn btn-warning" />
         </div>
     </div>
     <div class="row p-1">
@@ -31,10 +31,13 @@
     </div>
     <div class="row p-1">
         <div class="col-6">
-            <ul id="messagesList"></ul>
+            <ul id="messagesList" style="background-color:aquamarine;color:darkblue;font-weight:bold"></ul>
         </div>
     </div>
 </div>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>
+
+
+
 

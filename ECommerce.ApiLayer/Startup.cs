@@ -33,8 +33,8 @@ namespace ECommerce.ApiLayer
         {
             services.Containerdependencies();
             services.AddMediatR(typeof(GetMyOpenItemAdsHandlers).Assembly);
-            services.AddDbContext<Context>();
-            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+            //services.AddDbContext<Context>();
+            //services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 
             services.AddControllers().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

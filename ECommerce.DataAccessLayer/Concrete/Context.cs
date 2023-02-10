@@ -103,5 +103,6 @@ namespace ECommerce.DataAccessLayer.Concrete
 
         public DbSet<ItemDetailOwner> ItemDetailOwners { get; set; }
         public DbSet<MessageNotification> MessageNotifications { get; set; }
+        public DbSet<NewItemNotification> NewItemNotifications { get; set; }
     }
 }

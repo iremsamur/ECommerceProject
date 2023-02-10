@@ -138,7 +138,7 @@
            
 
                                     @foreach (var item in ViewBag.messages){
-                                        <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">@item.Subject</a></li>
+                                        <li class="nav-link"><a href="/ItemRent/ChatWithItemOwnerForHiring/@item.ItemAdId" class="nav-item dropdown-item"><img src="@item.SenderUserForNotification.ImageUrl" style="width:30px;height:30px;"> @item.SenderUserForNotification.Name @item.SenderUserForNotification.Surname : @item.Subject.Substring(0,20)  @item.MessageDate</a></li>
 
                                     }
                  

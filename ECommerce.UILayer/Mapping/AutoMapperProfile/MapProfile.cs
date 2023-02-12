@@ -7,6 +7,7 @@ using ECommerce.DTOLayer.ItemDetailOwnerDTOs;
 using ECommerce.DTOLayer.ItemDTOs;
 using ECommerce.DTOLayer.ItemOwnerDTOs;
 using ECommerce.DTOLayer.MindListDTOs;
+using ECommerce.DTOLayer.NewItemNotificationDTOs;
 using ECommerce.DTOLayer.SubCategoryDTOs;
 using ECommerce.DTOLayer.UserDTOs;
 using ECommerce.EntityLayer.Concrete;
@@ -36,6 +37,7 @@ namespace ECommerce.UILayer.Mapping.AutoMapperProfile
             CreateMap<CompanySeller, CompanySellerDTO>().ReverseMap();
             CreateMap<IndividualSeller, IndividualSellerDTO>().ReverseMap();
             CreateMap<AppUser, AppUserIndividualDTO>().ReverseMap();
+            CreateMap<NewItemNotification, NewItemNotificationDTO>().ReverseMap();
 
         }
     }

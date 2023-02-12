@@ -52,6 +52,9 @@ namespace ECommerce.BusinessLayer.DIContainer
             services.AddScoped<IMessageNotificationService, MessageNotificationManager>();
             services.AddScoped<IMessageNotificationDal, EfMessageNotificationDal>();
 
+            services.AddScoped<INewItemNotificationService, NewItemNotificationManager>();
+            services.AddScoped<INewItemNotificationDal, EfNewItemNotificationDal>();
+
 
         }
         //Automapper için 

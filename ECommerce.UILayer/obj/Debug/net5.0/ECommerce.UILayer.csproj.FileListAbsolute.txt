@@ -246,3 +246,5 @@ C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\D
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\bin\Debug\net5.0\libman.json
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\ItemRent\ChatWithItemOwnerForHiring.cshtml.g.cs
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Shared\_CompanySellerLayout.cshtml.g.cs
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Customer\Index.cshtml.g.cs
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Shared\Components\_NewItemNotificationPage\Default.cshtml.g.cs

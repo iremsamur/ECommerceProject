@@ -96,8 +96,15 @@ using ECommerce.DTOLayer.IndividualSellerDTOs;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 13 "C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\Views\_ViewImports.cshtml"
+using ECommerce.DTOLayer.NewItemNotificationDTOs;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2b8b3d39e0141d5454277e53b4a063a7ae2d4563", @"/Views/Shared/Components/_ShowcaseSearchWithFilterPage/Default.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1846ddabb0caec99568fe5edf293bf088f1e3efe", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"47bf1ed046b70a024f98f50c1bda3f8eb54cc44a", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Components__ShowcaseSearchWithFilterPage_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable
@@ -130,7 +137,7 @@ using ECommerce.DTOLayer.IndividualSellerDTOs;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("<div class=\"col-lg-3 mt-lg-0 mt-4 p-lg-0\">\r\n\t<div class=\"side-bar p-sm-4 p-3\">\r\n\t\t<div class=\"search-hotel border-bottom py-2\">\r\n\t\t\t<h3 class=\"agileits-sear-head mb-3\">Search Here..</h3>\r\n\t\t\t");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2b8b3d39e0141d5454277e53b4a063a7ae2d45636655", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2b8b3d39e0141d5454277e53b4a063a7ae2d45636888", async() => {
                 WriteLiteral("\r\n\t\t\t\t<input type=\"search\" placeholder=\"Product name...\" name=\"search\"");
                 BeginWriteAttribute("required", " required=\"", 292, "\"", 303, 0);
                 EndWriteAttribute();

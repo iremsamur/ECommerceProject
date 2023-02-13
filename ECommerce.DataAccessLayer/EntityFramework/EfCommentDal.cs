@@ -13,15 +13,17 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 {
 	public class EfCommentDal : GenericRepository<Comment>, ICommentDal
 	{
-		public List<Comment> GetCommentListByItem(int id)
-		{
-            using (var context = new Context())
-            {
-              
+        private readonly Context _context;
 
-                var values = context.Comments.Include(x => x.AppUser).Include(x => x.Item).Where(x => x.ItemID == id).ToList();
-                return values;
-            }
+        public EfCommentDal(Context context) : base(context)
+        {
+            _context = context;
+        }
+
+        public List<Comment> GetCommentListByItem(int id)
+		{
+            var values = _context.Comments.Include(x => x.AppUser).Include(x => x.Item).Where(x => x.ItemID == id).ToList();
+            return values;
         }
 	}
 }

@@ -16,64 +16,56 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 {
     public class EfItemDal : GenericRepository<Item>, IItemDal
     {
+       
+
+        private readonly Context _context;
+
+        public EfItemDal(Context context) : base(context)
+        {
+            _context = context;
+        }
+
         public void ChangeItemAdStatusToActive(int id)
         {
 
-            using (var context = new Context())
-            {
-                var item = context.Items.Find(id);
-                item.status = true;
-                
-                Update(item);
+            var item = _context.Items.Find(id);
+            item.status = true;
 
-            }
+            Update(item);
         }
 
         public void ChangeItemAdStatusToPassive(int id)
         {
-            using (var context = new Context())
-            {
-                var item = context.Items.Find(id);
-                item.status = false;
+            var item = _context.Items.Find(id);
+            item.status = false;
 
-                Update(item);
-
-            }
+            Update(item);
         }
 
         public bool GetItemByItemNumber(string itemNumber)
         {
             bool check = false;
-            using (var context = new Context())
-            {
-                var item = context.Items.Include(x=>x.ItemDetail).Where(x => x.ItemDetail.ItemNo == itemNumber).FirstOrDefault();
-                if (item == null)
-                    check = true;
+            var item = _context.Items.Include(x => x.ItemDetail).Where(x => x.ItemDetail.ItemNo == itemNumber).FirstOrDefault();
+            if (item == null)
+                check = true;
 
 
 
-                return check;
-            }
+            return check;
         }
 
         public int GetItemDetailId(int itemId)
         {
-            using (var context = new Context())
-            {
-                var itemDetailId = context.Items.Where(x => x.ItemID == itemId).Select(y => y.ItemDetailID).FirstOrDefault();
+            var itemDetailId = _context.Items.Where(x => x.ItemID == itemId).Select(y => y.ItemDetailID).FirstOrDefault();
 
-                return (int)itemDetailId;
-            }
+            return (int)itemDetailId;
         }
 
         public int GetItemId(string itemName)
         {
-            using (var context = new Context())
-            {
-                var itemId = context.Items.Where(x=>x.ItemName==itemName && x.status == true).Select(y=>y.ItemID).FirstOrDefault();
+            var itemId = _context.Items.Where(x => x.ItemName == itemName && x.status == true).Select(y => y.ItemID).FirstOrDefault();
 
-                return itemId;
-            }
+            return itemId;
         }
 
      
@@ -81,79 +73,64 @@ namespace ECommerce.DataAccessLayer.EntityFramework
         public List<Item> GetItemsBySubCategory(List<SubCategory> subCategories)
         {
             List<Item> items = new List<Item>();
-            using (var context = new Context())
+            foreach (var category in subCategories)
             {
-                foreach(var category in subCategories)
-                {
-                    var value = context.Items.Include(x => x.ItemImage).Include(x => x.SubCategory).Include(x => x.ItemDetail).Where(x => x.SubCategoryID == category.SubCategoryID).FirstOrDefault();
-                    items.Add(value);
+                var value = _context.Items.Include(x => x.ItemImage).Include(x => x.SubCategory).Include(x => x.ItemDetail).Where(x => x.SubCategoryID == category.SubCategoryID).FirstOrDefault();
+                items.Add(value);
 
-                }
-
-
-                return items;
             }
+
+
+            return items;
         }
 
         public List<Item> GetItemWithImage()
         {
-            using (var context = new Context())
-            {
-                var values = context.Items.Include(x => x.ItemImage).ToList();
-                
-                return values;
-            }
+            var values = _context.Items.Include(x => x.ItemImage).ToList();
+
+            return values;
         }
 
         public List<Item> GetItemWithImageAndCategoryAndDetail()
         {
-            using (var context = new Context())
-            {
-                var values = context.Items.Include(x => x.ItemImage).Include(x=>x.SubCategory).Include(x=>x.ItemDetail).ToList();
+            var values = _context.Items.Include(x => x.ItemImage).Include(x => x.SubCategory).Include(x => x.ItemDetail).ToList();
 
-                return values;
-            }
+            return values;
         }
 
         public Item GetItemWithImageAndCategoryByCategory(int CategoryID)
         {
-            using (var context = new Context())
-            {
-                var value = context.Items.Include(x => x.ItemImage).Include(x => x.SubCategory).Include(x => x.ItemDetail).Where(x=>x.SubCategoryID==CategoryID).FirstOrDefault();
+            var value = _context.Items.Include(x => x.ItemImage).Include(x => x.SubCategory).Include(x => x.ItemDetail).Where(x => x.SubCategoryID == CategoryID).FirstOrDefault();
 
-                return value;
-            }
+            return value;
         }
 
         public ItemDiscountScoresSpModel GetMostDiscountedItemAllDetails(int CategoryID)
         {
-            Context context = new Context();
+            
 
 
 
             string sql = $"SpGetMostDiscountedItemsByCategory {CategoryID}";
-            return context.ItemDiscountScoresSpModels.FromSqlRaw<ItemDiscountScoresSpModel>(sql).AsEnumerable().FirstOrDefault();
+            return _context.ItemDiscountScoresSpModels.FromSqlRaw<ItemDiscountScoresSpModel>(sql).AsEnumerable().FirstOrDefault();
         }
 
         public ItemRatingsSpModel GetMostLikedItemAllDetails(int CategoryID)
         {
-            Context context = new Context();
+          
 
            
             
             string sql = $"SpGetMostLikedItemsByCategory {CategoryID}";
-            return  context.ItemRatingsSpModels.FromSqlRaw<ItemRatingsSpModel>(sql).AsEnumerable().FirstOrDefault();
+            return  _context.ItemRatingsSpModels.FromSqlRaw<ItemRatingsSpModel>(sql).AsEnumerable().FirstOrDefault();
 
         }
 
         public Item GetSelectedItemAllDetails(int itemID)
         {
-            using (var context = new Context())
-            {
-                var value = context.Items.Include(x => x.ItemImage).Include(x => x.SubCategory).ThenInclude(x => x.Category).Include(x => x.ItemDetail).ThenInclude(x=>x.Brand).Where(x => x.ItemID == itemID).FirstOrDefault();
+            var value = _context.Items.Include(x => x.ItemImage).Include(x => x.SubCategory).ThenInclude(x => x.Category).Include(x => x.ItemDetail).ThenInclude(x => x.Brand).Where(x => x.ItemID == itemID).FirstOrDefault();
 
-                return value;
-            }
+            return value;
         }
     }
 }

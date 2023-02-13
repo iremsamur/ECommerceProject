@@ -14,31 +14,28 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 {
 	public class EfUserDal : GenericRepository<AppUser>, IUserDal
 	{
+        private readonly Context _context;
+
+        public EfUserDal(Context context) : base(context)
+        {
+            _context = context;
+        }
         public AppUser GetLoggedUserCompanyInformations(int id)
         {
-            using (var context = new Context())
-            {
-                var userInformations = context.Users.Include(x=>x.CompanySeller).Where(x => x.Id==id).FirstOrDefault();
-                return userInformations;
-            }
+            var userInformations = _context.Users.Include(x => x.CompanySeller).Where(x => x.Id == id).FirstOrDefault();
+            return userInformations;
         }
 
         public AppUser getLoggedUserID(string username)
         {
-            using (var context = new Context())
-            {
-                var userInformations = context.Users.Where(x => x.UserName == username).FirstOrDefault();
-                return userInformations;
-            }
+            var userInformations = _context.Users.Where(x => x.UserName == username).FirstOrDefault();
+            return userInformations;
         }
 
         public AppUser GetLoggedUserRoleInformations(int id)
         {
-            using (var context = new Context())
-            {
-                var userInformations = context.Users.Where(x => x.Id == id).FirstOrDefault();
-                return userInformations;
-            }
+            var userInformations = _context.Users.Where(x => x.Id == id).FirstOrDefault();
+            return userInformations;
         }
     }
 }

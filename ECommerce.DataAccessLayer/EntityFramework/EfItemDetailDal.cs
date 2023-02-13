@@ -13,39 +13,34 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 {
     public class EfItemDetailDal : GenericRepository<ItemDetail>, IItemDetailDal
     {
+        private readonly Context _context;
+
+        public EfItemDetailDal(Context context) : base(context)
+        {
+            _context = context;
+        }
         public void ChangeItemDetailStatusToActive(int id)
         {
 
-            using (var context = new Context())
-            {
-                var itemDetail = context.ItemDetails.Find(id);
-                itemDetail.status = true;
+            var itemDetail = _context.ItemDetails.Find(id);
+            itemDetail.status = true;
 
-                Update(itemDetail);
-
-            }
+            Update(itemDetail);
         }
 
         public void ChangeItemDetailStatusToPassive(int id)
         {
-            using (var context = new Context())
-            {
-                var itemDetail = context.ItemDetails.Find(id);
-                itemDetail.status = false;
+            var itemDetail = _context.ItemDetails.Find(id);
+            itemDetail.status = false;
 
-                Update(itemDetail);
-
-            }
+            Update(itemDetail);
         }
 
         public int GetItemDetailId(string itemNumber)
         {
-            using (var context = new Context())
-            {
-                var itemDetailId = context.ItemDetails.Where(x => x.ItemNo == itemNumber).Select(y => y.ItemDetailID).FirstOrDefault();
+            var itemDetailId = _context.ItemDetails.Where(x => x.ItemNo == itemNumber).Select(y => y.ItemDetailID).FirstOrDefault();
 
-                return itemDetailId;
-            }
+            return itemDetailId;
         }
     }
 }

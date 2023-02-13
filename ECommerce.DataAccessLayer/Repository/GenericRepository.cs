@@ -11,66 +11,48 @@ namespace ECommerce.DataAccessLayer.Repository
 {
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
+        private readonly Context _context;
+
+        public GenericRepository(Context context)
+        {
+            _context = context;
+        }
+
         public void Delete(T t)
         {
-            using (var context = new Context())
-            {
-                context.Remove(t);
-                context.SaveChanges();
+            _context.Remove(t);
+            _context.SaveChanges();
 
-            }
         }
 
         public T GetByID(int id)
         {
-            using (var context = new Context())
-            {
-                return context.Set<T>().Find(id);
-
-
-            }
+            return _context.Set<T>().Find(id);
         }
 
         public List<T> GetList()
         {
-            using (var context = new Context())
-            {
-                return context.Set<T>().ToList();
-
-
-            }
+            return _context.Set<T>().ToList();
         }
 
         public void Insert(T t)
         {
-            using (var context = new Context())
-            {
-                context.Add(t);
-                context.SaveChanges();
-
-
-
-            }
+            _context.Add(t);
+            _context.SaveChanges();
 
         }
 
         public void Update(T t)
         {
-            using (var context = new Context())
-            {
-                context.Update(t);
-                context.SaveChanges();
-
-
-
-            }
+            _context.Update(t);
+            _context.SaveChanges();
         }
 
         //şartlı listeleme
         public List<T> GetListByFilter(Expression<Func<T, bool>> filter)
         {
-            using var c = new Context();
-            return c.Set<T>().Where(filter).ToList();
+            
+            return _context.Set<T>().Where(filter).ToList();
         }
     }
 }

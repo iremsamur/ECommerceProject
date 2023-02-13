@@ -8,15 +8,20 @@ using ECommerce.DataAccessLayer.EntityFramework;
 using ECommerce.EntityLayer.Concrete;
 using ECommerce.UILayer.Hubs;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ECommerce.UILayer
@@ -41,8 +46,34 @@ namespace ECommerce.UILayer
             services.CustomizeValidator();
             services.AddSignalR();
             services.AddMediatR(typeof(GetMyOpenItemAdsHandlers).Assembly);
-            services.AddDbContext<Context>();
+            services.AddHttpContextAccessor();
+            //services.AddDbContext<Context>();
+            services.AddDbContext<Context>(options=>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+            //token için yukarýdaki yerine bu eklendi
+            //services.AddIdentity<AppUser, AppRole>()
+            //    .AddEntityFrameworkStores<Context>()
+            //    .AddDefaultTokenProviders();
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            //})
+            //    .AddJwtBearer(options =>
+            //    {
+            //        options.SaveToken = true;
+            //        options.RequireHttpsMetadata = false;
+            //        options.TokenValidationParameters = new TokenValidationParameters()
+            //        {
+            //            ValidateIssuer = true,
+            //            ValidateAudience = true,
+            //            ValidAudience = Configuration["JWT:ValidAudience"],
+            //            ValidIssuer = Configuration["JWT:ValidIssuer"],
+            //            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:SecretKey"]))
+            //        };
+            //    });
+
 
             services.AddControllersWithViews().AddNewtonsoftJson(options =>
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
@@ -69,6 +100,7 @@ namespace ECommerce.UILayer
             app.UseAuthentication();//bu eklenmezse giriþ yapanýn bilgilerini tutmaz
 
             app.UseAuthorization();
+            
 
           
 

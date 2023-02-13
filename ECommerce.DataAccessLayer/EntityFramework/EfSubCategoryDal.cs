@@ -16,23 +16,23 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 {
     public class EfSubCategoryDal : GenericRepository<SubCategory>, ISubCategoryDal
     {
+        private readonly Context _context;
+
+        public EfSubCategoryDal(Context context) : base(context)
+        {
+            _context = context;
+        }
         public int GetCountOfSubCategories()
         {
-            using (var context = new Context())
-            {
-                int count = context.SubCategories.ToList().Count();
+            int count = _context.SubCategories.ToList().Count();
 
-                return count;
-            }
+            return count;
         }
         public List<SubCategory> GetSubCategoriesByCategoryID(int CategoryID)
         {
-            using (var context = new Context())
-            {
-                var values = context.SubCategories.Include(x => x.Category).Distinct().ToList();
-                return values;
-            }
-            
+            var values = _context.SubCategories.Include(x => x.Category).Distinct().ToList();
+            return values;
+
         }
     }
 }

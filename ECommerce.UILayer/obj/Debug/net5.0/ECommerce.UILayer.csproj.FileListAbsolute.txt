@@ -248,3 +248,6 @@ C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\D
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Shared\_CompanySellerLayout.cshtml.g.cs
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Customer\Index.cshtml.g.cs
 C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Shared\Components\_NewItemNotificationPage\Default.cshtml.g.cs
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Authenticate\Login.cshtml.g.cs
+C:\Users\User\Desktop\UpSchoolBootcamp\ECommerce.UILayer\ECommerce.UILayer\obj\Debug\net5.0\Razor\Views\Authenticate\Register.cshtml.g.cs

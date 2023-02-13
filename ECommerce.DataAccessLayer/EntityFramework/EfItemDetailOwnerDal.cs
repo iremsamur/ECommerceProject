@@ -13,39 +13,35 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 {
     public class EfItemDetailOwnerDal : GenericRepository<ItemDetailOwner>, IItemDetailOwnerDal
     {
+        private readonly Context _context;
+
+        public EfItemDetailOwnerDal(Context context) : base(context)
+        {
+            _context = context;
+        }
         public List<ItemDetailOwner> GetItemDetailOwnerByLoggedUser(int userId)
         {
-            using (var context = new Context())
-            {
-                var values = context.ItemDetailOwners
-                    .Include(x => x.OwnerUser).Include(x => x.ItemAdDetail).Where(x => x.OwnerId == userId).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
+            var values = _context.ItemDetailOwners
+                   .Include(x => x.OwnerUser).Include(x => x.ItemAdDetail).Where(x => x.OwnerId == userId).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
 
-                return values;
-            }
+            return values;
         }
         public void ChangeItemDetailOwnerStatusToActive(int id)
         {
 
-            using (var context = new Context())
-            {
-                var itemDetailOwner = context.ItemDetailOwners.Include(x => x.ItemAdDetail).Where(x => x.ItemDetailId== id).FirstOrDefault();
-                itemDetailOwner.status = true;
+            var itemDetailOwner = _context.ItemDetailOwners.Include(x => x.ItemAdDetail).Where(x => x.ItemDetailId == id).FirstOrDefault();
+            itemDetailOwner.status = true;
 
-                Update(itemDetailOwner);
-
-            }
+            Update(itemDetailOwner);
         }
 
         public void ChangeItemDetailOwnerStatusToPassive(int id)
         {
-            using (var context = new Context())
-            {
-                var itemDetailOwner = context.ItemDetailOwners.Include(x => x.ItemAdDetail).Where(x => x.ItemDetailId == id).FirstOrDefault();
-                itemDetailOwner.status = false;
+            var itemDetailOwner = _context.ItemDetailOwners.Include(x => x.ItemAdDetail).Where(x => x.ItemDetailId == id).FirstOrDefault();
+            itemDetailOwner.status = false;
 
-                Update(itemDetailOwner);
+            Update(itemDetailOwner);
 
-            }
         }
     }
 }

@@ -14,26 +14,26 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 {
     public class EfMessageNotificationDal : GenericRepository<MessageNotification>, IMessageNotificationDal
     {
+        private readonly Context _context;
+
+        public EfMessageNotificationDal(Context context) : base(context)
+        {
+            _context = context;
+        }
         public List<MessageNotification> GetMessageNotifications(int id)
         {
-            using (var context = new Context())
-            {
-                var values = context.MessageNotifications
+            var values = _context.MessageNotifications
                     .Include(x => x.ReceiverUserForNotification).Include(x => x.ItemAd).Include(x => x.SenderUserForNotification).Where(x => x.ReceiverID == id).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
 
-                return values;
-            }
+            return values;
         }
 
         public int GetMessageNotificationsCount(int id)
         {
-            using (var context = new Context())
-            {
-               int messageNotificationCount= context.MessageNotifications
+            int messageNotificationCount = _context.MessageNotifications
                     .Include(x => x.ReceiverUserForNotification).Include(x => x.ItemAd).Include(x => x.SenderUserForNotification).Where(x => x.ReceiverID == id).ToList().Count();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
 
-                return messageNotificationCount;
-            }
+            return messageNotificationCount;
         }
     }
 }

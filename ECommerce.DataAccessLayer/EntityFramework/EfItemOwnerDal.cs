@@ -13,51 +13,42 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 {
     public class EfItemOwnerDal : GenericRepository<ItemOwner>, IItemOwnerDal
     {
+        private readonly Context _context;
+
+        public EfItemOwnerDal(Context context) : base(context)
+        {
+            _context = context;
+        }
         public List<ItemOwner> GetItemOwnerByLoggedUser(int userId)
         {
-            using (var context = new Context())
-            {
-                var values = context.ItemOwners
-                    .Include(x => x.OwnerUser).Include(x => x.ItemAd).ThenInclude(x=>x.ItemDetail).Where(x => x.OwnerId == userId).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
+            var values = _context.ItemOwners
+                   .Include(x => x.OwnerUser).Include(x => x.ItemAd).ThenInclude(x => x.ItemDetail).Where(x => x.OwnerId == userId).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
 
-                return values;
-            }
+            return values;
         }
         public void ChangeItemOwnerStatusToActive(int id)
         {
 
-            using (var context = new Context())
-            {
-                var itemOwner = context.ItemOwners.Include(x=>x.ItemAd).Where(x=>x.ItemAdId==id).FirstOrDefault();
-                itemOwner.status= true;
+            var itemOwner = _context.ItemOwners.Include(x => x.ItemAd).Where(x => x.ItemAdId == id).FirstOrDefault();
+            itemOwner.status = true;
 
-                Update(itemOwner);
-
-            }
+            Update(itemOwner);
         }
 
         public void ChangeItemOwnerStatusToPassive(int id)
         {
-            using (var context = new Context())
-            {
-                var itemOwner = context.ItemOwners.Include(x => x.ItemAd).Where(x => x.ItemAdId == id).FirstOrDefault();
-                itemOwner.status = false;
+            var itemOwner = _context.ItemOwners.Include(x => x.ItemAd).Where(x => x.ItemAdId == id).FirstOrDefault();
+            itemOwner.status = false;
 
-                Update(itemOwner);
-
-            }
+            Update(itemOwner);
         }
 
         public int GetOwnerByItemId(int id)
         {
-            using (var context = new Context())
-            {
-                var itemOwnerId = context.ItemOwners.Include(x => x.ItemAd).Include(x=>x.OwnerUser).Where(x => x.ItemAdId == id).Select(y => y.OwnerId).FirstOrDefault();
+            var itemOwnerId = _context.ItemOwners.Include(x => x.ItemAd).Include(x => x.OwnerUser).Where(x => x.ItemAdId == id).Select(y => y.OwnerId).FirstOrDefault();
 
 
-                return itemOwnerId;
-
-            }
+            return itemOwnerId;
         }
     }
 }

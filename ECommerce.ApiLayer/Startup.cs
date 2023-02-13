@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -33,7 +34,8 @@ namespace ECommerce.ApiLayer
         {
             services.Containerdependencies();
             services.AddMediatR(typeof(GetMyOpenItemAdsHandlers).Assembly);
-            services.AddDbContext<Context>();
+            //services.AddDbContext<Context>();
+            services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 
             services.AddControllers().AddNewtonsoftJson(options =>

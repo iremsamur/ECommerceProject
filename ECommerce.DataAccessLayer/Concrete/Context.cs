@@ -1,4 +1,5 @@
 ﻿using ECommerce.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,11 +13,20 @@ namespace ECommerce.DataAccessLayer.Concrete
 {
     public class Context : IdentityDbContext<AppUser, AppRole, int>
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+     
+        /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=LAPTOP-ISO96UVH\\SQLEXPRESS;database=ECommerceCapstoneProjectDB;integrated security=true;");
 
 
+        }
+        */
+        public Context(DbContextOptions<Context> options, IHttpContextAccessor httpContextAccessor) : base(options)
+        {
+            _httpContextAccessor = httpContextAccessor;
+            
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {

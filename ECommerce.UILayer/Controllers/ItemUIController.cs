@@ -2,6 +2,7 @@
 using ECommerce.DTOLayer.ItemDTOs;
 using ECommerce.EntityLayer.Concrete;
 using ECommerce.EntityLayer.Concrete.Enum;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -15,11 +16,13 @@ namespace ECommerce.UILayer.Controllers
     {
         private readonly IItemService _itemService;
         private readonly IUserService _userService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ItemUIController(IItemService itemService, IUserService userService)
+        public ItemUIController(IItemService itemService, IUserService userService, IHttpContextAccessor httpContextAccessor)
         {
             _itemService = itemService;
             _userService = userService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public IActionResult GetItemsInTheShowcaseWithImage()
@@ -53,6 +56,7 @@ namespace ECommerce.UILayer.Controllers
         {
 
             var username = User.Identity.Name;
+            //var username = _httpContextAccessor.HttpContext.User.Identity.Name;
             var loggedUserValues = _userService.TgetLoggedUserID(username);
             ViewBag.loggedUserImage = loggedUserValues.ImageUrl;
             ViewBag.loggedUserID = loggedUserValues.Id;

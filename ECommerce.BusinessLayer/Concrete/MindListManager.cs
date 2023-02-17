@@ -68,5 +68,20 @@ namespace ECommerce.BusinessLayer.Concrete
         {
             return _mindListDal.GetMyMindListByUser(userId);
         }
+
+        public void TChangeMindListStatusToFalse(int itemId)
+        {
+            _mindListDal.ChangeMindListStatusToFalse(itemId);
+        }
+
+        public List<MindList> TGetMyMindListItemsWithAppUserAndItem(int userId, int itemId)
+        {
+            return _mindListDal.GetMyMindListItemsByUserAndItem(userId, itemId);
+        }
+
+        public void TChangeMindListStatusToTrue(int itemId)
+        {
+            _mindListDal.ChangeMindListStatusToTrue(itemId);
+        }
     }
 }

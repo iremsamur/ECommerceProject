@@ -84,6 +84,19 @@ namespace ECommerce.DataAccessLayer.EntityFramework
             return items;
         }
 
+        public List<Item> GetItemsBySubCategory(int subCategoryID)
+        {
+            var values = _context.Items.Include(x => x.ItemImage).Include(x => x.SubCategory).Include(x => x.ItemDetail).Where(x => x.SubCategoryID == subCategoryID).ToList();
+            return values;
+
+        }
+
+        public List<Item> GetItemsWithItemDetail()
+        {
+            var values = _context.Items.Include(x => x.ItemDetail).Include(x => x.SubCategory).ToList();
+            return values;
+        }
+
         public List<Item> GetItemWithImage()
         {
             var values = _context.Items.Include(x => x.ItemImage).ToList();
@@ -132,5 +145,6 @@ namespace ECommerce.DataAccessLayer.EntityFramework
 
             return value;
         }
+
     }
 }

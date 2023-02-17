@@ -33,7 +33,9 @@ namespace ECommerce.BusinessLayer.Abstract
 
         public int TGetItemDetailId(int itemId);
 
+        public List<Item> TGetItemsBySubCategory(int subCategoryID);
 
+        public List<Item> TGetItemsWithItemDetail();
 
 
 

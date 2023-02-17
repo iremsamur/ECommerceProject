@@ -105,5 +105,15 @@ namespace ECommerce.BusinessLayer.Concrete
         {
             return _itemDal.GetItemDetailId(itemId);
         }
+
+        public List<Item> TGetItemsBySubCategory(int subCategoryID)
+        {
+            return _itemDal.GetItemsBySubCategory(subCategoryID);
+        }
+
+        public List<Item> TGetItemsWithItemDetail()
+        {
+            return _itemDal.GetItemsWithItemDetail();
+        }
     }
 }

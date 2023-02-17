@@ -17,5 +17,10 @@ namespace ECommerce.BusinessLayer.Abstract
         public List<MindList> TGetMyMindListWithAppUserAndItem(int userId, int itemId);
 
         public List<MindList> GetMyMindListByUser(int userId);
+
+        public void TChangeMindListStatusToFalse(int itemId);
+
+        public List<MindList> TGetMyMindListItemsWithAppUserAndItem(int userId, int itemId);
+        public void TChangeMindListStatusToTrue(int itemId);
     }
 }

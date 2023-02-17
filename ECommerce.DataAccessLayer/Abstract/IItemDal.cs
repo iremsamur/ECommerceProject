@@ -30,5 +30,9 @@ namespace ECommerce.DataAccessLayer.Abstract
 
         int GetItemDetailId(int itemId);
 
+        List<Item> GetItemsBySubCategory(int subCategoryID);
+
+        List<Item> GetItemsWithItemDetail();
+
     }
 }

@@ -14,5 +14,10 @@ namespace ECommerce.DataAccessLayer.Abstract
         List<MindList> GetMyMindListByUserAndItem(int UserId, int ItemId);
         List<MindList> GetMyMindListByUser(int UserId);
 
+        public void ChangeMindListStatusToFalse(int itemId);
+
+        List<MindList> GetMyMindListItemsByUserAndItem(int UserId, int ItemId);
+        public void ChangeMindListStatusToTrue(int itemId);
+
     }
 }

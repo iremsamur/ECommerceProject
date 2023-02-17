@@ -110,7 +110,7 @@ namespace ECommerce.UILayer
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=ItemUI}/{action=GetItemsInTheShowcaseWithImage}/{id?}");
             });
         }
     }

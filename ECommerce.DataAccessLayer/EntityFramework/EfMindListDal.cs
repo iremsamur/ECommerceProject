@@ -19,10 +19,27 @@ namespace ECommerce.DataAccessLayer.EntityFramework
         {
             _context = context;
         }
+
+        public void ChangeMindListStatusToFalse(int itemId)
+        {
+            var item = _context.MindLists.Where(x=>x.ItemId==itemId).FirstOrDefault();
+            item.status = false;
+
+            Update(item);
+        }
+
+        public void ChangeMindListStatusToTrue(int itemId)
+        {
+            var item = _context.MindLists.Where(x => x.ItemId == itemId).FirstOrDefault();
+            item.status = true;
+
+            Update(item);
+        }
+
         public List<MindList> GetMyMindList(int id)
         {
             var values = _context.MindLists
-                    .Include(x => x.Item).Include(x => x.AppUser).Where(x => x.UserId == id).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
+                    .Include(x => x.Item).Include(x => x.AppUser).Where(x => x.UserId == id && x.status==true).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
 
             return values;
         }
@@ -30,7 +47,7 @@ namespace ECommerce.DataAccessLayer.EntityFramework
         public List<MindList> GetMyMindListByUser(int UserId)
         {
             var values = _context.MindLists
-                   .Include(x => x.Item).ThenInclude(x => x.ItemDetail).ThenInclude(x => x.Brand).Include(x => x.AppUser).Where(x => x.UserId == UserId).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
+                   .Include(x => x.Item).ThenInclude(x => x.ItemDetail).ThenInclude(x => x.Brand).Include(x => x.AppUser).Where(x => x.UserId == UserId && x.status == true).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
 
             return values;
         }
@@ -38,7 +55,15 @@ namespace ECommerce.DataAccessLayer.EntityFramework
         public List<MindList> GetMyMindListByUserAndItem(int UserId, int ItemId)
         {
             var values = _context.MindLists
-                   .Include(x => x.Item).Include(x => x.AppUser).Where(x => x.UserId == UserId && x.ItemId == ItemId).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
+                   .Include(x => x.Item).Include(x => x.AppUser).Where(x => x.UserId == UserId && x.ItemId == ItemId && x.status==true).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
+
+            return values;
+        }
+
+        public List<MindList> GetMyMindListItemsByUserAndItem(int UserId, int ItemId)
+        {
+            var values = _context.MindLists
+                   .Include(x => x.Item).Include(x => x.AppUser).Where(x => x.UserId == UserId && x.ItemId == ItemId && x.status==false).ToList();//giriş yapan o kullanıcının aklımdakiler listesi gelsin.
 
             return values;
         }

@@ -12,6 +12,7 @@ namespace ECommerce.DTOLayer.MindListDTOs
     {
         public int UserId { get; set; }
         public int ItemId { get; set; }
+        public bool status { get; set; }
         public  ItemDTO Item{ get; set; }
         public  UserDTO User { get; set; }
     }

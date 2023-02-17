@@ -36,23 +36,36 @@ namespace ECommerce.UILayer.Controllers
         [HttpPost]
         public async Task<IActionResult> AddMindList(MindListDTO mindListDTO)
         {
-           
-            bool checkIsAvailableUser = await GetMindListByItemAndUserID(mindListDTO.UserId,mindListDTO.ItemId);
-            if (!checkIsAvailableUser)
+            mindListDTO.status = true;
+
+            var availableItems =  _mindListService.TGetMyMindListItemsWithAppUserAndItem(mindListDTO.UserId, mindListDTO.ItemId);
+            if (availableItems.Count > 0)
             {
-                var httpClient = new HttpClient();
-                var jsonMindList = JsonConvert.SerializeObject(mindListDTO);//ekleyeceğim parametreyi serialize eder.
-                StringContent content = new StringContent(jsonMindList, Encoding.UTF8, "application/json");
-
-                var responseMessage = await httpClient.PostAsync("https://localhost:44362/api/MindList/AddMindList", content);
-
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    //eğer başarılı ise
-                    return RedirectToAction("GetMindListCheckoutPage");
-                }
-               
+                _mindListService.TChangeMindListStatusToTrue(mindListDTO.ItemId);
+                return RedirectToAction("GetMindListCheckoutPage");
             }
+            else
+            {
+                bool checkIsAvailableUser = await GetMindListByItemAndUserID(mindListDTO.UserId, mindListDTO.ItemId);
+                if (!checkIsAvailableUser)
+                {
+                    var httpClient = new HttpClient();
+
+                    var jsonMindList = JsonConvert.SerializeObject(mindListDTO);//ekleyeceğim parametreyi serialize eder.
+                    StringContent content = new StringContent(jsonMindList, Encoding.UTF8, "application/json");
+
+                    var responseMessage = await httpClient.PostAsync("https://localhost:44362/api/MindList/AddMindList", content);
+
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        //eğer başarılı ise
+                        return RedirectToAction("GetMindListCheckoutPage");
+                    }
+
+                }
+            }
+
+         
             return RedirectToAction("GetAllItemAds", "ItemAds");
 
 
@@ -87,7 +100,7 @@ namespace ECommerce.UILayer.Controllers
                
                 //ilişkili tablodan gelen verilerileride dto'ya da gösterebilmek için bu böyle eklendi
 
-                if (jsonItem is not null)
+                if (jsonItem != "[]")
                     checkIsExistedUser = true;
             }
             return checkIsExistedUser;
@@ -110,6 +123,17 @@ namespace ECommerce.UILayer.Controllers
                 return values;
             }
             return new List<MindListDTO>();
+
+        }
+
+        public IActionResult RemoveItem(int id)
+        {
+
+            _mindListService.TChangeMindListStatusToFalse(id);
+
+
+            return RedirectToAction("GetMindListCheckoutPage");
+
 
         }
 

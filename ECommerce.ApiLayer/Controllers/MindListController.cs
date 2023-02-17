@@ -28,6 +28,7 @@ namespace ECommerce.ApiLayer.Controllers
             return Ok(values);
         }
         [HttpPost]
+        [Route("AddMindList")]
         public IActionResult AddMindList(MindList mindList)
         {
 

@@ -1,5 +1,6 @@
 ﻿using ECommerce.DataAccessLayer.Abstract;
 using ECommerce.DataAccessLayer.Concrete;
+using ECommerce.DataAccessLayer.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace ECommerce.DataAccessLayer.Repository
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
         private readonly Context _context;
+        private readonly IUnitOfWorkDal _unitOfWorkDal;
 
         public GenericRepository(Context context)
         {
@@ -22,6 +24,7 @@ namespace ECommerce.DataAccessLayer.Repository
         {
             _context.Remove(t);
             _context.SaveChanges();
+            //_unitOfWorkDal.Save();
 
         }
 
@@ -39,6 +42,7 @@ namespace ECommerce.DataAccessLayer.Repository
         {
             _context.Add(t);
             _context.SaveChanges();
+            //_unitOfWorkDal.Save();
 
         }
 
@@ -46,6 +50,7 @@ namespace ECommerce.DataAccessLayer.Repository
         {
             _context.Update(t);
             _context.SaveChanges();
+            //_unitOfWorkDal.Save();
         }
 
         //şartlı listeleme
